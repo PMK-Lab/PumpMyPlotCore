@@ -1,0 +1,2 @@
+# PumpMySkyCore
+Core skyblock plugin
