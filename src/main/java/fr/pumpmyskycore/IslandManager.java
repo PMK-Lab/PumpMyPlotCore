@@ -45,6 +45,16 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
+	@Override
+	public Island getIsland(File f) {
+		return null;
+		//return Island.load(f);	
+	}
 	
+	@Override
+	public Island getIsland(IslandLocation l) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
