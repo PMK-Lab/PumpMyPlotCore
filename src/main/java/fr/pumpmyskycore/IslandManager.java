@@ -12,10 +12,28 @@ public class IslandManager {
 		
 	}
 
-	public static void initIslandFolder(File f) {
+	public void initIslandFolder(File f) {
 		
 		if(!f.exists()) {
 			f.mkdir();
+		}
+		
+		this.setupIslandSubFolder(f.toPath());
+		
+	}
+	
+	private void setupIslandSubFolder(Path path) {
+		
+		for (int i = 1; i <= IslandConstant.ISLAND_SIDE_NUM ; i++) {
+			
+			File f = new File(path + File.separator + i);
+			
+			if(f.isDirectory() & f.exists()) {
+				continue;
+			}
+			
+			f.mkdirs();
+			
 		}
 		
 	}
