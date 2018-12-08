@@ -8,11 +8,7 @@ public interface IIslandManager<T> {
 	
 	public Island getIsland(File f);
 	
-	public default Island getIsland(IslandLocation l) {
-		
-		return null;
-		
-	}
+	public Island getIsland(IslandLocation l);
 	
 	public Island playerGetIsland(T player);
 	
