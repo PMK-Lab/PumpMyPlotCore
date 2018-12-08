@@ -14,4 +14,9 @@ public class Island {
 		return null;
 	}
 
+	public void add(UUID uniqueId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
