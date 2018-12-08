@@ -8,7 +8,7 @@ public interface IIslandManager<T> {
 	
 	public void playerSetIsland(T player);
 	
-	public void deleteIsland(Island i);
+	public void playerUnsetIsland(T player);
 	
 	public boolean playerHasIsland(T player);
 	
