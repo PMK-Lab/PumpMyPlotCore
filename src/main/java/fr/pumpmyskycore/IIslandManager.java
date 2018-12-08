@@ -12,9 +12,9 @@ public interface IIslandManager<T> {
 	
 	public Island playerGetIsland(T player);
 	
-	public void playerSetIsland(T player);
+	public void playerAddIsland( Island island, T player);
 	
-	public void playerUnsetIsland(T player);
+	public void playerRemoveIsland( Island island, T player);
 	
 	public boolean playerHasIsland(T player);
 	
