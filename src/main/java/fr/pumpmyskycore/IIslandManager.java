@@ -1,7 +1,9 @@
 package fr.pumpmyskycore;
 
-public interface IIslandManager<T> {
+import java.io.File;
 
+public interface IIslandManager<T> {
+	
 	public Island createIsland(T player);
 	
 	public Island playerGetIsland(T player);
