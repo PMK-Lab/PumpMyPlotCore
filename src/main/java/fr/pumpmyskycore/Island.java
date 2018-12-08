@@ -18,5 +18,10 @@ public class Island {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void remove(UUID uniqueId) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
