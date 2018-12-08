@@ -4,9 +4,9 @@ public interface IIslandManager<T> {
 
 	public Island createIsland(T player);
 	
-	public Island getIsland(T player);
+	public Island playerGetIsland(T player);
 	
-	public void unsetIsland(T player);
+	public void playerSetIsland(T player);
 	
 	public void deleteIsland(Island i);
 	
