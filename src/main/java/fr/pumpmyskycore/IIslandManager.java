@@ -4,6 +4,7 @@ import java.io.File;
 
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
 
 public interface IIslandManager<T> {
 	
@@ -17,7 +18,7 @@ public interface IIslandManager<T> {
 	
 	public void playerAddIsland( Island island, T player) throws PlayerDoesNotHaveIslandException;
 	
-	public void playerRemoveIsland( Island island, T player);
+	public void playerRemoveIsland( Island island, T player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland;
 	
 	public boolean playerHasIsland(T player);
 	
