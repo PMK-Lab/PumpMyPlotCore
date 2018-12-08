@@ -2,9 +2,11 @@ package fr.pumpmyskycore;
 
 import java.io.File;
 
+import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
+
 public interface IIslandManager<T> {
 	
-	public Island createIsland(T player);
+	public Island createIsland(T player) throws PlayerAlreadyHaveIslandException;
 	
 	public Island getIsland(File f);
 	
