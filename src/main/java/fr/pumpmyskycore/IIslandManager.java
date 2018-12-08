@@ -6,6 +6,14 @@ public interface IIslandManager<T> {
 	
 	public Island createIsland(T player);
 	
+	public Island getIsland(File f);
+	
+	public default Island getIsland(IslandLocation l) {
+		
+		return null;
+		
+	}
+	
 	public Island playerGetIsland(T player);
 	
 	public void playerSetIsland(T player);
@@ -13,5 +21,7 @@ public interface IIslandManager<T> {
 	public void playerUnsetIsland(T player);
 	
 	public boolean playerHasIsland(T player);
+	
+	public void deleteIsland(Island i);
 	
 }
