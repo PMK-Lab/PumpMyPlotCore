@@ -12,6 +12,14 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		public static final String ISLAND_FOLDER_NAME = "islands";
 		
 	}
+	
+	protected Path islandPath;
+	
+	public IslandManager(Path configPath) {
+		
+		this.islandPath = new File(configPath + File.separator + IslandConstant.ISLAND_FOLDER_NAME).toPath();
+		
+	}
 
 	public void initIslandFolder(File f) {
 		
