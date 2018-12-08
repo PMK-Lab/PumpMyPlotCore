@@ -15,7 +15,7 @@ public interface IIslandManager<T> {
 	
 	public Island playerGetIsland(T player) throws PlayerDoesNotHaveIslandException;
 	
-	public void playerAddIsland( Island island, T player);
+	public void playerAddIsland( Island island, T player) throws PlayerDoesNotHaveIslandException;
 	
 	public void playerRemoveIsland( Island island, T player);
 	
