@@ -23,7 +23,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 
-	public void initIslandFolder() {
+	private void initIslandFolder() {
 		
 		File file = this.islandPath.toFile();
 		
