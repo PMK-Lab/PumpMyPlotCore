@@ -19,15 +19,19 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		this.islandPath = new File(configPath + File.separator + IslandConstant.ISLAND_FOLDER_NAME).toPath();
 		
+		this.initIslandFolder();
+		
 	}
 
-	public void initIslandFolder(File f) {
+	public void initIslandFolder() {
 		
-		if(!f.exists()) {
-			f.mkdir();
+		File file = this.islandPath.toFile();
+		
+		if(file.exists()) {
+			file.mkdir();
 		}
 		
-		this.setupIslandSubFolder(f.toPath());
+		this.setupIslandSubFolder();
 		
 	}
 	
