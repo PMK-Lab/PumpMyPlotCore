@@ -31,15 +31,9 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			file.mkdir();
 		}
 		
-		this.setupIslandSubFolder();
-		
-	}
-	
-	private void setupIslandSubFolder(Path path) {
-		
 		for (int i = 1; i <= IslandConstant.ISLAND_SIDE_NUM ; i++) {
 			
-			File f = new File(path + File.separator + i);
+			File f = new File(this.islandPath + File.separator + i);
 			
 			if(f.isDirectory() & f.exists()) {
 				continue;
