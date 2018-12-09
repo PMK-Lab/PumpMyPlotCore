@@ -28,7 +28,7 @@ public class Island {
 	
 	public Island() {
 		
-		this.islandIndex = new IslandIndex();
+		
 		
 	}
 	
