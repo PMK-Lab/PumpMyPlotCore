@@ -23,12 +23,6 @@ public class Island {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public static class IslandIndex {
-		
-		
-		
-	}
 
 	private IslandIndex islandIndex;
 	
