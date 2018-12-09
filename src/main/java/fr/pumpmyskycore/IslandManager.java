@@ -23,8 +23,9 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		this.islandPath = new File(configPath + File.separator + IslandConstant.ISLAND_FOLDER_NAME).toPath();
 		
-		this.initIslandFolder();
 		
+		this.initIslandFolder();
+		this.islandIndex = IslandIndex.init(this.islandPath);
 	}
 
 	private void initIslandFolder() {
