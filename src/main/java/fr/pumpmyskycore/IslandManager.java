@@ -17,6 +17,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	}
 	
 	protected Path islandPath;
+	protected IslandIndex islandIndex;
 	
 	public IslandManager(Path configPath) {
 		
