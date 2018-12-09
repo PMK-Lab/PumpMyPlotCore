@@ -19,7 +19,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	protected Path islandPath;
 	protected IslandIndex islandIndex;
 	
-	public IslandManager(Path configPath) {
+	public IslandManager(Path configPath) throws IOException {
 		
 		this.islandPath = new File(configPath + File.separator + IslandConstant.ISLAND_FOLDER_NAME).toPath();
 		
