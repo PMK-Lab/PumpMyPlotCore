@@ -30,7 +30,7 @@ public class Island {
 		
 	}
 	
-	private class IslandIndex {
+	public static class IslandIndex {
 		
 		
 		
