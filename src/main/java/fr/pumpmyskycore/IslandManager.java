@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
+
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
@@ -118,6 +119,18 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		}
 		
 		island.remove(this.islandIndex,this.getMinecraftUUID(player));
+		
+	}
+	
+	@Override
+	public boolean playerHasIsland(T player) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void deleteIsland(Island i) {
+		// TODO Auto-generated method stub
 		
 	}
 	
