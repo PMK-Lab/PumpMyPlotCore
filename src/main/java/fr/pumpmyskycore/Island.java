@@ -9,7 +9,7 @@ public class Island {
 		return null;
 	}
 
-	public static Island get(UUID uniqueId) {
+	public static Island get(IslandIndex islandIndex, UUID uniqueId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
