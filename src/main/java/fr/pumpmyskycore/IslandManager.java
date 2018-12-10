@@ -100,7 +100,24 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		island.add(this.getMinecraftUUID(player));
+		island.add(this.islandIndex,this.getMinecraftUUID(player));
+		
+	}
+	
+	@Override
+	public void playerRemoveIsland(Island island, T player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland {
+		
+		if(!this.playerHasIsland(player)) {
+			
+			throw new PlayerDoesNotHaveIslandException(this.getMinecraftUUID(player));
+			
+		}else if(!this.playerGetIsland(player).equals(island)) {
+			
+			throw new PlayerNotInThisIsland(this.getMinecraftUUID(player), this.playerGetIsland(player) , island);
+			
+		}
+		
+		island.remove(this.islandIndex,this.getMinecraftUUID(player));
 		
 	}
 	
