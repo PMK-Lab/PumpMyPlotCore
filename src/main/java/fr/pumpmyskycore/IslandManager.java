@@ -90,4 +90,17 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
+	@Override
+	public void playerAddIsland(Island island, T player) throws PlayerDoesNotHaveIslandException {
+		
+		if(!this.playerHasIsland(player)) {
+			
+			throw new PlayerDoesNotHaveIslandException(this.getMinecraftUUID(player));
+			
+		}
+		
+		island.add(this.getMinecraftUUID(player));
+		
+	}
+	
 }
