@@ -23,18 +23,10 @@ public class Island {
 		// TODO Auto-generated method stub
 		
 	}
-
-	private IslandIndex islandIndex;
 	
 	public Island() {
 		
 		
-		
-	}
-	
-	public IslandIndex getIndex() {
-		
-		return this.islandIndex;
 		
 	}
 
