@@ -19,7 +19,7 @@ public class Island {
 		
 	}
 	
-	public void remove(UUID uniqueId) {
+	public void remove(IslandIndex islandIndex, UUID uniqueId) {
 		// TODO Auto-generated method stub
 		
 	}
