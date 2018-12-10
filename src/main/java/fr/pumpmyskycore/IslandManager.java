@@ -6,6 +6,7 @@ import java.nio.file.Path;
 
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
 
 public abstract class IslandManager<T> implements IIslandManager<T>{
 
