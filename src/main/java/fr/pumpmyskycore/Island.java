@@ -14,7 +14,7 @@ public class Island {
 		return null;
 	}
 
-	public void add(UUID uniqueId) {
+	public void add(IslandIndex islandIndex, UUID uniqueId) {
 		// TODO Auto-generated method stub
 		
 	}
