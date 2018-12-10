@@ -1,6 +1,7 @@
 package fr.pumpmyskycore;
 
 import java.io.File;
+import java.util.UUID;
 
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
