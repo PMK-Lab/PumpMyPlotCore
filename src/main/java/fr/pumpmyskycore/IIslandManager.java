@@ -8,6 +8,8 @@ import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
 
 public interface IIslandManager<T> {
 	
+	public UUID getMinecraftUUID(T player);
+	
 	public Island createIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException;
 	
 	public Island getIsland(File f);
