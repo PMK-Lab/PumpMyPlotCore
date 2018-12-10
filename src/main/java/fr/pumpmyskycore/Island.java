@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class Island {
 	
-	public static Island create(UUID uniqueId) {
+	public static Island create(IslandIndex islandIndex, UUID uniqueId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
