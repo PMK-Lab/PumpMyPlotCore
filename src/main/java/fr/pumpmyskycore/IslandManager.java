@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+
 public abstract class IslandManager<T> implements IIslandManager<T>{
 
 	public abstract class IslandConstant {
@@ -11,8 +14,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		public static final int ISLAND_SIZE = 4096; // 16 * 256 chunk per island
 		public static final int ISLAND_SIDE_NUM = 80; 	// 80*80 = 6400 islands
 		public static final String ISLAND_FOLDER_NAME = "islands";
-		public static final String ISLAND_INDEX_FILE_NAME = "islands.yml";
-		
+		public static final String ISLAND_INDEX_FILE_NAME = "islands.yml";		
 		
 	}
 	
@@ -60,6 +62,18 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	public Island getIsland(IslandLocation l) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public Island createIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException {
+		
+		if(this.playerHasIsland(player)) {
+			
+			throw new PlayerAlreadyHaveIslandException(this.getMinecraftUUID(player), this.playerGetIsland(player));
+			
+		}
+		
+		return Island.create(this.getMinecraftUUID(player));
+		
 	}
 	
 }
