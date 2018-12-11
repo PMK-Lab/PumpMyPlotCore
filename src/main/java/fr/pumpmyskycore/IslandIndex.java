@@ -60,6 +60,28 @@ public class IslandIndex {
 	public FileConfiguration getYaml() {
 		return this.fileConf;
 	}
+	
+	public void setIslandLocation(UUID minecraftUUID, IslandLocation loc) throws UnExistPlayerIndexException, IOException {
+		
+		if(!this.contains(minecraftUUID)) {
+			throw new UnExistPlayerIndexException(minecraftUUID);
+		}
+		
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING, loc.getX());
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Y_STRING, loc.getY());
+		
+		this.save();
+		
+	}
+	
+	public IslandLocation getIslandLocation(UUID minecraftUUID) {
+		
+		String x = "";
+		String y = "";
+		
+		return new IslandLocation(x,y);
+		
+	}
 
 	public boolean contains(UUID minecraftUUID) {
 		
