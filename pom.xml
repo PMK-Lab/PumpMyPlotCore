@@ -8,4 +8,18 @@
   
   	<artifactId>pumpmyskycore</artifactId>
   	
+  	<dependencies>
+  		<dependency>
+  			<artifactId>snakeyaml</artifactId>
+  			<groupId>org.yaml</groupId>
+  		</dependency>
+  		
+  		<dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <scope>provided</scope>
+		</dependency>
+  		
+  	</dependencies>
+  	
 </project>
