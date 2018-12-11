@@ -33,6 +33,8 @@ public class IslandIndex {
 		this.file = f;
 		this.fileConf = fc;
 		
+		this.init();
+		
 	}
 	
 	private void init() {
