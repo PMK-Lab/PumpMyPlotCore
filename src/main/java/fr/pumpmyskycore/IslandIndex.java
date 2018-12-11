@@ -43,6 +43,12 @@ public class IslandIndex {
 		this.save();
 		
 	}
+	
+	private void save() throws IOException {
+		
+		this.fileConf.save(this.file);
+		
+	}
 
 	public File getFile() {
 		return file;
