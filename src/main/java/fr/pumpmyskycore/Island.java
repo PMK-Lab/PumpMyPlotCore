@@ -6,6 +6,11 @@ import java.util.UUID;
 
 public class Island {
 	
+	public static Island create(IslandIndex islandIndex, UUID uniqueId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public static Island get(Path path,IslandLocation islandLocation) {
 		
 		Island island = new Island();
@@ -15,15 +20,20 @@ public class Island {
 		
 	}
 	
+	public static void delete(Path path, IslandLocation islandLocation) {
+		
+		
+		
+	}
+	
 	private void load(File f) {
-		// TODO Auto-generated method stub
+		
+		
+		
 		
 	}
 
-	public static Island create(IslandIndex islandIndex, UUID uniqueId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	public void add(IslandIndex islandIndex, UUID uniqueId) {
 		// TODO Auto-generated method stub
