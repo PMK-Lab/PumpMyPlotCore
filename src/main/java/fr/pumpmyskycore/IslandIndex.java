@@ -19,7 +19,10 @@ public class IslandIndex {
 			file.createNewFile();
 		}
 		
-		return new IslandIndex(indexPath);
+		FileConfiguration fileConf = new YamlConfiguration();
+		fileConf.load(file);
+		
+		return new IslandIndex(file,fileConf);
 	}
 	
 	private IslandIndex(Path indexPath) {
