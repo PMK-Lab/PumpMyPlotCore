@@ -76,7 +76,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		return Island.create(this.islandIndex,this.getMinecraftUUID(player));
+		return Island.create(this.getMinecraftUUID(player));
 		
 	}
 	
@@ -102,7 +102,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		island.add(this.islandIndex,this.getMinecraftUUID(player));
+		island.add(this.getMinecraftUUID(player));
 		
 	}
 	
@@ -119,7 +119,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		island.remove(this.islandIndex,this.getMinecraftUUID(player));
+		island.remove(this.getMinecraftUUID(player));
 		
 	}
 	
