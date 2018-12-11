@@ -28,14 +28,16 @@ public class IslandIndex {
 	private File file;
 	private FileConfiguration fileConf;
 
-	public IslandIndex(File f, FileConfiguration fc) {
+	public IslandIndex(File f, FileConfiguration fc) throws IOException {
 		
 		this.file = f;
 		this.fileConf = fc;
 		
 	}
 	
-	private IslandIndex(Path indexPath) {
+	private void init() {
+		
+		this.fileConf.createSection("islands");
 		
 		
 		
