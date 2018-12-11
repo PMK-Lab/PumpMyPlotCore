@@ -85,7 +85,7 @@ public class IslandIndex {
 
 	public boolean contains(UUID minecraftUUID) {
 		
-		return this.fileConf.contains("islands." + minecraftUUID.toString());
+		return this.fileConf.contains(ISLAND_STRING + minecraftUUID.toString());
 		
 	}
 	
