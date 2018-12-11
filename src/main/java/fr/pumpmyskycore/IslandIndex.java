@@ -43,9 +43,16 @@ public class IslandIndex {
 		this.save();
 		
 	}
-	
-	private void save() throws IOException {
-		
+
+	public File getFile() {
+		return file;
+	}
+
+	public FileConfiguration getYaml() {
+		return this.fileConf;
+	}
+
+	public boolean contains(UUID minecraftUUID) {
 		
 		
 	}
