@@ -24,7 +24,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	protected Path islandPath;
 	protected IslandIndex islandIndex;
 	
-	public IslandManager(Path configPath) throws IOException {
+	public IslandManager(Path configPath) throws IOException, InvalidConfigurationException {
 		
 		this.islandPath = new File(configPath + File.separator + IslandConstant.ISLAND_FOLDER_NAME).toPath();
 		
