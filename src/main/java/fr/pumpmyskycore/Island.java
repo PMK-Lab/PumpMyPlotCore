@@ -1,5 +1,7 @@
 package fr.pumpmyskycore;
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.UUID;
 
 public class Island {
