@@ -24,6 +24,16 @@ public class IslandIndex {
 		
 		return new IslandIndex(file,fileConf);
 	}
+
+	private File file;
+	private FileConfiguration fileConf;
+
+	public IslandIndex(File f, FileConfiguration fc) {
+		
+		this.file = f;
+		this.fileConf = fc;
+		
+	}
 	
 	private IslandIndex(Path indexPath) {
 		
