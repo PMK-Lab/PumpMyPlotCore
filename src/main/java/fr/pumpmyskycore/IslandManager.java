@@ -125,8 +125,9 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	
 	@Override
 	public boolean playerHasIsland(T player) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return this.islandIndex.contains(this.getMinecraftUUID(player));
+		
 	}
 
 	@Override
