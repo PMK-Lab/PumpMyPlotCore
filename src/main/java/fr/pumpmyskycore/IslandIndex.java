@@ -9,6 +9,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import fr.pumpmyskycore.IslandManager.IslandConstant;
+import fr.pumpmyskycore.exceptions.UnExistPlayerIndexException;
 
 public class IslandIndex {
 	
