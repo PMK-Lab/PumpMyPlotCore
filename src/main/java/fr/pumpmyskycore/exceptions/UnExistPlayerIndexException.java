@@ -2,7 +2,7 @@ package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
-public class InvalidPlayerInndexException extends Exception {
+public class UnExistPlayerIndexException extends Exception {
 
 	/**
 	 * 
@@ -11,7 +11,7 @@ public class InvalidPlayerInndexException extends Exception {
 
 	private UUID minecraftUUID;
 	
-	public InvalidPlayerInndexException(UUID uuid) {
+	public UnExistPlayerIndexException(UUID uuid) {
 		
 		super("");
 		this.minecraftUUID = uuid;
