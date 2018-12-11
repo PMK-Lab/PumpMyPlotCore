@@ -12,7 +12,7 @@ import fr.pumpmyskycore.IslandManager.IslandConstant;
 
 public class IslandIndex {
 	
-	public static IslandIndex init(Path indexPath) throws IOException {
+	public static IslandIndex init(Path indexPath) throws IOException, InvalidConfigurationException {
 		
 		File file = new File(indexPath + File.separator + IslandConstant.ISLAND_INDEX_FILE_NAME);			
 		if(!file.exists()) {
