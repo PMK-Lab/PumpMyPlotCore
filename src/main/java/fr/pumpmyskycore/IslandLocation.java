@@ -1,5 +1,8 @@
 package fr.pumpmyskycore;
 
+import java.io.File;
+import java.nio.file.Path;
+
 public class IslandLocation {
 
 	public static final String X_STRING = ".x";
@@ -22,6 +25,12 @@ public class IslandLocation {
 	public String getY() {
 		
 		return this.y;
+		
+	}
+
+	public Path toPath() {
+		
+		return new File( this.x + File.separator + this.y).toPath();
 		
 	}
 
