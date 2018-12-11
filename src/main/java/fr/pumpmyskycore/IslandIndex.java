@@ -37,9 +37,14 @@ public class IslandIndex {
 		
 	}
 	
-	private void init() {
+	private void init() throws IOException {
 		
 		this.fileConf.createSection("islands");
+		this.save();
+		
+	}
+	
+	private void save() throws IOException {
 		
 		
 		
