@@ -89,7 +89,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		return Island.get(this.islandIndex,this.getMinecraftUUID(player));
+		return Island.get(this.islandPath,this.islandIndex.getIslandLocation(this.getMinecraftUUID(player)));
 		
 	}
 	
