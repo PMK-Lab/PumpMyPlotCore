@@ -53,7 +53,7 @@ public class Island {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	private File file;
-	private FileConfiguration fileConf;
+	private YamlConfiguration fileYaml;
 	
 	private String owner;
 	
