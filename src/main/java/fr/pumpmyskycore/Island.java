@@ -110,16 +110,15 @@ public class Island {
 		return null;
 	}
 
-	private void load() {
-		
-		this.fileConf = YamlConfiguration.loadConfiguration(this.file);
-				
-		
-	}
-
 	public void save() throws IOException {
 		
-		this.fileConf.save(this.file);
+		this.fileYaml.set("island.home.x", this.homeX);
+		this.fileYaml.set("island.home.y", this.homeY);
+		this.fileYaml.set("island.home.z", this.homeZ);
+		
+		this.fileYaml.set("island.members", this.membersList);
+		
+		this.fileYaml.save(this.file);
 		
 	}
 
