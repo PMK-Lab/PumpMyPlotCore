@@ -62,7 +62,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 			for (int y = 1; y <= IslandManagerConstant.ISLAND_SIDE_NUM ; y++) {
 				
-				IslandLocation loc = new IslandLocation("" + x,"" + y);
+				IslandLocation loc = new IslandLocation(x,y);
 				File f = new File(this.islandPath + File.separator + loc.toPath());
 				
 				if(f.exists()) {

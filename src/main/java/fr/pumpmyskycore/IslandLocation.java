@@ -8,21 +8,21 @@ public class IslandLocation {
 	public static final String X_STRING = ".x";
 	public static final String Y_STRING = ".y";
 	
-	private String x;
-	private String y;
+	private int x;
+	private int y;
 	
-	public IslandLocation(String x, String y) {
+	public IslandLocation(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 	
-	public String getX() {
+	public int getX() {
 		
 		return this.x;
 		
 	}
 	
-	public String getY() {
+	public int getY() {
 		
 		return this.y;
 		

@@ -71,8 +71,8 @@ public class IslandIndex {
 	
 	public IslandLocation getIslandLocation(UUID minecraftUUID) {
 		
-		String x = this.fileConf.getString(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING);
-		String y = this.fileConf.getString(ISLAND_STRING + minecraftUUID + IslandLocation.Y_STRING);
+		int x = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING);
+		int y = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + IslandLocation.Y_STRING);
 		
 		return new IslandLocation(x,y);
 		
