@@ -71,6 +71,23 @@ public class Island {
 		this.file = f;
 		
 	}
+	
+	private void load() {
+		
+		YamlConfiguration yaml = YamlConfiguration.loadConfiguration(this.file);
+			
+		this.owner = yaml.getString("island.owner");
+		
+		this.homeX = yaml.getDouble("island.home.x");
+		this.homeY = yaml.getDouble("island.home.y");
+		this.homeZ = yaml.getDouble("island.home.z");
+		
+		this.idX = yaml.getInt("island.id.x");
+		this.idY = yaml.getInt("island.id.y");
+		
+		this.membersList = yaml.getStringList("island.members");
+		
+	}
 
 	public void addMember(UUID uniqueId) {
 		// TODO Auto-generated method stub
