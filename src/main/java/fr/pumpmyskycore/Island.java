@@ -13,7 +13,7 @@ import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
 
 public class Island {
 	
-	public static Island create(UUID uniqueId) {
+	public static Island create(Path path,IslandLocation freeLoc, UUID uniqueId) {
 		
 		return null;
 		
