@@ -90,12 +90,18 @@ public class Island {
 	}
 
 	public void addMember(UUID uniqueId) {
-		// TODO Auto-generated method stub
-		
+		this.membersList.add(uniqueId.toString());		
 	}
 	
 	public void removeMember(UUID uniqueId) {
-		// TODO Auto-generated method stub
+		
+		for (Iterator<String> string = membersList.iterator(); string.hasNext();) {
+			
+			if(string.next().equals(uniqueId.toString())) {
+				string.remove();
+			}
+			
+		}
 		
 	}
 
