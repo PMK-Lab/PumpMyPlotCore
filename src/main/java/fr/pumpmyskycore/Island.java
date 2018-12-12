@@ -122,4 +122,40 @@ public class Island {
 		
 	}
 
+	public File getFile() {
+		return this.file;
+	}
+
+	public YamlConfiguration getFileConf() {
+		return this.fileYaml;
+	}
+
+	public String getOwner() {
+		return this.owner;
+	}
+
+	public double getHomeX() {
+		return this.homeX;
+	}
+
+	public double getHomeY() {
+		return this.homeY;
+	}
+
+	public double getHomeZ() {
+		return this.homeZ;
+	}
+
+	public int getIdX() {
+		return this.idX;
+	}
+
+	public int getIdY() {
+		return this.idY;
+	}
+
+	public List<String> getMembersList() {
+		return this.membersList;
+	}
+
 }
