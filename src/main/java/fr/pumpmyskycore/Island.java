@@ -71,15 +71,14 @@ public class Island {
 		this.file = f;
 		
 	}
-	
-	public void remove(UUID uniqueId) {
+
+	public void addMember(UUID uniqueId) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public Island() {
-		
-		
+	public void removeMember(UUID uniqueId) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -88,6 +87,17 @@ public class Island {
 		return null;
 	}
 
+	private void load() {
+		
+		this.fileConf = YamlConfiguration.loadConfiguration(this.file);
+				
+		
+	}
 
+	public void save() throws IOException {
+		
+		this.fileConf.save(this.file);
+		
+	}
 
 }
