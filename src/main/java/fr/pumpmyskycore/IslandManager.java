@@ -12,7 +12,7 @@ import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
 
 public abstract class IslandManager<T> implements IIslandManager<T>{
 
-	public abstract class IslandConstant {
+	public abstract class IslandManagerConstant {
 		
 		public static final int ISLAND_SIZE = 4096; // 16 * 256 chunk per island
 		public static final int ISLAND_SIDE_NUM = 80; 	// 80*80 = 6400 islands
@@ -27,7 +27,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	
 	public IslandManager(Path configPath) throws IOException, InvalidConfigurationException {
 		
-		this.islandPath = new File(configPath + File.separator + IslandConstant.ISLAND_FOLDER_NAME).toPath();
+		this.islandPath = new File(configPath + File.separator + IslandManagerConstant.ISLAND_FOLDER_NAME).toPath();
 		
 		
 		this.initIslandFolder();
@@ -42,9 +42,9 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			file.mkdir();
 		}
 		
-		for (int i = 1; i <= IslandConstant.ISLAND_SIDE_NUM ; i++) {
+		for (int x = 1; x <= IslandManagerConstant.ISLAND_SIDE_NUM ; x++) {
 			
-			File f = new File(this.islandPath + File.separator + i);
+			File f = new File(this.islandPath + File.separator + x);
 			
 			if(f.isDirectory() & f.exists()) {
 				continue;
@@ -56,20 +56,34 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	@Override
-	public Island getIsland(File f) {
+	public IslandLocation createFirstFreeLocFile() throws IOException {
+		
+		for (int x = 1; x <= IslandManagerConstant.ISLAND_SIDE_NUM ; x++) {
+			
+			for (int y = 1; y <= IslandManagerConstant.ISLAND_SIDE_NUM ; y++) {
+				
+				IslandLocation loc = new IslandLocation("" + x,"" + y);
+				File f = new File(this.islandPath + File.separator + loc.toPath());
+				
+				if(f.exists()) {
+					continue;
+				}else {
+					f.createNewFile();
+				}
+				
+				return loc;
+				
+			}
+			
+		}
+		
+		System.out.println("NOT ENOUGH ISLANDS !!!!!!!!!!!!§");
 		return null;
-		//return Island.load(f);	
+		
 	}
 	
 	@Override
-	public Island getIsland(IslandLocation l) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public Island createIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException {
+	public Island createIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException {
 		
 		if(this.playerHasIsland(player)) {
 			
@@ -77,7 +91,11 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		return Island.create(this.getMinecraftUUID(player));
+		IslandLocation freeLoc = this.createFirstFreeLocFile();
+		
+		this.islandIndex.setIslandLocation(this.getMinecraftUUID(player), freeLoc);
+		
+		return Island.create(this.islandPath,freeLoc,this.getMinecraftUUID(player));
 		
 	}
 	
@@ -95,7 +113,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	}
 	
 	@Override
-	public void playerAddIsland(Island island, T player) throws PlayerDoesNotHaveIslandException {
+	public void playerAddIsland(Island island, T player) throws PlayerDoesNotHaveIslandException, IOException {
 		
 		if(!this.playerHasIsland(player)) {
 			
@@ -103,12 +121,13 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		island.add(this.getMinecraftUUID(player));
+		island.addMember(this.getMinecraftUUID(player));
+		island.save();
 		
 	}
 	
 	@Override
-	public void playerRemoveIsland(Island island, T player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland {
+	public void playerRemoveIsland(Island island, T player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland, IOException {
 		
 		if(!this.playerHasIsland(player)) {
 			
@@ -120,7 +139,8 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		island.remove(this.getMinecraftUUID(player));
+		island.removeMember(this.getMinecraftUUID(player));
+		island.save();
 		
 	}
 	
