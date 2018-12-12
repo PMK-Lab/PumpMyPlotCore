@@ -41,10 +41,14 @@ public class Island {
 		
 	}
 	
-	private void load(File f) {
+	public static Island get(Path path,IslandLocation islandLocation) {
 		
+		File file = new File(path + File.separator + islandLocation.toPath());
 		
+		Island island = new Island(file);
+		island.load();
 		
+		return island;
 		
 	}
 	
