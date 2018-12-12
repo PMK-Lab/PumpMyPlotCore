@@ -16,7 +16,7 @@ public class IslandIndex {
 	
 	public static IslandIndex init(Path indexPath) throws IOException, InvalidConfigurationException {
 		
-		File file = new File(indexPath + File.separator + IslandConstant.ISLAND_INDEX_FILE_NAME);			
+		File file = new File(indexPath + File.separator + IslandManagerConstant.ISLAND_INDEX_FILE_NAME);			
 		if(!file.exists()) {
 			file.createNewFile();
 		}
@@ -60,7 +60,7 @@ public class IslandIndex {
 		return this.fileConf;
 	}
 	
-	public void setIslandLocation(UUID minecraftUUID, IslandLocation loc) throws UnExistPlayerIndexException, IOException {
+	public void setIslandLocation(UUID minecraftUUID, IslandLocation loc) throws IOException {
 		
 		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING, loc.getX());
 		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Y_STRING, loc.getY());
