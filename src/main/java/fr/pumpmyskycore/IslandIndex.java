@@ -39,6 +39,32 @@ public class IslandIndex {
 		
 	}
 	
+	public IslandLocation createFirstFreeLocFile(Path islandPath) throws IOException {
+		
+		for (int x = 1; x <= IslandManagerConstant.ISLAND_SIDE_NUM ; x++) {
+			
+			for (int y = 1; y <= IslandManagerConstant.ISLAND_SIDE_NUM ; y++) {
+				
+				IslandLocation loc = new IslandLocation(x,y);
+				File f = new File(islandPath + File.separator + loc.toPath());
+				
+				if(f.exists()) {
+					continue;
+				}else {
+					f.createNewFile();
+				}
+				
+				return loc;
+				
+			}
+			
+		}
+		
+		System.out.println("NOT ENOUGH ISLANDS !!!!!!!!!!!!§");
+		return null;
+		
+	}
+	
 	private void init() throws IOException {
 		
 		this.fileConf.createSection("islands");
