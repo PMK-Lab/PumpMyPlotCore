@@ -22,9 +22,9 @@ public interface IIslandManager<T> {
 	
 	public Island playerGetIsland(T player) throws PlayerDoesNotHaveIslandException;
 	
-	public void playerAddIsland( Island island, T player) throws PlayerDoesNotHaveIslandException;
+	public void playerAddIsland( Island island, T player) throws PlayerDoesNotHaveIslandException, IOException;
 	
-	public void playerRemoveIsland( Island island, T player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland;
+	public void playerRemoveIsland( Island island, T player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland, IOException;
 	
 	public boolean playerHasIsland(T player);
 	
