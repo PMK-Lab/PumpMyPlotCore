@@ -52,9 +52,23 @@ public class Island {
 		
 	}
 	
-
-	public void add(UUID uniqueId) {
-		// TODO Auto-generated method stub
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	private File file;
+	private FileConfiguration fileConf;
+	
+	private String owner;
+	
+	private double homeX;
+	private double homeY;
+	private double homeZ;
+	
+	private int idX;
+	private int idY;
+	
+	public Island(File f) {
+		
+		this.file = f;
 		
 	}
 	
