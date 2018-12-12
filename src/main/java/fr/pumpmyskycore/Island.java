@@ -64,6 +64,8 @@ public class Island {
 	private int idX;
 	private int idY;
 	
+	private List<String> membersList;
+	
 	public Island(File f) {
 		
 		this.file = f;
