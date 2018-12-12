@@ -15,22 +15,29 @@ public class Island {
 	
 	public static Island create(Path path,IslandLocation freeLoc, UUID uniqueId) {
 		
-		return null;
+		File file = new File(path + File.separator + freeLoc.toPath());
+		FileConfiguration fileConf = YamlConfiguration.loadConfiguration(file);
 		
-	}
-	
-	public static Island get(Path path,IslandLocation islandLocation) {
+		fileConf.createSection("island");
 		
-		Island island = new Island();
-		island.load(new File(path + File.separator + islandLocation.toPath()));
+		fileConf.set("island.owner",uniqueId.toString());
+		
+		fileConf.createSection("island.spawn");
+		
+		fileConf.set("island.x", freeLoc.getX());
+		fileConf.set("island.z", freeLoc.getY());
+		
+		fileConf.set("island.spawn.x", (Integer.parseInt(freeLoc.getX()) * IslandManagerConstant.ISLAND_SIZE) + (IslandManagerConstant.ISLAND_SIZE) + 0.5);
+		fileConf.set("island.spawn.y", 60);
+		fileConf.set("island.spawn.z", (Integer.parseInt(freeLoc.getY()) * IslandManagerConstant.ISLAND_SIZE) + (IslandManagerConstant.ISLAND_SIZE) + 0.5);
+		
+		fileConf.set("island.players", new ArrayList<String>());
+		
+		
+		Island island = new Island(file);
+		island.load();
 		
 		return island;
-		
-	}
-	
-	public static void delete(Path path, IslandLocation islandLocation) {
-		
-		
 		
 	}
 	
