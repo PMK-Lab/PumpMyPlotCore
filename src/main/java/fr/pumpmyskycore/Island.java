@@ -20,20 +20,16 @@ public class Island {
 		File file = new File(path + File.separator + freeLoc.toPath());
 		FileConfiguration fileConf = YamlConfiguration.loadConfiguration(file);
 		
-		fileConf.createSection("island");
-		
 		fileConf.set("island.owner",uniqueId.toString());
 		
-		fileConf.createSection("island.spawn");
+		fileConf.set("island.id.x", freeLoc.getX());
+		fileConf.set("island.id.z", freeLoc.getY());
 		
-		fileConf.set("island.x", freeLoc.getX());
-		fileConf.set("island.z", freeLoc.getY());
+		fileConf.set("island.home.x", (freeLoc.getX() * IslandManagerConstant.ISLAND_SIZE) + (IslandManagerConstant.ISLAND_SIZE) + 0.5);
+		fileConf.set("island.home.y", 60);
+		fileConf.set("island.home.z", (freeLoc.getY() * IslandManagerConstant.ISLAND_SIZE) + (IslandManagerConstant.ISLAND_SIZE) + 0.5);
 		
-		fileConf.set("island.spawn.x", (Integer.parseInt(freeLoc.getX()) * IslandManagerConstant.ISLAND_SIZE) + (IslandManagerConstant.ISLAND_SIZE) + 0.5);
-		fileConf.set("island.spawn.y", 60);
-		fileConf.set("island.spawn.z", (Integer.parseInt(freeLoc.getY()) * IslandManagerConstant.ISLAND_SIZE) + (IslandManagerConstant.ISLAND_SIZE) + 0.5);
-		
-		fileConf.set("island.players", new ArrayList<String>());
+		fileConf.set("island.members", new ArrayList<String>());
 		
 		
 		Island island = new Island(file);
