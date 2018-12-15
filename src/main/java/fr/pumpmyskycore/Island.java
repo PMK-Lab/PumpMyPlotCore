@@ -163,5 +163,9 @@ public class Island {
 	public List<String> getMembersList() {
 		return this.membersList;
 	}
+	
+	public String getName() {
+		return this.name;
+	}
 
 }
