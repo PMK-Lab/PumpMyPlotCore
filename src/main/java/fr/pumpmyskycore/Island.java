@@ -113,6 +113,12 @@ public class Island {
 		}
 		
 	}
+	
+	public void purge() {
+		
+		
+		
+	}
 
 	public void save() throws IOException {
 		
