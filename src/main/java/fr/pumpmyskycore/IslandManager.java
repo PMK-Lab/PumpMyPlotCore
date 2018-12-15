@@ -6,6 +6,7 @@ import java.nio.file.Path;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 
+import fr.pumpmyskycore.exceptions.IslandIsNotBeEmptyException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
