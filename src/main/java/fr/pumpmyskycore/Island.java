@@ -31,7 +31,6 @@ public class Island {
 		
 		fileConf.set("island.members", new ArrayList<String>());
 		
-		
 		Island island = new Island(file);
 		island.load();
 		
@@ -86,6 +85,8 @@ public class Island {
 		this.idY = yaml.getInt("island.id.y");
 		
 		this.membersList = yaml.getStringList("island.members");
+		
+		this.fileYaml = yaml;
 		
 	}
 
