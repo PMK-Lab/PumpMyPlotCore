@@ -56,32 +56,6 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public IslandLocation createFirstFreeLocFile() throws IOException {
-		
-		for (int x = 1; x <= IslandManagerConstant.ISLAND_SIDE_NUM ; x++) {
-			
-			for (int y = 1; y <= IslandManagerConstant.ISLAND_SIDE_NUM ; y++) {
-				
-				IslandLocation loc = new IslandLocation(x,y);
-				File f = new File(this.islandPath + File.separator + loc.toPath());
-				
-				if(f.exists()) {
-					continue;
-				}else {
-					f.createNewFile();
-				}
-				
-				return loc;
-				
-			}
-			
-		}
-		
-		System.out.println("NOT ENOUGH ISLANDS !!!!!!!!!!!!§");
-		return null;
-		
-	}
-	
 	@Override
 	public Island createIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException {
 		
@@ -91,11 +65,14 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		IslandLocation freeLoc = this.createFirstFreeLocFile();
+		IslandLocation freeLoc = this.islandIndex.createFirstFreeLocFile(this.islandPath);
 		
 		this.islandIndex.setIslandLocation(this.getMinecraftUUID(player), freeLoc);
 		
-		return Island.create(this.islandPath,freeLoc,this.getMinecraftUUID(player));
+		Island island = Island.create(this.islandPath,freeLoc,this.getMinecraftUUID(player));
+		
+		island.save();
+		return island;
 		
 	}
 	
