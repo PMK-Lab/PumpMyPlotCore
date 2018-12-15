@@ -12,11 +12,7 @@ public interface IIslandManager<T> {
 	
 	public UUID getMinecraftUUID(T player);
 	
-	public Island createIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException;
-	
-	public Island getIsland(File f);
-	
-	public Island getIsland(IslandLocation l);
+	public Island playerCreateIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException;
 	
 	public Island playerGetIsland(T player) throws PlayerDoesNotHaveIslandException;
 	
