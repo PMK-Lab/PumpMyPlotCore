@@ -60,6 +60,8 @@ public class Island {
 	
 	private String owner;
 	
+	private String name;
+	
 	private double homeX;
 	private double homeY;
 	private double homeZ;
