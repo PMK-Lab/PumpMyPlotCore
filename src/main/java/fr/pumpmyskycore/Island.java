@@ -83,6 +83,8 @@ public class Island {
 			
 		this.owner = yaml.getString("island.owner");
 		
+		this.name = yaml.getString("island.name");
+		
 		this.homeX = yaml.getDouble("island.home.x");
 		this.homeY = yaml.getDouble("island.home.y");
 		this.homeZ = yaml.getDouble("island.home.z");
@@ -112,12 +114,9 @@ public class Island {
 		
 	}
 
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void save() throws IOException {
+		
+		this.fileYaml.set("island.name", this.name);
 		
 		this.fileYaml.set("island.home.x", this.homeX);
 		this.fileYaml.set("island.home.y", this.homeY);
