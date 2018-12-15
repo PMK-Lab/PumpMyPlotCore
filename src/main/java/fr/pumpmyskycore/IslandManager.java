@@ -69,10 +69,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		this.islandIndex.setIslandLocation(this.getMinecraftUUID(player), freeLoc);
 		
-		Island island = Island.create(this.islandPath,freeLoc,this.getMinecraftUUID(player));
-		
-		island.save();
-		return island;
+		return Island.create(this.islandPath,freeLoc,this.getMinecraftUUID(player));
 		
 	}
 	
