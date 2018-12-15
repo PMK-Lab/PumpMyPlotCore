@@ -22,6 +22,8 @@ public class Island {
 		
 		fileConf.set("island.owner",uniqueId.toString());
 		
+		fileConf.set("island.name","mon ile" + freeLoc.getX() + "|" + freeLoc.getY());
+		
 		fileConf.set("island.id.x", freeLoc.getX());
 		fileConf.set("island.id.z", freeLoc.getY());
 		
