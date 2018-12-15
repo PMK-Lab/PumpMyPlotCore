@@ -15,7 +15,7 @@ import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
 
 public class Island {
 	
-	public static Island create(Path path,IslandLocation freeLoc, UUID uniqueId) {
+	public static Island create(Path path,IslandLocation freeLoc, UUID uniqueId) throws IOException {
 		
 		File file = new File(path + File.separator + freeLoc.toPath());
 		FileConfiguration fileConf = YamlConfiguration.loadConfiguration(file);
