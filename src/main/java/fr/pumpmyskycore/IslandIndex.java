@@ -30,7 +30,7 @@ public class IslandIndex {
 	private File file;
 	private FileConfiguration fileConf;
 
-	public IslandIndex(File f, FileConfiguration fc) throws IOException {
+	private IslandIndex(File f, FileConfiguration fc) throws IOException {
 		
 		this.file = f;
 		this.fileConf = fc;
