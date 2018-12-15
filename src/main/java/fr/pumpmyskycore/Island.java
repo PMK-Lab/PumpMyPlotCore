@@ -25,9 +25,9 @@ public class Island {
 		fileConf.set("island.id.x", freeLoc.getX());
 		fileConf.set("island.id.z", freeLoc.getY());
 		
-		fileConf.set("island.home.x", (freeLoc.getX() * IslandManagerConstant.ISLAND_SIZE) + (IslandManagerConstant.ISLAND_SIZE) + 0.5);
+		fileConf.set("island.home.x", (freeLoc.getX() * IslandManagerConstant.ISLAND_SIZE) - (IslandManagerConstant.ISLAND_SIZE/2) + 0.5);
 		fileConf.set("island.home.y", 60);
-		fileConf.set("island.home.z", (freeLoc.getY() * IslandManagerConstant.ISLAND_SIZE) + (IslandManagerConstant.ISLAND_SIZE) + 0.5);
+		fileConf.set("island.home.z", (freeLoc.getY() * IslandManagerConstant.ISLAND_SIZE) - (IslandManagerConstant.ISLAND_SIZE/2) + 0.5);
 		
 		fileConf.set("island.members", new ArrayList<String>());
 		
