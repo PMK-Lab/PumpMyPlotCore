@@ -95,6 +95,15 @@ public class IslandIndex {
 		
 	}
 	
+	public void unsetIslandLocation(UUID minecraftUUID) throws IOException {
+		
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING, null);
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Y_STRING, null);
+		
+		this.save();
+		
+	}
+	
 	public IslandLocation getIslandLocation(UUID minecraftUUID) {
 		
 		int x = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING);
