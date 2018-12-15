@@ -38,7 +38,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		File file = this.islandPath.toFile();
 		
-		if(file.exists()) {
+		if(!file.exists()) {
 			file.mkdir();
 		}
 		
