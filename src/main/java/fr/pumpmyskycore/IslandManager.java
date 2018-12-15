@@ -88,6 +88,30 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	}
 	
 	@Override
+	public void playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotBeEmptyException, IOException {
+		
+		if(!this.playerHasIsland(player)) {
+			
+			throw new PlayerDoesNotHaveIslandException(this.getMinecraftUUID(player));
+			
+		}
+		
+		Island island = this.playerGetIsland(player);
+		
+		if(!island.getMembersList().isEmpty()) {
+			
+			throw new IslandIsNotBeEmptyException(this.getMinecraftUUID(player),island);
+			
+		}
+		
+		this.islandIndex.unsetIslandLocation(this.getMinecraftUUID(player));
+		
+		
+		
+		
+	}
+	
+	@Override
 	public void playerAddIsland(Island island, T player) throws PlayerDoesNotHaveIslandException, IOException {
 		
 		
