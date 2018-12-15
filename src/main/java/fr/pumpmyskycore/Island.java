@@ -31,6 +31,8 @@ public class Island {
 		
 		fileConf.set("island.members", new ArrayList<String>());
 		
+		fileConf.save(file);
+		
 		Island island = new Island(file);
 		island.load();
 		
