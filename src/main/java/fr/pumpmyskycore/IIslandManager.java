@@ -3,7 +3,7 @@ package fr.pumpmyskycore;
 import java.io.IOException;
 import java.util.UUID;
 
-import fr.pumpmyskycore.exceptions.IslandIsNotBeEmptyException;
+import fr.pumpmyskycore.exceptions.IslandIsNotEmptyException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
@@ -16,7 +16,7 @@ public interface IIslandManager<T> {
 	
 	public Island playerGetIsland(T player) throws PlayerDoesNotHaveIslandException;
 	
-	public void playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotBeEmptyException, IOException;
+	public void playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException;
 	
 	public void playerAddIsland( Island island, T player) throws PlayerDoesNotHaveIslandException, IOException;
 	

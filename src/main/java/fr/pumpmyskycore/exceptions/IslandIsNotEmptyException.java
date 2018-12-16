@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import fr.pumpmyskycore.Island;
 
-public class IslandIsNotBeEmptyException extends Exception {
+public class IslandIsNotEmptyException extends Exception {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class IslandIsNotBeEmptyException extends Exception {
 	private UUID playerUUID;
 	private Island island;
 	
-	public IslandIsNotBeEmptyException(UUID playerUUID, Island island) {
+	public IslandIsNotEmptyException(UUID playerUUID, Island island) {
 		super();
 		this.playerUUID = playerUUID;
 		this.island = island;

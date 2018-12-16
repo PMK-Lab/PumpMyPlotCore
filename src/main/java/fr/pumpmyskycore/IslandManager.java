@@ -6,7 +6,7 @@ import java.nio.file.Path;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 
-import fr.pumpmyskycore.exceptions.IslandIsNotBeEmptyException;
+import fr.pumpmyskycore.exceptions.IslandIsNotEmptyException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
@@ -88,7 +88,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	}
 	
 	@Override
-	public void playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotBeEmptyException, IOException {
+	public void playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException {
 		
 		if(!this.playerHasIsland(player)) {
 			
@@ -100,13 +100,15 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		if(!island.getMembersList().isEmpty()) {
 			
-			throw new IslandIsNotBeEmptyException(this.getMinecraftUUID(player),island);
+			throw new IslandIsNotEmptyException(this.getMinecraftUUID(player),island);
 			
 		}
 		
 		this.islandIndex.unsetIslandLocation(this.getMinecraftUUID(player));
 		
-		island.purge();		
+		island.purge();	
+		
+		
 		
 	}
 	
