@@ -114,9 +114,10 @@ public class Island {
 		
 	}
 	
-	public void purge() {
+	public void purge() throws IOException {
 		
-		this.fileYaml.set("island.owner", "remove");
+		this.fileYaml.set("island.owner", "remover");
+		this.fileYaml.save(this.file);
 		
 	}
 
