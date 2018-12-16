@@ -107,11 +107,11 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		this.islandIndex.unsetIslandLocation(this.getMinecraftUUID(player));
+		this.islandIndex.unsetIslandLocation(this.getMinecraftUUID(player));	
 		
-		island.purge();	
+		island.purge();
 		
-		
+		this.islandPurger.addIsland(island);
 		
 	}
 	
