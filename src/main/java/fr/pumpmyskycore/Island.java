@@ -84,7 +84,7 @@ public class Island {
 		this.owner = yaml.getString("island.owner");
 		
 		this.name = yaml.getString("island.name");
-		
+				
 		this.homeX = yaml.getDouble("island.home.x");
 		this.homeY = yaml.getDouble("island.home.y");
 		this.homeZ = yaml.getDouble("island.home.z");
