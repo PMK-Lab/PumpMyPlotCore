@@ -133,6 +133,10 @@ public class Island {
 		this.fileYaml.save(this.file);
 		
 	}
+	
+	public String getID() {
+		return this.idX + "_" + this.idY;
+	}
 
 	public File getFile() {
 		return this.file;
