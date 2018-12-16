@@ -116,7 +116,7 @@ public class Island {
 	
 	public void purge() {
 		
-		
+		this.fileYaml.set("island.owner", "remove");
 		
 	}
 
