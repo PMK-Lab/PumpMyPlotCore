@@ -16,7 +16,7 @@ public interface IIslandManager<T> {
 	
 	public Island playerGetIsland(T player) throws PlayerDoesNotHaveIslandException;
 	
-	public void playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException;
+	public boolean playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException;
 	
 	public void playerAddIsland( Island island, T player) throws PlayerDoesNotHaveIslandException, IOException;
 	
