@@ -12,18 +12,16 @@ public interface IIslandManager<T> {
 	
 	public UUID getMinecraftUUID(T player);
 	
+	public boolean playerHasIsland(T player);
+	
 	public Island playerCreateIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException;
 	
 	public Island playerGetIsland(T player) throws PlayerDoesNotHaveIslandException;
 	
 	public boolean playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException;
 	
-	public void playerAddIsland( Island island, T player) throws PlayerDoesNotHaveIslandException, IOException;
+	public void playerInviteIsland(Island island, T player);
 	
-	public void playerRemoveIsland( Island island, T player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland, IOException;
-	
-	public boolean playerHasIsland(T player);
-	
-	public void deleteIsland(Island i);
+	public void playerUninviteIsland(Island island, T player);
 	
 }
