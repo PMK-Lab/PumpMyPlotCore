@@ -25,7 +25,7 @@ public class Island {
 		fileConf.set("island.name","mon ile" + freeLoc.getX() + "|" + freeLoc.getY());
 		
 		fileConf.set("island.id.x", freeLoc.getX());
-		fileConf.set("island.id.z", freeLoc.getY());
+		fileConf.set("island.id.y", freeLoc.getY());
 		
 		fileConf.set("island.home.x", (freeLoc.getX() * IslandManagerConstant.ISLAND_SIZE) - (IslandManagerConstant.ISLAND_SIZE/2) + 0.5);
 		fileConf.set("island.home.y", 60);
