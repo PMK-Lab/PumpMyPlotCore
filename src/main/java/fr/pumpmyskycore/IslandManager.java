@@ -101,17 +101,31 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		Island island = this.playerGetIsland(player);
 		
-		if(!island.getMembersList().isEmpty()) {
+		if(this.getMinecraftUUID(player).toString().equals(island.getOwner())) {
 			
-			throw new IslandIsNotEmptyException(this.getMinecraftUUID(player),island);
+			if(island.getMembersList().isEmpty()) {
+				
+				this.islandIndex.unsetIslandLocation(this.getMinecraftUUID(player));
+				
+				island.purge();
+				
+				this.islandPurger.addIsland(island);
+				
+				return true;
+				
+			}else {
+				
+				throw new IslandIsNotEmptyException(this.getMinecraftUUID(player),island);
+				
+			}
 			
-		}
-		
-		this.islandIndex.unsetIslandLocation(this.getMinecraftUUID(player));	
-		
-		island.purge();
-		
-		this.islandPurger.addIsland(island);
+		}else {
+			
+			this.islandIndex.unsetIslandLocation(this.getMinecraftUUID(player));
+			
+			return false;
+			
+		}	
 		
 	}
 	
