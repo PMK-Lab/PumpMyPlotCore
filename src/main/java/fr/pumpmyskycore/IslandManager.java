@@ -130,14 +130,14 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	}
 	
 	@Override
-	public void playerAddIsland(Island island, T player) throws PlayerDoesNotHaveIslandException, IOException {
+	public void playerInviteIsland(Island island, T player) {
 		
 		
 		
 	}
 	
 	@Override
-	public void playerRemoveIsland(Island island, T player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland, IOException {
+	public void playerUninviteIsland(Island island, T player) {
 		
 		
 		
