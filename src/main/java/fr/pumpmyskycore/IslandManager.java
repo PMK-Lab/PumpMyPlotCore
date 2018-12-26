@@ -91,7 +91,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	}
 	
 	@Override
-	public void playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException {
+	public boolean playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException {
 		
 		if(!this.playerHasIsland(player)) {
 			
