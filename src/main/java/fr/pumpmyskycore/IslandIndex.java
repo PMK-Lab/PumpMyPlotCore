@@ -99,6 +99,8 @@ public class IslandIndex {
 		
 		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING, null);
 		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Y_STRING, null);
+		this.fileConf.set(ISLAND_STRING + minecraftUUID,null);
+		
 		
 		this.save();
 		
