@@ -143,16 +143,24 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
+/*	@Override
+	public void playerKickIsland(Island island, T player) {
+		
+		
+		
+	}
+	
+	@Override
+	public void playerJoinIsland(Island island, T player) {
+		
+		
+		
+	}*/
+	
 	@Override
 	public boolean playerHasIsland(T player) {
 		
 		return this.islandIndex.contains(this.getMinecraftUUID(player));
-		
-	}
-
-	@Override
-	public void deleteIsland(Island i) {
-		// TODO Auto-generated method stub
 		
 	}
 	
