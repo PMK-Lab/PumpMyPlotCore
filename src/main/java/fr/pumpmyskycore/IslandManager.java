@@ -18,9 +18,10 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		public static final int ISLAND_SIZE = 4096; // 16 * 256 chunk per island
 		public static final int ISLAND_SIDE_NUM = 80; 	// 80*80 = 6400 islands
 		public static final String ISLAND_FOLDER_NAME = "islands";
-		public static final String ISLAND_INDEX_FILE_NAME = "islands.yml";
 		public static final String ISLAND_CHAT_PREFIX = "§6§l[§r§2Pump§eMy§aSky§r§6§l]";
-		public static final String ISLAND_PURGER_FILE_NAME = "purge.yml";		
+		
+		public static final String ISLAND_INDEX_FILE_NAME = "islands.yml";
+		public static final String ISLAND_PURGER_FILE_NAME = "purge.yml";	
 		
 	}
 	
