@@ -131,7 +131,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	}
 	
 	@Override
-	public void playerInviteIsland(Island island, T player) {
+	public void playerInviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException {
 		
 		
 		
