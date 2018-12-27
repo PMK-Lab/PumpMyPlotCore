@@ -19,7 +19,7 @@ public interface IIslandManager<T> {
 	
 	public boolean playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException;
 	
-	public void playerInviteIsland(Island island, T player);
+	public void playerInviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException;
 	
 	public void playerUninviteIsland(Island island, T player);
 	
