@@ -149,7 +149,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	}
 	
 	@Override
-	public void playerUninviteIsland(Island island, T player) {
+	public void playerUninviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException {
 		
 		Island island = this.playerGetIsland(islandOwner);
 		
