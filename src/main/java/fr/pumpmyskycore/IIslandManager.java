@@ -21,6 +21,6 @@ public interface IIslandManager<T> {
 	
 	public void playerInviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException;
 	
-	public void playerUninviteIsland(Island island, T player);
+	public void playerUninviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException;
 	
 }
