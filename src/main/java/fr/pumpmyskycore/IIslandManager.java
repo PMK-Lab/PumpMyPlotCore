@@ -6,7 +6,6 @@ import java.util.UUID;
 import fr.pumpmyskycore.exceptions.IslandIsNotEmptyException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
-import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
 
 public interface IIslandManager<T> {
 	
