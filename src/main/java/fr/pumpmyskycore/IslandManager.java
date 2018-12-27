@@ -133,7 +133,17 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	@Override
 	public void playerInviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException {
 		
+		Island island = this.playerGetIsland(islandOwner);
 		
+		if(this.getMinecraftUUID(islandOwner).toString().equals(island.getOwner())) {
+			
+			
+			
+		}else {
+			
+			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(islandOwner));
+			
+		}
 		
 		
 	}
@@ -141,7 +151,17 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	@Override
 	public void playerUninviteIsland(Island island, T player) {
 		
+		Island island = this.playerGetIsland(islandOwner);
 		
+		if(this.getMinecraftUUID(islandOwner).toString().equals(island.getOwner())) {
+			
+			
+			
+		}else {
+			
+			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(islandOwner));
+			
+		}
 		
 	}
 	
