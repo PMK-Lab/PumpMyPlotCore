@@ -139,6 +139,8 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 			
 			
+			
+			
 		}else {
 			
 			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(islandOwner));
@@ -154,6 +156,8 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		Island island = this.playerGetIsland(islandOwner);
 		
 		if(this.getMinecraftUUID(islandOwner).toString().equals(island.getOwner())) {
+			
+			
 			
 			
 			
