@@ -8,7 +8,9 @@ import org.bukkit.configuration.InvalidConfigurationException;
 
 import fr.pumpmyskycore.exceptions.IslandIsNotEmptyException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
 import fr.pumpmyskycore.exceptions.RestrictActionToOwnerIslandException;
 
 public abstract class IslandManager<T> implements IIslandManager<T>{
