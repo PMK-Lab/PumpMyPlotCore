@@ -33,12 +33,13 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	
 	public IslandManager(Path configPath) throws IOException, InvalidConfigurationException {
 		
-		this.islandPath = new File(configPath + File.separator + IslandManagerConstant.ISLAND_FOLDER_NAME).toPath();
-		
+		this.islandPath = new File(configPath + File.separator + IslandManagerConstant.ISLAND_FOLDER_NAME).toPath();		
 		
 		this.initIslandFolder();
 		this.islandIndex = IslandIndex.init(this.islandPath);
 		this.islandPurger = IslandPurger.init(this.islandPath);
+		this.islandInvites = IslandInvites.init(this.islandPath);
+		
 	}
 
 	private void initIslandFolder() {
