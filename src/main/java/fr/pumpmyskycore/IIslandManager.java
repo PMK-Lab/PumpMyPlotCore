@@ -1,6 +1,5 @@
 package fr.pumpmyskycore;
 
-import java.io.IOException;
 import java.util.UUID;
 
 import fr.pumpmyskycore.exceptions.IslandIsNotEmptyException;
