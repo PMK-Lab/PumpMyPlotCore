@@ -138,9 +138,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		if(this.playerIsOwner(islandOwner)) {
 			
-			
-			
-			
+			this.islandInvites.addInvites(this.getMinecraftUUID(player), island);			
 			
 		}else {
 			
