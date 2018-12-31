@@ -90,9 +90,41 @@ public class IslandInvites {
 		
 	}
 	
-	public boolean isInvite(Island island, UUID uuid) {
+	public boolean isInvites(UUID uuid, Island island) {
 		
-		return true;
+		return this.getPlayerInvites(uuid).contains(island.getID());		
+		
+	}
+	
+	public void addInvites(UUID uuid, Island island) throws PlayerAlreadyInvited, IOException {
+		
+		if(this.isInvites(uuid, island)) {
+			
+			throw new PlayerAlreadyInvited(uuid,island);
+			
+		}
+		
+		List<String> invites = this.getPlayerInvites(uuid);
+		
+		invites.add(island.getID());
+		
+		this.setPlayerInvites(uuid, invites);
+		
+	}
+	
+	public void removeInvites(UUID uuid, Island island) throws PlayerDoesNotInvited, IOException {
+		
+		if(!this.isInvites(uuid, island)) {
+			
+			throw new PlayerDoesNotInvited(uuid,island);
+			
+		}
+		
+		List<String> invites = this.getPlayerInvites(uuid);
+		
+		invites.add(island.getID());
+		
+		this.setPlayerInvites(uuid, invites);
 		
 	}
 	
