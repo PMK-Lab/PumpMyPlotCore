@@ -69,9 +69,14 @@ public class IslandInvites {
 		
 	}
 	
-	public List<String> getPlayerInvites(UUID uuid){
+	private void setPlayerInvites(UUID uuid , List<String> invites) throws IOException {
 		
-		List<String> invitesList = new ArrayList<>();
+		this.fileConf.set(INVITES_STRING + uuid.toString(), invites);
+		this.save();
+		
+	}
+	
+	public List<String> getPlayerInvites(UUID uuid){
 		
 		if(this.contains(uuid)) {
 			
