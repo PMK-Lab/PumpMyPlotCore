@@ -134,7 +134,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		Island island = this.playerGetIsland(islandOwner);
 		
-		if(this.getMinecraftUUID(islandOwner).toString().equals(island.getOwner())) {
+		if(this.playerIsOwner(islandOwner)) {
 			
 			
 			
@@ -146,14 +146,13 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}
 		
-		
 	}
 	
 	public void playerUninviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException {
 		
 		Island island = this.playerGetIsland(islandOwner);
 		
-		if(this.getMinecraftUUID(islandOwner).toString().equals(island.getOwner())) {
+		if(this.playerIsOwner(islandOwner)) {
 			
 			
 			
