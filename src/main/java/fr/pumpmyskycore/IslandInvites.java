@@ -80,11 +80,11 @@ public class IslandInvites {
 		
 		if(this.contains(uuid)) {
 			
-			
+			this.fileConf.getStringList(INVITES_STRING + uuid.toString());
 			
 		}
 		
-		return invitesList;		
+		return new ArrayList<>();		
 		
 	}
 	
