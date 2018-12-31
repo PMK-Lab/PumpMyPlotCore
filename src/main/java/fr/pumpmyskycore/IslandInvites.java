@@ -123,7 +123,14 @@ public class IslandInvites {
 		
 		List<String> invites = this.getPlayerInvites(uuid);
 		
-		invites.add(island.getID());
+		for (Iterator<String> iterators = invites.iterator(); iterators.hasNext();) {
+			
+			if(iterators.next().equals(island.getID())) {
+				iterators.remove();
+				break;
+			}
+			
+		}
 		
 		this.setPlayerInvites(uuid, invites);
 		
