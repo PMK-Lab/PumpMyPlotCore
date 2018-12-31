@@ -64,7 +64,6 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	@Override
 	public Island playerCreateIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException {
 		
 		if(this.playerHasIsland(player)) {
@@ -81,7 +80,6 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	@Override
 	public Island playerGetIsland(T player) throws PlayerDoesNotHaveIslandException {
 		
 		if(!this.playerHasIsland(player)) {
@@ -94,7 +92,6 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	@Override
 	public boolean playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException {
 		
 		if(!this.playerHasIsland(player)) {
@@ -133,7 +130,6 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	@Override
 	public void playerInviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException {
 		
 		Island island = this.playerGetIsland(islandOwner);
@@ -153,7 +149,6 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	@Override
 	public void playerUninviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException {
 		
 		Island island = this.playerGetIsland(islandOwner);
@@ -186,7 +181,34 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}*/
 	
-	@Override
+	public boolean playerIsOwner(Island island, T player) {
+		
+		if(island.getOwner().equals(this.getMinecraftUUID(player).toString())) {
+			
+			return true;
+			
+		}
+		
+		return false;
+		
+	}
+	
+	public boolean playerIsOwner(T player) {
+		
+		try {
+			
+			Island island = this.playerGetIsland(player);
+			
+			return this.playerIsOwner(island, player);
+			
+		} catch (PlayerDoesNotHaveIslandException e) {
+			
+			return false;
+			
+		}
+		
+	}
+	
 	public boolean playerHasIsland(T player) {
 		
 		return this.islandIndex.contains(this.getMinecraftUUID(player));
