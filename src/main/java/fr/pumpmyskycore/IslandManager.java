@@ -29,6 +29,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	protected Path islandPath;
 	protected IslandIndex islandIndex;
 	protected IslandPurger islandPurger;
+	protected IslandInvites islandInvites;
 	
 	public IslandManager(Path configPath) throws IOException, InvalidConfigurationException {
 		
