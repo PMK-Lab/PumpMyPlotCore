@@ -21,7 +21,8 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		public static final String ISLAND_CHAT_PREFIX = "§6§l[§r§2Pump§eMy§aSky§r§6§l]";
 		
 		public static final String ISLAND_INDEX_FILE_NAME = "islands.yml";
-		public static final String ISLAND_PURGER_FILE_NAME = "purge.yml";	
+		public static final String ISLAND_PURGER_FILE_NAME = "purge.yml";
+		public static final String ISLAND_INVITES_FILE_NAME = "invites.yml";
 		
 	}
 	
