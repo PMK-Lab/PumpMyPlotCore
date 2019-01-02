@@ -3,6 +3,8 @@ package fr.pumpmyskycore;
 import java.io.File;
 import java.nio.file.Path;
 
+import fr.pumpmyskycore.exceptions.IslandLocationParsingException;
+
 public class IslandLocation {
 
 	public static final String X_STRING = ".x";
