@@ -76,9 +76,17 @@ public class IslandInvites {
 		
 	}
 	
-	private void setPlayerInvites(UUID uuid , List<String> invites) throws IOException {
+	private void setPlayerInvites(UUID uuid , List<Island> invites) throws IOException {
 		
-		this.fileConf.set(INVITES_STRING + uuid.toString(), invites);
+		List<String> islandsID = new ArrayList<String>();
+		
+		for (Island island : invites) {
+			
+			islandsID.add(island.getID());
+			
+		}
+		
+		this.fileConf.set(INVITES_STRING + uuid.toString(), islandsID);
 		this.save();
 		
 	}
