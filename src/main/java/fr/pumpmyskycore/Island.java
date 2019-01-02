@@ -135,6 +135,21 @@ public class Island {
 		
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj instanceof Island & this.getID().equals(((Island) obj).getID())) {
+			
+			return true;
+			
+		}else {
+			
+			return false;
+			
+		}
+		
+	}
+	
 	public String getID() {
 		return this.idX + "_" + this.idY;
 	}
