@@ -29,6 +29,34 @@ public class IslandLocation {
 		return this.y;
 		
 	}
+	
+	public IslandLocation parseFromString(String string) throws IslandLocationParsingException {
+		
+		if(string.contains("_")) {
+			
+			try {
+				
+				String stringX = string.split("_")[0];
+				String stringY = string.split("_")[1];
+				
+				int x = Integer.parseInt(stringX);
+				int y = Integer.parseInt(stringY);
+				
+				return new IslandLocation(x, y);
+				
+			} catch (Exception e) {
+				
+				throw new IslandLocationParsingException(string);
+				
+			}
+			
+			
+			
+		}else {
+			throw new IslandLocationParsingException(string);
+		}
+		
+	}
 
 	public Path toPath() {
 		
