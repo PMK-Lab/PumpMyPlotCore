@@ -2,6 +2,21 @@ package fr.pumpmyskycore.exceptions;
 
 public class IslandLocationParsingException extends Exception {
 
+	private String parsingString;
+	
+	public IslandLocationParsingException(String string) {
+		super("Impossible to parse \"" + string + "\" to Island ID");
+		this.parsingString = string;
+	}
+
+	public String getParsingString() {
+		return parsingString;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	/**
 	 * 
 	 */
