@@ -19,9 +19,9 @@ public class IslandInvites {
 	
 	public final static String INVITES_STRING = "invites.";
 	
-	public static IslandInvites init(Path indexPath) throws IOException, InvalidConfigurationException {
+	public static IslandInvites init(IslandManager<?> manager) throws IOException, InvalidConfigurationException {
 		
-		File file = new File(indexPath + File.separator + IslandManagerConstant.ISLAND_INVITES_FILE_NAME);			
+		File file = new File(manager.islandPath + File.separator + IslandManagerConstant.ISLAND_INVITES_FILE_NAME);			
 		if(!file.exists()) {
 			file.createNewFile();
 		}
