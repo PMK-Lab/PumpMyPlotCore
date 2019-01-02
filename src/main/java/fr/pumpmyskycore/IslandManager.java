@@ -164,19 +164,19 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-/*	@Override
 	public void playerKickIsland(Island island, T player) {
 		
 		
 		
 	}
 	
-	@Override
 	public void playerJoinIsland(Island island, T player) {
 		
 		
 		
-	}*/
+		
+		
+	}
 	
 	public boolean playerIsOwner(Island island, T player) {
 		
