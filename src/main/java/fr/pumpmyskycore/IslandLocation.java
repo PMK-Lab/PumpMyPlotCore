@@ -30,7 +30,7 @@ public class IslandLocation {
 		
 	}
 	
-	public IslandLocation parseFromString(String string) throws IslandLocationParsingException {
+	public static IslandLocation parseFromString(String string) throws IslandLocationParsingException {
 		
 		if(string.contains("_")) {
 			
