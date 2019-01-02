@@ -30,17 +30,20 @@ public class IslandInvites {
 		FileConfiguration fileConf = new YamlConfiguration();
 		fileConf.load(file);
 		
-		return new IslandInvites(file,fileConf);
+		return new IslandInvites(manager,file,fileConf);
 		
 	}
 
 	private File file;
 	private FileConfiguration fileConf;
+	private IslandManager<?> manager;
 
-	private IslandInvites(File f, FileConfiguration fc) throws IOException {
+	private IslandInvites(IslandManager<?> manager, File f, FileConfiguration fc) throws IOException {
 		
 		this.file = f;
 		this.fileConf = fc;
+		
+		this.manager = manager;
 		
 		this.init();
 		
