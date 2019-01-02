@@ -2,7 +2,6 @@ package fr.pumpmyskycore;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,6 +10,7 @@ import java.util.UUID;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+
 import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
 import fr.pumpmyskycore.exceptions.IslandLocationParsingException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
