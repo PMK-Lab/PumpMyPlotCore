@@ -12,6 +12,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
+import fr.pumpmyskycore.exceptions.IslandLocationParsingException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
 
