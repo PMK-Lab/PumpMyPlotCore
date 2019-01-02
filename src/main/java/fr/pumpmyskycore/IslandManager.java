@@ -40,7 +40,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		this.initIslandFolder();
 		this.islandIndex = IslandIndex.init(this.islandPath);
 		this.islandPurger = IslandPurger.init(this.islandPath);
-		this.islandInvites = IslandInvites.init(this.islandPath);
+		this.islandInvites = IslandInvites.init(this);
 		
 	}
 
