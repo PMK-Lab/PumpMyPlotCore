@@ -119,7 +119,7 @@ public class IslandInvites {
 	
 	public boolean isInvites(UUID uuid, Island island) {
 		
-		return this.getPlayerInvitesID(uuid).contains(island.getID());		
+		return this.getPlayerInvites(uuid).contains(island);		
 		
 	}
 	
@@ -131,9 +131,9 @@ public class IslandInvites {
 			
 		}
 		
-		List<String> invites = this.getPlayerInvitesID(uuid);
+		List<Island> invites = this.getPlayerInvites(uuid);
 		
-		invites.add(island.getID());
+		invites.add(island);
 		
 		this.setPlayerInvites(uuid, invites);
 		
@@ -147,11 +147,11 @@ public class IslandInvites {
 			
 		}
 		
-		List<String> invites = this.getPlayerInvitesID(uuid);
+		List<Island> invites = this.getPlayerInvites(uuid);
 		
-		for (Iterator<String> iterators = invites.iterator(); iterators.hasNext();) {
+		for (Iterator<Island> iterators = invites.iterator(); iterators.hasNext();) {
 			
-			if(iterators.next().equals(island.getID())) {
+			if(iterators.next().equals(island)) {
 				iterators.remove();
 				break;
 			}
