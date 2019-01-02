@@ -211,5 +211,11 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		return this.islandIndex.contains(this.getMinecraftUUID(player));
 		
 	}
+
+	public Island getIsland(IslandLocation parseFromString) {
+		
+		return Island.get(this.islandPath, parseFromString);
+		
+	}
 	
 }
