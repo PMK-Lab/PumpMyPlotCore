@@ -83,11 +83,25 @@ public class IslandInvites {
 		
 	}
 	
-	public List<String> getPlayerInvitesID(UUID uuid){
+	public List<Island> getPlayerInvites(UUID uuid){
 		
 		if(this.contains(uuid)) {
 			
-			this.fileConf.getStringList(INVITES_STRING + uuid.toString());
+			List<Island> islands = new ArrayList<Island>();
+			
+			for (String islandID : this.fileConf.getStringList(INVITES_STRING + uuid.toString())) {
+				
+				try {
+					islands.add(manager.getIsland(IslandLocation.parseFromString(islandID)));
+				} catch (IslandLocationParsingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					continue;
+				}
+				
+			}
+			
+			return islands;
 			
 		}
 		
