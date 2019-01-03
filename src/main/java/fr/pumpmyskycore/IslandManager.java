@@ -170,7 +170,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerJoinIsland(Island island, T player) {
+	public void playerJoinIsland(T player) {
 		
 		
 		
@@ -216,6 +216,22 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		return Island.get(this.islandPath, parseFromString);
 		
+	}
+
+	public Path getIslandPath() {
+		return islandPath;
+	}
+
+	public IslandIndex getIslandIndex() {
+		return islandIndex;
+	}
+
+	public IslandPurger getIslandPurger() {
+		return islandPurger;
+	}
+
+	public IslandInvites getIslandInvites() {
+		return islandInvites;
 	}
 	
 }
