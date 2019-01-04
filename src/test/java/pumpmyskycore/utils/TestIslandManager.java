@@ -10,8 +10,11 @@ import fr.pumpmyskycore.IslandManager;
 
 public class TestIslandManager extends IslandManager<FakePlayer> {
 
-	public TestIslandManager(Path configPath) throws IOException, InvalidConfigurationException {
-		super(configPath);
+	protected File file;
+	
+	public TestIslandManager(File file) throws IOException, InvalidConfigurationException {
+		super(file.toPath());
+		this.file = file;
 	}
 
 	@Override
