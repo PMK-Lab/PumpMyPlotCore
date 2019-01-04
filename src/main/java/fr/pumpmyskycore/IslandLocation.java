@@ -57,6 +57,11 @@ public class IslandLocation {
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "[" + this.getClass().getName() + "] x=" + this.x + " |y=" + this.y;
+	}
 
 	public Path toPath() {
 		
