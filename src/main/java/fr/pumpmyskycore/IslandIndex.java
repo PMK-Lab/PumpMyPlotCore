@@ -50,10 +50,10 @@ public class IslandIndex {
 				
 				if(f.exists()) {
 					continue;
-				}else {
-					f.createNewFile();
 				}
 				
+				
+				f.createNewFile();
 				return loc;
 				
 			}
