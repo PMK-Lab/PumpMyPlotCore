@@ -38,6 +38,7 @@ public class IslandManagerFolderTest{
 		for (int x = 1; x <= IslandManagerConstant.ISLAND_SIDE_NUM ; x++) {
 			
 			File f = new File(manager.getIslandPath() + File.separator + x);
+			System.out.print(f.getName() + " ;");
 			
 			if(!f.isDirectory() || !f.exists()) {
 				
@@ -46,7 +47,7 @@ public class IslandManagerFolderTest{
 			}
 			
 		}
-		
+		System.out.print("\n");
 		assertEquals(test, true);
 		
 	}
