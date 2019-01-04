@@ -20,5 +20,19 @@ public class TestIslandManager extends IslandManager<FakePlayer> {
 		return player.getUuid();
 		
 	}
+	
+	public static TestIslandManager initManager(Class<?> c) throws IOException, InvalidConfigurationException {
+	
+		File file = new File(c.getSimpleName() + "_" + System.currentTimeMillis());
+		
+		file.mkdir();
+			
+		return new TestIslandManager(file);	
+		
+	}
+
+	public File getFile() {
+		return file;
+	}
 
 }
