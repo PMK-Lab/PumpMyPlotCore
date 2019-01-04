@@ -164,19 +164,30 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerKickIsland(Island island, T player) {
+	public void playerAcceptInviteIsland(T joiner, T target) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException {
+		
+		if(this.playerHasIsland(joiner)) {
+			
+			throw new PlayerAlreadyHaveIslandException(this.getMinecraftUUID(joiner), this.playerGetIsland(joiner));
+			
+		}else {
+			
+			
+			
+		}
+		
+	}
+	
+	public void playerRefuseInviteIsland() {
+		
+	}
+	
+	public void playerKickIsland(T joiner, T target) {
 		
 		
 		
 	}
 	
-	public void playerJoinIsland(T player) {
-		
-		
-		
-		
-		
-	}
 	
 	public boolean playerIsOwner(Island island, T player) {
 		
