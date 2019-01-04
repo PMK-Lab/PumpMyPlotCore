@@ -31,7 +31,7 @@ public class IslandManagerFolderTest{
 		
 		File file = this.manager.getFile();
 		
-		assertEquals(file.exists() && file.isDirectory(), true);
+		assertTrue(file.exists() && file.isDirectory());
 		
 		boolean test = true;
 		
@@ -48,7 +48,7 @@ public class IslandManagerFolderTest{
 			
 		}
 		System.out.print("\n");
-		assertEquals(test, true);
+		assertTrue(test);
 		
 	}
 	
@@ -56,7 +56,7 @@ public class IslandManagerFolderTest{
 	public void managerCorectlyBuildedIslandIndex() {
 		
 		File file = new File(this.manager.getFile(),IslandManagerConstant.ISLAND_FOLDER_NAME + File.separator + IslandManagerConstant.ISLAND_INDEX_FILE_NAME);
-		assertEquals(file.exists(), true);
+		assertTrue(file.exists());
 		
 	}
 	
@@ -64,7 +64,7 @@ public class IslandManagerFolderTest{
 	public void managerCorectlyBuildedIslandPurger() {
 		
 		File file = new File(this.manager.getFile(),IslandManagerConstant.ISLAND_FOLDER_NAME + File.separator + IslandManagerConstant.ISLAND_PURGER_FILE_NAME);
-		assertEquals(file.exists(), true);
+		assertTrue(file.exists());
 		
 	}
 	
@@ -72,7 +72,7 @@ public class IslandManagerFolderTest{
 	public void managerCorectlyBuildedIslandInvites() {
 		
 		File file = new File(this.manager.getFile(),IslandManagerConstant.ISLAND_FOLDER_NAME + File.separator + IslandManagerConstant.ISLAND_INVITES_FILE_NAME);
-		assertEquals(file.exists(), true);
+		assertTrue(file.exists());
 		
 	}
 
