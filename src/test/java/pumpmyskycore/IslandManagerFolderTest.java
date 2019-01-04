@@ -20,13 +20,9 @@ public class IslandManagerFolderTest{
 	private TestIslandManager manager;
 	
 	@BeforeAll
-	public void initManager() throws IOException, InvalidConfigurationException {
+	public void init() throws IOException, InvalidConfigurationException{
 		
-		File file = new File(this.getClass().getSimpleName());
-		
-		file.mkdir();
-			
-		manager = new TestIslandManager(file.toPath());	
+		manager = TestIslandManager.initManager(this.getClass());
 		
 	}
 	
