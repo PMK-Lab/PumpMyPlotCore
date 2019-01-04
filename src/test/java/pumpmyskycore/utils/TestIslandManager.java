@@ -8,9 +8,9 @@ import org.bukkit.configuration.InvalidConfigurationException;
 
 import fr.pumpmyskycore.IslandManager;
 
-public class IslandTestManager extends IslandManager<FakePlayer> {
+public class TestIslandManager extends IslandManager<FakePlayer> {
 
-	public IslandTestManager(Path configPath) throws IOException, InvalidConfigurationException {
+	public TestIslandManager(Path configPath) throws IOException, InvalidConfigurationException {
 		super(configPath);
 	}
 
