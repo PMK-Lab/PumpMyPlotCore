@@ -132,33 +132,33 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerInviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerAlreadyInvited, IOException {
+	public void playerInviteIsland(T invitor, T invited) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerAlreadyInvited, IOException {
 		
-		Island island = this.playerGetIsland(islandOwner);
+		Island island = this.playerGetIsland(invitor);
 		
-		if(this.playerIsOwner(islandOwner)) {
+		if(this.playerIsOwner(invitor)) {
 			
-			this.islandInvites.addInvites(this.getMinecraftUUID(player), island);			
+			this.islandInvites.addInvites(this.getMinecraftUUID(invited), island);			
 			
 		}else {
 			
-			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(islandOwner));
+			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(invitor));
 			
 		}
 		
 	}
 	
-	public void playerUninviteIsland(T islandOwner, T player) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerDoesNotInvited, IOException {
+	public void playerUninviteIsland(T uninvitor, T uninvited) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerDoesNotInvited, IOException {
 		
-		Island island = this.playerGetIsland(islandOwner);
+		Island island = this.playerGetIsland(uninvitor);
 		
-		if(this.playerIsOwner(islandOwner)) {
+		if(this.playerIsOwner(uninvitor)) {
 			
-			this.islandInvites.removeInvites(this.getMinecraftUUID(player), island);			
+			this.islandInvites.removeInvites(this.getMinecraftUUID(uninvited), island);			
 			
 		}else {
 			
-			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(islandOwner));
+			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(uninvitor));
 			
 		}
 		
