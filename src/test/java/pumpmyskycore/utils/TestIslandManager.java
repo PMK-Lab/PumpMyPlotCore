@@ -26,7 +26,7 @@ public class TestIslandManager extends IslandManager<FakePlayer> {
 	
 	public static TestIslandManager initManager(Class<?> c) throws IOException, InvalidConfigurationException {
 	
-		File file = new File(c.getSimpleName() + "_" + System.currentTimeMillis());
+		File file = new File("TEST" + File.separator + c.getSimpleName() + "_" + System.currentTimeMillis());
 		
 		file.mkdir();
 			
