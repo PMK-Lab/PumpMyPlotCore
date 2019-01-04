@@ -1,28 +1,33 @@
 package pumpmyskycore;
 
-import java.io.File;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.io.IOException;
+import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.function.Executable;
 
+import fr.pumpmyskycore.Island;
+import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestIslandManager;
 
-@TestInstance(Lifecycle.PER_CLASS)
 public class IslandManagerPlayerTest {
 
-private TestIslandManager manager;
-	
-	@BeforeAll
-	public void initManager() throws IOException, InvalidConfigurationException {
+	//@Test
+	public void playerCorrectlyCreatingIsland() throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException, InvalidConfigurationException {
 		
-		File file = new File(this.getClass().getSimpleName());
+		TestIslandManager manager = TestIslandManager.initManager(getClass());
 		
-		file.mkdir();
-			
-		manager = new TestIslandManager(file.toPath());	
+		UUID uuid = UUID.randomUUID();
+		
+		Island is = manager.playerCreateIsland(new FakePlayer(uuid));
+		
+		Executable closureContainingCodeToTest = () -> manager.playerCreateIsland(new FakePlayer(uuid));
+		
+		assertThrows(PlayerAlreadyHaveIslandException.class, closureContainingCodeToTest);
 		
 	}
 	
