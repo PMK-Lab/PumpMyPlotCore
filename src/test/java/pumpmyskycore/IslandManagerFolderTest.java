@@ -29,7 +29,7 @@ public class IslandManagerFolderTest{
 	@Test
 	public void managerCorectlyBuildedIslandFolder() {
 		
-		File file = new File(this.getClass().getSimpleName() + File.separator + IslandManagerConstant.ISLAND_FOLDER_NAME);
+		File file = this.manager.getFile();
 		
 		assertEquals(file.exists() && file.isDirectory(), true);
 		
@@ -37,7 +37,7 @@ public class IslandManagerFolderTest{
 		
 		for (int x = 1; x <= IslandManagerConstant.ISLAND_SIDE_NUM ; x++) {
 			
-			File f = new File(file + File.separator + x);
+			File f = new File(manager.getIslandPath() + File.separator + x);
 			
 			if(!f.isDirectory() || !f.exists()) {
 				
@@ -54,7 +54,7 @@ public class IslandManagerFolderTest{
 	@Test
 	public void managerCorectlyBuildedIslandIndex() {
 		
-		File file = new File(this.getClass().getSimpleName() + File.separator + IslandManagerConstant.ISLAND_FOLDER_NAME + File.separator + IslandManagerConstant.ISLAND_INDEX_FILE_NAME);
+		File file = new File(this.manager.getFile(),IslandManagerConstant.ISLAND_FOLDER_NAME + File.separator + IslandManagerConstant.ISLAND_INDEX_FILE_NAME);
 		assertEquals(file.exists(), true);
 		
 	}
@@ -62,7 +62,7 @@ public class IslandManagerFolderTest{
 	@Test
 	public void managerCorectlyBuildedIslandPurger() {
 		
-		File file = new File(this.getClass().getSimpleName() + File.separator + IslandManagerConstant.ISLAND_FOLDER_NAME + File.separator + IslandManagerConstant.ISLAND_PURGER_FILE_NAME);
+		File file = new File(this.manager.getFile(),IslandManagerConstant.ISLAND_FOLDER_NAME + File.separator + IslandManagerConstant.ISLAND_PURGER_FILE_NAME);
 		assertEquals(file.exists(), true);
 		
 	}
@@ -70,7 +70,7 @@ public class IslandManagerFolderTest{
 	@Test
 	public void managerCorectlyBuildedIslandInvites() {
 		
-		File file = new File(this.getClass().getSimpleName() + File.separator + IslandManagerConstant.ISLAND_FOLDER_NAME + File.separator + IslandManagerConstant.ISLAND_INVITES_FILE_NAME);
+		File file = new File(this.manager.getFile(),IslandManagerConstant.ISLAND_FOLDER_NAME + File.separator + IslandManagerConstant.ISLAND_INVITES_FILE_NAME);
 		assertEquals(file.exists(), true);
 		
 	}
