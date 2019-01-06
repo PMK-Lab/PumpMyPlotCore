@@ -17,7 +17,7 @@ import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestIslandManager;
 
-public class IslandManagerPlayerTest {
+public class IslandManagerPlayerBasicIslandActionTest {
 
 	@Test
 	public void playerCorrectlyCreatingIsland() throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException, InvalidConfigurationException {
