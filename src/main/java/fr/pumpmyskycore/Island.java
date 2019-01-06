@@ -12,6 +12,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
+import fr.pumpmyskycore.exceptions.IslandLocationParsingException;
 
 public class Island {
 	
@@ -152,6 +153,17 @@ public class Island {
 	
 	public String getID() {
 		return this.idX + "_" + this.idY;
+	}
+	
+	public IslandLocation toLocation() {
+		
+		try {
+			return IslandLocation.parseFromString(this.getID());
+		} catch (IslandLocationParsingException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 	public File getFile() {
