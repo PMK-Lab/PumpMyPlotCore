@@ -214,9 +214,19 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerKickIsland(T joiner, T target) {
+	public void playerKickIsland(T owner, T target) {
 		
+		Island island = this.playerGetIsland(owner);
 		
+		if(this.playerIsOwner(owner)) {
+			
+						
+			
+		}else {
+			
+			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(owner));
+			
+		}
 		
 	}
 	
