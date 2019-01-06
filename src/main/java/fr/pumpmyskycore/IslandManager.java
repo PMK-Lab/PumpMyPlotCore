@@ -225,7 +225,10 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 			if(members.contains(this.getMinecraftUUID(target).toString())) {
 				
+				island.removeMember(this.getMinecraftUUID(target));
+				island.save();
 				
+				this.islandIndex.unsetIslandLocation(this.getMinecraftUUID(target));
 				
 			}else {
 				
