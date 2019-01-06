@@ -246,6 +246,12 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
+	public void playerSetHomeIsland(T setter, IslandHome loc) {
+		
+		
+		
+	}
+	
 	
 	public boolean playerIsOwner(Island island, T player) {
 		
