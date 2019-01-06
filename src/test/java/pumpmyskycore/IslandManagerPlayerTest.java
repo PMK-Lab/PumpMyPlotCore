@@ -30,7 +30,59 @@ public class IslandManagerPlayerTest {
 		
 		assertEquals(is.getOwner(), uuid.toString());
 		
-		assertThrows(PlayerAlreadyHaveIslandException.class, closureContainingCodeToTest);
+		assertTrue(manager.getIslandIndex().contains(uuid));
+		assertEquals(manager.getIslandIndex().getIslandLocation(uuid).getX(), is.getIdX());		
+		assertEquals(manager.getIslandIndex().getIslandLocation(uuid).getY(), is.getIdY());		
+		
+	}
+	
+	@Test
+	public void playerCorrectlyLeavingsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IslandIsNotEmptyException {
+		
+		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		
+		UUID uuid = UUID.randomUUID();
+		FakePlayer player = new FakePlayer(uuid);
+		
+		manager.playerCreateIsland(player);
+		
+		assertTrue(manager.playerHasIsland(player));
+		
+		manager.playerLeaveIsland(player);
+		
+		assertFalse(manager.playerHasIsland(player));
+		
+	}
+	
+	@Test
+	public void playerHasIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException {
+		
+		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		
+		UUID uuid = UUID.randomUUID();
+		FakePlayer player = new FakePlayer(uuid);
+		
+		assertFalse(manager.playerHasIsland(player));
+		
+		manager.playerCreateIsland(player);
+		
+		assertTrue(manager.playerHasIsland(player));		
+		
+	}
+	
+	@Test
+	public void playerGetIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerDoesNotHaveIslandException, PlayerAlreadyHaveIslandException {
+		
+		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		
+		UUID uuid = UUID.randomUUID();
+		FakePlayer player = new FakePlayer(uuid);
+		
+		Island is = manager.playerCreateIsland(new FakePlayer(uuid));
+		
+		Island gettedIsland = manager.playerGetIsland(player);
+		
+		assertEquals(is.getID(), gettedIsland.getID());
 		
 	}
 	
