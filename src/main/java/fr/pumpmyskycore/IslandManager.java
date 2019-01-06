@@ -165,7 +165,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerAcceptInviteIsland(T joiner, T inviter) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, PlayerDoesNotInvited {
+	public void playerAcceptInviteIsland(T joiner, T inviter) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, PlayerDoesNotInvited, IOException {
 		
 		if(this.playerHasIsland(joiner)) {
 			
@@ -174,7 +174,19 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		}else {
 			
 			
-				throw new PlayerDoesNotInvited(this.getMinecraftUUID(joiner), islandInvitor);
+			Island islandInvitor = this.playerGetIsland(inviter);
+			UUID joinerUUID = this.getMinecraftUUID(joiner);
+			
+			if(this.islandInvites.isInvites(joinerUUID, islandInvitor)) {
+				
+				// accept & remove invites		
+				this.islandInvites.removeInvites(joinerUUID, islandInvitor);
+				
+				// join islands
+				
+			}else {
+			
+				throw new PlayerDoesNotInvited(joinerUUID, islandInvitor);
 				
 			}		
 			
