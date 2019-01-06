@@ -19,16 +19,16 @@ import pumpmyskycore.utils.TestIslandManager;
 
 public class IslandManagerPlayerTest {
 
-	//@Test
+	@Test
 	public void playerCorrectlyCreatingIsland() throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException, InvalidConfigurationException {
 		
-		TestIslandManager manager = TestIslandManager.initManager(getClass());
+		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
 		
 		UUID uuid = UUID.randomUUID();
 		
 		Island is = manager.playerCreateIsland(new FakePlayer(uuid));
 		
-		Executable closureContainingCodeToTest = () -> manager.playerCreateIsland(new FakePlayer(uuid));
+		assertEquals(is.getOwner(), uuid.toString());
 		
 		assertThrows(PlayerAlreadyHaveIslandException.class, closureContainingCodeToTest);
 		
