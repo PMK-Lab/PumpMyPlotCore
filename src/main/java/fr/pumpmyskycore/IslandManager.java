@@ -179,7 +179,21 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerRefuseInviteIsland() {
+	public void playerRefuseInviteIsland(T refuser, T inviter) throws PlayerDoesNotHaveIslandException, PlayerDoesNotInvited, IOException {
+		
+		Island islandInvitor = this.playerGetIsland(inviter);
+		UUID refuserUUID = this.getMinecraftUUID(refuser);
+		
+		if(this.islandInvites.isInvites(refuserUUID, islandInvitor)) {
+			
+			// delete			
+			this.islandInvites.removeInvites(refuserUUID, islandInvitor);
+			
+		}else {
+		
+			throw new PlayerDoesNotInvited(refuserUUID, islandInvitor);
+			
+		}		
 		
 	}
 	
