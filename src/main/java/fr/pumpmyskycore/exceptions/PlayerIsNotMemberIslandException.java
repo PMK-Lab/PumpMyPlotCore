@@ -1,4 +1,4 @@
-package fr.pumpmyskycore;
+package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
