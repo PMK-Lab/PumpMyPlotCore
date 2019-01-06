@@ -214,7 +214,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerKickIsland(T owner, T target) {
+	public void playerKickIsland(T owner, T target) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException {
 		
 		Island island = this.playerGetIsland(owner);
 		
