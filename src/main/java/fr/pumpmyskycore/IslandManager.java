@@ -171,8 +171,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 			throw new PlayerAlreadyHaveIslandException(this.getMinecraftUUID(joiner), this.playerGetIsland(joiner));
 			
-		}else {
-			
+		}else {			
 			
 			Island islandInvitor = this.playerGetIsland(inviter);
 			UUID joinerUUID = this.getMinecraftUUID(joiner);
@@ -183,6 +182,9 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 				this.islandInvites.removeInvites(joinerUUID, islandInvitor);
 				
 				// join islands
+				this.islandIndex.setIslandLocation(this.getMinecraftUUID(joiner), islandInvitor.toLocation());	
+				islandInvitor.addMember(this.getMinecraftUUID(joiner));
+				islandInvitor.save();
 				
 			}else {
 			
