@@ -3,6 +3,7 @@ package fr.pumpmyskycore;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 
