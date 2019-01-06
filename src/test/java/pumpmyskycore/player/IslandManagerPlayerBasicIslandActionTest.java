@@ -1,4 +1,4 @@
-package pumpmyskycore;
+package pumpmyskycore.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -19,6 +19,25 @@ import pumpmyskycore.utils.TestIslandManager;
 
 public class IslandManagerPlayerBasicIslandActionTest {
 
+	@Test
+	public void playerIsOwner() throws IOException, InvalidConfigurationException, PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException {
+		
+		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		
+		FakePlayer player1 = new FakePlayer(UUID.randomUUID());		
+		FakePlayer player2 = new FakePlayer(UUID.randomUUID());
+		
+		Island is1 = manager.playerCreateIsland(player1);
+
+		assertTrue(manager.playerIsOwner(player1));
+		assertFalse(manager.playerIsOwner(player2));
+		
+		
+		assertTrue(manager.playerIsOwner(is1,player1));
+		assertFalse(manager.playerIsOwner(is1,player2));
+		
+	}
+	
 	@Test
 	public void playerCorrectlyCreatingIsland() throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException, InvalidConfigurationException {
 		
