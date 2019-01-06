@@ -221,6 +221,17 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		if(this.playerIsOwner(owner)) {
 			
+			List<String> members = island.getMembersList();
+			
+			if(members.contains(this.getMinecraftUUID(target).toString())) {
+				
+				
+				
+			}else {
+				
+				throw new PlayerIsNotMemberIslandException(this.getMinecraftUUID(target),island);
+				
+			}
 						
 			
 		}else {
