@@ -16,4 +16,10 @@ public class IslandHome {
 		return z;
 	}
 	
+	public IslandHome(double x, double y, double z) {
+		super();
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}	
 }
