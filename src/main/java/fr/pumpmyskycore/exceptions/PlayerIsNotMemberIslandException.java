@@ -2,6 +2,8 @@ package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
+import fr.pumpmyskycore.Island;
+
 public class PlayerIsNotMemberIslandException extends Exception {
 
 	private UUID uuid;
