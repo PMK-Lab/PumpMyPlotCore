@@ -23,14 +23,14 @@ public class Island {
 		
 		fileConf.set("island.owner",uniqueId.toString());
 		
-		fileConf.set("island.name","mon ile" + freeLoc.getX() + "|" + freeLoc.getY());
+		fileConf.set("island.name","mon ile" + freeLoc.getX() + "|" + freeLoc.getZ());
 		
 		fileConf.set("island.id.x", freeLoc.getX());
-		fileConf.set("island.id.y", freeLoc.getY());
+		fileConf.set("island.id.z", freeLoc.getZ());
 		
 		fileConf.set("island.home.x", (freeLoc.getX() * IslandManagerConstant.ISLAND_SIZE) - (IslandManagerConstant.ISLAND_SIZE/2) + 0.5);
 		fileConf.set("island.home.y", 60);
-		fileConf.set("island.home.z", (freeLoc.getY() * IslandManagerConstant.ISLAND_SIZE) - (IslandManagerConstant.ISLAND_SIZE/2) + 0.5);
+		fileConf.set("island.home.z", (freeLoc.getZ() * IslandManagerConstant.ISLAND_SIZE) - (IslandManagerConstant.ISLAND_SIZE/2) + 0.5);
 		
 		fileConf.set("island.members", new ArrayList<String>());
 		
@@ -68,7 +68,7 @@ public class Island {
 	private double homeZ;
 	
 	private int idX;
-	private int idY;
+	private int idZ;
 	
 	private List<String> membersList;
 	
@@ -91,7 +91,7 @@ public class Island {
 		this.homeZ = yaml.getDouble("island.home.z");
 		
 		this.idX = yaml.getInt("island.id.x");
-		this.idY = yaml.getInt("island.id.y");
+		this.idZ = yaml.getInt("island.id.z");
 		
 		this.membersList = yaml.getStringList("island.members");
 		
@@ -158,7 +158,7 @@ public class Island {
 	}
 	
 	public String getID() {
-		return this.idX + "_" + this.idY;
+		return this.idX + "_" + this.idZ;
 	}
 	
 	public IslandLocation toLocation() {
@@ -200,8 +200,8 @@ public class Island {
 		return this.idX;
 	}
 
-	public int getIdY() {
-		return this.idY;
+	public int getIdZ() {
+		return this.idZ;
 	}
 
 	public List<String> getMembersList() {
