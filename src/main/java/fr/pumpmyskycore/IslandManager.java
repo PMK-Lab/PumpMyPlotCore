@@ -243,7 +243,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerSetHomeIsland(T setter, IslandHome loc) throws PlayerDoesNotHaveIslandException {
+	public void playerSetHomeIsland(T setter, IslandHome loc) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException {
 		
 		Island island = this.playerGetIsland(setter);
 		
