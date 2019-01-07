@@ -17,7 +17,7 @@ public class IslandLocationTest {
 	public void constantShouldHaveRightValues() {
 		
 		assertEquals(IslandLocation.X_STRING, ".x");
-		assertEquals(IslandLocation.Y_STRING, ".y");
+		assertEquals(IslandLocation.Z_STRING, ".z");
 		
 	}
 	
@@ -27,12 +27,12 @@ public class IslandLocationTest {
 		IslandLocation loc = new IslandLocation(1, 1);
 		
 		assertEquals(loc.getX(), 1);
-		assertEquals(loc.getY(), 1);
+		assertEquals(loc.getZ(), 1);
 		
 		loc = new IslandLocation(58, 25);
 		
 		assertEquals(loc.getX(), 58);
-		assertEquals(loc.getY(), 25);
+		assertEquals(loc.getZ(), 25);
 		
 	}
 	
@@ -41,7 +41,7 @@ public class IslandLocationTest {
 		
 		IslandLocation loc = new IslandLocation(28, 82);
 		
-		File fileLoc = new File(loc.getX() + File.separator + loc.getY());
+		File fileLoc = new File(loc.getX() + File.separator + loc.getZ());
 		
 		assertEquals(loc.toPath(), fileLoc.toPath());
 		
@@ -53,7 +53,7 @@ public class IslandLocationTest {
 		IslandLocation loc = new IslandLocation(45, 95);
 		
 		assertEquals(loc.getX(), IslandLocation.parseFromString("45_95").getX());
-		assertEquals(loc.getY(), IslandLocation.parseFromString("45_95").getY());
+		assertEquals(loc.getZ(), IslandLocation.parseFromString("45_95").getZ());
 		
 	}
 	

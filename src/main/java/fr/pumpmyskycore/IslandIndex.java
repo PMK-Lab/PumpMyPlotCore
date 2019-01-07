@@ -43,9 +43,9 @@ public class IslandIndex {
 		
 		for (int x = 1; x <= IslandManagerConstant.ISLAND_SIDE_NUM ; x++) {
 			
-			for (int y = 1; y <= IslandManagerConstant.ISLAND_SIDE_NUM ; y++) {
+			for (int z = 1; z <= IslandManagerConstant.ISLAND_SIDE_NUM ; z++) {
 				
-				IslandLocation loc = new IslandLocation(x,y);
+				IslandLocation loc = new IslandLocation(x,z);
 				File f = new File(islandPath + File.separator + loc.toPath());
 				
 				if(f.exists()) {
@@ -89,7 +89,7 @@ public class IslandIndex {
 	public void setIslandLocation(UUID minecraftUUID, IslandLocation loc) throws IOException {
 		
 		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING, loc.getX());
-		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Y_STRING, loc.getY());
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Z_STRING, loc.getZ());
 		
 		this.save();
 		
@@ -98,7 +98,7 @@ public class IslandIndex {
 	public void unsetIslandLocation(UUID minecraftUUID) throws IOException {
 		
 		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING, null);
-		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Y_STRING, null);
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Z_STRING, null);
 		this.fileConf.set(ISLAND_STRING + minecraftUUID, null);		
 		
 		this.save();
@@ -108,7 +108,7 @@ public class IslandIndex {
 	public IslandLocation getIslandLocation(UUID minecraftUUID) {
 		
 		int x = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING);
-		int y = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + IslandLocation.Y_STRING);
+		int y = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + IslandLocation.Z_STRING);
 		
 		return new IslandLocation(x,y);
 		

@@ -8,14 +8,14 @@ import fr.pumpmyskycore.exceptions.IslandLocationParsingException;
 public class IslandLocation {
 
 	public static final String X_STRING = ".x";
-	public static final String Y_STRING = ".y";
+	public static final String Z_STRING = ".z";
 	
 	private int x;
-	private int y;
+	private int z;
 	
-	public IslandLocation(int x, int y) {
+	public IslandLocation(int x, int z) {
 		this.x = x;
-		this.y = y;
+		this.z = z;
 	}
 	
 	public int getX() {
@@ -24,9 +24,9 @@ public class IslandLocation {
 		
 	}
 	
-	public int getY() {
+	public int getZ() {
 		
-		return this.y;
+		return this.z;
 		
 	}
 	
@@ -37,12 +37,12 @@ public class IslandLocation {
 			try {
 				
 				String stringX = string.split("_")[0];
-				String stringY = string.split("_")[1];
+				String stringZ = string.split("_")[1];
 				
 				int x = Integer.parseInt(stringX);
-				int y = Integer.parseInt(stringY);
+				int z = Integer.parseInt(stringZ);
 				
-				return new IslandLocation(x, y);
+				return new IslandLocation(x, z);
 				
 			} catch (Exception e) {
 				
@@ -60,12 +60,12 @@ public class IslandLocation {
 	
 	@Override
 	public String toString() {
-		return "[" + this.getClass().getName() + "] x=" + this.x + " |y=" + this.y;
+		return "[" + this.getClass().getName() + "] x=" + this.x + " |z=" + this.z;
 	}
 
 	public Path toPath() {
 		
-		return new File( this.x + File.separator + this.y).toPath();
+		return new File( this.x + File.separator + this.z).toPath();
 		
 	}
 

@@ -39,15 +39,15 @@ public class IslandIndexTest {
 		
 		for (int x = 1; x <= 3 ; x++) {
 			
-			for (int y = 1; y <= IslandManagerConstant.ISLAND_SIDE_NUM ; y++) {
+			for (int z = 1; z <= IslandManagerConstant.ISLAND_SIDE_NUM ; z++) {
 				
 				loc = manager.getIslandIndex().createFirstFreeLocFile(manager.getIslandPath());				
-				System.out.println(x + ":" + y + "\t" + loc);
+				System.out.println(x + ":" + z + "\t" + loc);
 				
 				assertEquals(loc.getX(),x);
-				assertEquals(loc.getY(),y);
+				assertEquals(loc.getZ(),z);
 				
-				File f = new File(manager.getIslandPath() + File.separator + x + File.separator + y);
+				File f = new File(manager.getIslandPath() + File.separator + x + File.separator + z);
 				assertTrue(f.exists());
 				
 			}
@@ -63,7 +63,7 @@ public class IslandIndexTest {
 		System.out.println(2 + ":" + 50 + "\t" + loc);
 		
 		assertEquals(loc.getX(),2);
-		assertEquals(loc.getY(),50);		
+		assertEquals(loc.getZ(),50);		
 		
 	}
 	
