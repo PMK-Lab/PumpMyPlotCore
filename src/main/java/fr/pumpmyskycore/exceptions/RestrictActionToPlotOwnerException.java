@@ -2,21 +2,21 @@ package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
-import fr.pumpmyskycore.Island;
+import fr.pumpmyskycore.Plot;
 
-public class RestrictActionToOwnerIslandException extends Exception {
+public class RestrictActionToPlotOwnerException extends Exception {
 
-	private Island island;
+	private Plot island;
 	private UUID actionMaker;
 
-	public RestrictActionToOwnerIslandException(Island island, UUID actionMaker) {
+	public RestrictActionToPlotOwnerException(Plot island, UUID actionMaker) {
 		
 		this.island = island;
 		this.actionMaker = actionMaker;
 		
 	}
 
-	public Island getIsland() {
+	public Plot getIsland() {
 		return island;
 	}
 

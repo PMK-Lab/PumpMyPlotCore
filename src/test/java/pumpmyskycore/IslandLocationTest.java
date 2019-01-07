@@ -8,28 +8,28 @@ import java.io.File;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import fr.pumpmyskycore.IslandLocation;
-import fr.pumpmyskycore.exceptions.IslandLocationParsingException;
+import fr.pumpmyskycore.PlotLocation;
+import fr.pumpmyskycore.exceptions.PlotLocationParsingException;
 
 public class IslandLocationTest {
 
 	@Test
 	public void constantShouldHaveRightValues() {
 		
-		assertEquals(IslandLocation.X_STRING, ".x");
-		assertEquals(IslandLocation.Z_STRING, ".z");
+		assertEquals(PlotLocation.X_STRING, ".x");
+		assertEquals(PlotLocation.Z_STRING, ".z");
 		
 	}
 	
 	@Test
 	public void constructorCorrectlyInitializingValuesAndGetterReturningThem() {
 		
-		IslandLocation loc = new IslandLocation(1, 1);
+		PlotLocation loc = new PlotLocation(1, 1);
 		
 		assertEquals(loc.getX(), 1);
 		assertEquals(loc.getZ(), 1);
 		
-		loc = new IslandLocation(58, 25);
+		loc = new PlotLocation(58, 25);
 		
 		assertEquals(loc.getX(), 58);
 		assertEquals(loc.getZ(), 25);
@@ -39,7 +39,7 @@ public class IslandLocationTest {
 	@Test
 	public void toPathMethodShouldBeReturnCorrectPath() {
 		
-		IslandLocation loc = new IslandLocation(28, 82);
+		PlotLocation loc = new PlotLocation(28, 82);
 		
 		File fileLoc = new File(loc.getX() + File.separator + loc.getZ());
 		
@@ -48,41 +48,41 @@ public class IslandLocationTest {
 	}
 	
 	@Test
-	public void parsingFromStringReturnCorrectIslandLocation() throws IslandLocationParsingException {
+	public void parsingFromStringReturnCorrectIslandLocation() throws PlotLocationParsingException {
 		
-		IslandLocation loc = new IslandLocation(45, 95);
+		PlotLocation loc = new PlotLocation(45, 95);
 		
-		assertEquals(loc.getX(), IslandLocation.parseFromString("45_95").getX());
-		assertEquals(loc.getZ(), IslandLocation.parseFromString("45_95").getZ());
+		assertEquals(loc.getX(), PlotLocation.parseFromString("45_95").getX());
+		assertEquals(loc.getZ(), PlotLocation.parseFromString("45_95").getZ());
 		
 	}
 	
 	@Test
 	public void parsingFromStringThrowsException() {
 		
-		Executable exec = () -> IslandLocation.parseFromString("11");
+		Executable exec = () -> PlotLocation.parseFromString("11");
 		
-		assertThrows(IslandLocationParsingException.class, exec);
+		assertThrows(PlotLocationParsingException.class, exec);
 		
-		Executable exec2 = () -> IslandLocation.parseFromString("_");
+		Executable exec2 = () -> PlotLocation.parseFromString("_");
 		
-		assertThrows(IslandLocationParsingException.class, exec2);
+		assertThrows(PlotLocationParsingException.class, exec2);
 		
-		Executable exec3 = () -> IslandLocation.parseFromString("_1");
+		Executable exec3 = () -> PlotLocation.parseFromString("_1");
 		
-		assertThrows(IslandLocationParsingException.class, exec3);
+		assertThrows(PlotLocationParsingException.class, exec3);
 		
-		Executable exec4 = () -> IslandLocation.parseFromString("1_");
+		Executable exec4 = () -> PlotLocation.parseFromString("1_");
 		
-		assertThrows(IslandLocationParsingException.class, exec4);
+		assertThrows(PlotLocationParsingException.class, exec4);
 		
-		Executable exec5 = () -> IslandLocation.parseFromString("a_1");
+		Executable exec5 = () -> PlotLocation.parseFromString("a_1");
 		
-		assertThrows(IslandLocationParsingException.class, exec5);
+		assertThrows(PlotLocationParsingException.class, exec5);
 		
-		Executable exec6 = () -> IslandLocation.parseFromString("1_a");
+		Executable exec6 = () -> PlotLocation.parseFromString("1_a");
 		
-		assertThrows(IslandLocationParsingException.class, exec6);
+		assertThrows(PlotLocationParsingException.class, exec6);
 		
 	}
 	

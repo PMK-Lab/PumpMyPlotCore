@@ -2,7 +2,7 @@ package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
-import fr.pumpmyskycore.Island;
+import fr.pumpmyskycore.Plot;
 
 public class PlayerDoesNotInvited extends Exception {
 
@@ -12,9 +12,9 @@ public class PlayerDoesNotInvited extends Exception {
 	private static final long serialVersionUID = -1909610738522499154L;
 	
 	private UUID uuid;
-	private Island island;
+	private Plot island;
 	
-	public PlayerDoesNotInvited(UUID uuid, Island island) {
+	public PlayerDoesNotInvited(UUID uuid, Plot island) {
 		super();
 		this.uuid = uuid;
 		this.island = island;
@@ -28,7 +28,7 @@ public class PlayerDoesNotInvited extends Exception {
 		return uuid;
 	}
 	
-	public Island getIsland() {
+	public Plot getIsland() {
 		return island;
 	}
 	

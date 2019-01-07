@@ -9,26 +9,26 @@ import java.util.UUID;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.junit.jupiter.api.Test;
 
-import fr.pumpmyskycore.Island;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
+import fr.pumpmyskycore.Plot;
+import fr.pumpmyskycore.exceptions.PlayerAlreadyHavePlotException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
-import fr.pumpmyskycore.exceptions.RestrictActionToOwnerIslandException;
+import fr.pumpmyskycore.exceptions.RestrictActionToPlotOwnerException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestIslandManager;
 
 public class IslandManagerPlayerInvitesActionTest {
 
 	@Test
-	public void playerInviteIsland() throws IOException, InvalidConfigurationException, PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerAlreadyInvited, PlayerAlreadyHaveIslandException {
+	public void playerInviteIsland() throws IOException, InvalidConfigurationException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerAlreadyHavePlotException {
 		
 		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
 		
 		FakePlayer invitor = new FakePlayer(UUID.randomUUID());		
 		FakePlayer target = new FakePlayer(UUID.randomUUID());
 		
-		Island island = manager.playerCreateIsland(invitor);
+		Plot island = manager.playerCreateIsland(invitor);
 		
 		assertFalse(manager.getIslandInvites().isInvites(target.getUuid(), island));
 		
@@ -39,14 +39,14 @@ public class IslandManagerPlayerInvitesActionTest {
 	}
 	
 	@Test
-	public void playerUninviteIsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerAlreadyInvited, PlayerDoesNotInvited {
+	public void playerUninviteIsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerDoesNotInvited {
 		
 		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
 		
 		FakePlayer invitor = new FakePlayer(UUID.randomUUID());		
 		FakePlayer target = new FakePlayer(UUID.randomUUID());
 		
-		Island island = manager.playerCreateIsland(invitor);
+		Plot island = manager.playerCreateIsland(invitor);
 		
 		assertFalse(manager.getIslandInvites().isInvites(target.getUuid(), island));
 		

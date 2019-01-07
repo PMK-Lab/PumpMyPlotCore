@@ -11,12 +11,12 @@ import java.util.UUID;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
-import fr.pumpmyskycore.exceptions.IslandLocationParsingException;
+import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
+import fr.pumpmyskycore.exceptions.PlotLocationParsingException;
 
-public class Island {
+public class Plot {
 	
-	public static Island create(Path path,IslandLocation freeLoc, UUID uniqueId) throws IOException {
+	public static Plot create(Path path,PlotLocation freeLoc, UUID uniqueId) throws IOException {
 		
 		File file = new File(path + File.separator + freeLoc.toPath());
 		FileConfiguration fileConf = YamlConfiguration.loadConfiguration(file);
@@ -28,26 +28,26 @@ public class Island {
 		fileConf.set("island.id.x", freeLoc.getX());
 		fileConf.set("island.id.z", freeLoc.getZ());
 		
-		fileConf.set("island.home.x", (freeLoc.getX() * IslandManagerConstant.ISLAND_SIZE) - (IslandManagerConstant.ISLAND_SIZE/2) + 0.5);
+		fileConf.set("island.home.x", (freeLoc.getX() * PlotManagerConstant.ISLAND_SIZE) - (PlotManagerConstant.ISLAND_SIZE/2) + 0.5);
 		fileConf.set("island.home.y", 60);
-		fileConf.set("island.home.z", (freeLoc.getZ() * IslandManagerConstant.ISLAND_SIZE) - (IslandManagerConstant.ISLAND_SIZE/2) + 0.5);
+		fileConf.set("island.home.z", (freeLoc.getZ() * PlotManagerConstant.ISLAND_SIZE) - (PlotManagerConstant.ISLAND_SIZE/2) + 0.5);
 		
 		fileConf.set("island.members", new ArrayList<String>());
 		
 		fileConf.save(file);
 		
-		Island island = new Island(file);
+		Plot island = new Plot(file);
 		island.load();
 		
 		return island;
 		
 	}
 	
-	public static Island get(Path path,IslandLocation islandLocation) {
+	public static Plot get(Path path,PlotLocation islandLocation) {
 		
 		File file = new File(path + File.separator + islandLocation.toPath());
 		
-		Island island = new Island(file);
+		Plot island = new Plot(file);
 		island.load();
 		
 		return island;
@@ -72,7 +72,7 @@ public class Island {
 	
 	private List<String> membersList;
 	
-	public Island(File f) {
+	public Plot(File f) {
 		
 		this.file = f;
 		
@@ -145,7 +145,7 @@ public class Island {
 	@Override
 	public boolean equals(Object obj) {
 		
-		if(obj instanceof Island & this.getID().equals(((Island) obj).getID())) {
+		if(obj instanceof Plot & this.getID().equals(((Plot) obj).getID())) {
 			
 			return true;
 			
@@ -161,11 +161,11 @@ public class Island {
 		return this.idX + "_" + this.idZ;
 	}
 	
-	public IslandLocation toLocation() {
+	public PlotLocation toLocation() {
 		
 		try {
-			return IslandLocation.parseFromString(this.getID());
-		} catch (IslandLocationParsingException e) {
+			return PlotLocation.parseFromString(this.getID());
+		} catch (PlotLocationParsingException e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -210,6 +210,16 @@ public class Island {
 	
 	public String getName() {
 		return this.name;
+	}
+
+	public void setHome(PlotHome loc) {
+		
+		if((loc.getX() > ((this.idX + 1) * PlotManagerConstant.ISLAND_SIZE) && loc.getX() < (this.idX * PlotManagerConstant.ISLAND_SIZE)) && (loc.getZ() > ((this.idZ + 1) * PlotManagerConstant.ISLAND_SIZE) && loc.getZ() < (this.idZ * PlotManagerConstant.ISLAND_SIZE))){
+			
+			
+			
+		}
+		
 	}
 
 }

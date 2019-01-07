@@ -2,14 +2,14 @@ package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
-import fr.pumpmyskycore.Island;
+import fr.pumpmyskycore.Plot;
 
-public class PlayerIsNotMemberIslandException extends Exception {
+public class PlayerIsNotMemberPlotException extends Exception {
 
 	private UUID uuid;
-	private Island island;
+	private Plot island;
 
-	public PlayerIsNotMemberIslandException(UUID uuid, Island island) {
+	public PlayerIsNotMemberPlotException(UUID uuid, Plot island) {
 		
 		this.uuid = uuid;
 		this.island = island;
@@ -20,7 +20,7 @@ public class PlayerIsNotMemberIslandException extends Exception {
 		return uuid;
 	}
 
-	public Island getIsland() {
+	public Plot getIsland() {
 		return island;
 	}
 

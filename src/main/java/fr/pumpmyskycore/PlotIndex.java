@@ -8,15 +8,15 @@ import java.util.UUID;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
+import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
 
-public class IslandIndex {
+public class PlotIndex {
 	
 	public final static String ISLAND_STRING = "islands.";
 	
-	public static IslandIndex init(Path indexPath) throws IOException, InvalidConfigurationException {
+	public static PlotIndex init(Path indexPath) throws IOException, InvalidConfigurationException {
 		
-		File file = new File(indexPath + File.separator + IslandManagerConstant.ISLAND_INDEX_FILE_NAME);			
+		File file = new File(indexPath + File.separator + PlotManagerConstant.ISLAND_INDEX_FILE_NAME);			
 		if(!file.exists()) {
 			file.createNewFile();
 		}
@@ -24,13 +24,13 @@ public class IslandIndex {
 		FileConfiguration fileConf = new YamlConfiguration();
 		fileConf.load(file);
 		
-		return new IslandIndex(file,fileConf);
+		return new PlotIndex(file,fileConf);
 	}
 
 	private File file;
 	private FileConfiguration fileConf;
 
-	private IslandIndex(File f, FileConfiguration fc) throws IOException {
+	private PlotIndex(File f, FileConfiguration fc) throws IOException {
 		
 		this.file = f;
 		this.fileConf = fc;
@@ -39,13 +39,13 @@ public class IslandIndex {
 		
 	}
 	
-	public IslandLocation createFirstFreeLocFile(Path islandPath) throws IOException {
+	public PlotLocation createFirstFreeLocFile(Path islandPath) throws IOException {
 		
-		for (int x = 1; x <= IslandManagerConstant.ISLAND_SIDE_NUM ; x++) {
+		for (int x = 1; x <= PlotManagerConstant.ISLAND_SIDE_NUM ; x++) {
 			
-			for (int z = 1; z <= IslandManagerConstant.ISLAND_SIDE_NUM ; z++) {
+			for (int z = 1; z <= PlotManagerConstant.ISLAND_SIDE_NUM ; z++) {
 				
-				IslandLocation loc = new IslandLocation(x,z);
+				PlotLocation loc = new PlotLocation(x,z);
 				File f = new File(islandPath + File.separator + loc.toPath());
 				
 				if(f.exists()) {
@@ -86,10 +86,10 @@ public class IslandIndex {
 		return this.fileConf;
 	}
 	
-	public void setIslandLocation(UUID minecraftUUID, IslandLocation loc) throws IOException {
+	public void setIslandLocation(UUID minecraftUUID, PlotLocation loc) throws IOException {
 		
-		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING, loc.getX());
-		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Z_STRING, loc.getZ());
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + PlotLocation.X_STRING, loc.getX());
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + PlotLocation.Z_STRING, loc.getZ());
 		
 		this.save();
 		
@@ -97,20 +97,20 @@ public class IslandIndex {
 	
 	public void unsetIslandLocation(UUID minecraftUUID) throws IOException {
 		
-		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING, null);
-		this.fileConf.set(ISLAND_STRING + minecraftUUID + IslandLocation.Z_STRING, null);
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + PlotLocation.X_STRING, null);
+		this.fileConf.set(ISLAND_STRING + minecraftUUID + PlotLocation.Z_STRING, null);
 		this.fileConf.set(ISLAND_STRING + minecraftUUID, null);		
 		
 		this.save();
 		
 	}
 	
-	public IslandLocation getIslandLocation(UUID minecraftUUID) {
+	public PlotLocation getIslandLocation(UUID minecraftUUID) {
 		
-		int x = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + IslandLocation.X_STRING);
-		int y = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + IslandLocation.Z_STRING);
+		int x = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + PlotLocation.X_STRING);
+		int y = this.fileConf.getInt(ISLAND_STRING + minecraftUUID + PlotLocation.Z_STRING);
 		
-		return new IslandLocation(x,y);
+		return new PlotLocation(x,y);
 		
 	}
 

@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
-import fr.pumpmyskycore.IslandIndex;
-import fr.pumpmyskycore.IslandLocation;
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
+import fr.pumpmyskycore.PlotIndex;
+import fr.pumpmyskycore.PlotLocation;
+import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
 import pumpmyskycore.utils.TestIslandManager;
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -35,11 +35,11 @@ public class IslandIndexTest {
 		
 		TestIslandManager manager = new TestIslandManager(this.file);
 		
-		IslandLocation loc = null;
+		PlotLocation loc = null;
 		
 		for (int x = 1; x <= 3 ; x++) {
 			
-			for (int z = 1; z <= IslandManagerConstant.ISLAND_SIDE_NUM ; z++) {
+			for (int z = 1; z <= PlotManagerConstant.ISLAND_SIDE_NUM ; z++) {
 				
 				loc = manager.getIslandIndex().createFirstFreeLocFile(manager.getIslandPath());				
 				System.out.println(x + ":" + z + "\t" + loc);
@@ -70,7 +70,7 @@ public class IslandIndexTest {
 	//@Test
 	public void initIndexSection() throws IOException, InvalidConfigurationException {
 		
-		IslandIndex index = IslandIndex.init(file.toPath());
+		PlotIndex index = PlotIndex.init(file.toPath());
 		
 		assertTrue(index.getYaml().isConfigurationSection("islands"));
 		

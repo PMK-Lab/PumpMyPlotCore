@@ -2,7 +2,7 @@ package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
-public class PlayerDoesNotHaveIslandException extends Exception {
+public class PlayerDoesNotHavePlotException extends Exception {
 
 	/**
 	 * 
@@ -10,7 +10,7 @@ public class PlayerDoesNotHaveIslandException extends Exception {
 	private static final long serialVersionUID = -5668454859345512441L;
 	private UUID playerUUID;
 	
-	public PlayerDoesNotHaveIslandException(UUID playerUUID) {
+	public PlayerDoesNotHavePlotException(UUID playerUUID) {
 		// TODO Auto-generated constructor stub
 	}
 

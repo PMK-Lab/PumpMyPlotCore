@@ -1,6 +1,6 @@
 package fr.pumpmyskycore;
 
-public class IslandHome {
+public class PlotHome {
 
 	private double x;
 	private double y;
@@ -16,7 +16,7 @@ public class IslandHome {
 		return z;
 	}
 	
-	public IslandHome(double x, double y, double z) {
+	public PlotHome(double x, double y, double z) {
 		super();
 		this.x = x;
 		this.y = y;

@@ -2,19 +2,19 @@ package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
-import fr.pumpmyskycore.Island;
+import fr.pumpmyskycore.Plot;
 
-public class PlayerNotInThisIsland extends Exception {
+public class PlayerNotInThisPlotException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2479579204256895474L;
 	private UUID playerUUID;
-	private Island playerIsland;
-	private Island targetIsland;
+	private Plot playerIsland;
+	private Plot targetIsland;
 
-	public PlayerNotInThisIsland(UUID playerUUID, Island playerIsland, Island targetIsland) {
+	public PlayerNotInThisPlotException(UUID playerUUID, Plot playerIsland, Plot targetIsland) {
 		
 		super("Player " + playerUUID.toString() + " already have island ! (id : " + playerIsland + " )\n He can't join island : " + targetIsland);
 		
@@ -32,11 +32,11 @@ public class PlayerNotInThisIsland extends Exception {
 		return playerUUID;
 	}
 
-	public Island getPlayerIsland() {
+	public Plot getPlayerIsland() {
 		return playerIsland;
 	}
 
-	public Island getTargetIsland() {
+	public Plot getTargetIsland() {
 		return targetIsland;
 	}
 

@@ -11,18 +11,18 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
-import fr.pumpmyskycore.exceptions.IslandLocationParsingException;
+import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
+import fr.pumpmyskycore.exceptions.PlotLocationParsingException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
 
-public class IslandInvites {
+public class PlotInvites {
 	
 	public final static String INVITES_STRING = "invites.";
 	
-	public static IslandInvites init(IslandManager<?> manager) throws IOException, InvalidConfigurationException {
+	public static PlotInvites init(PlotManager<?> manager) throws IOException, InvalidConfigurationException {
 		
-		File file = new File(manager.islandPath + File.separator + IslandManagerConstant.ISLAND_INVITES_FILE_NAME);			
+		File file = new File(manager.islandPath + File.separator + PlotManagerConstant.ISLAND_INVITES_FILE_NAME);			
 		if(!file.exists()) {
 			file.createNewFile();
 		}
@@ -30,15 +30,15 @@ public class IslandInvites {
 		FileConfiguration fileConf = new YamlConfiguration();
 		fileConf.load(file);
 		
-		return new IslandInvites(manager,file,fileConf);
+		return new PlotInvites(manager,file,fileConf);
 		
 	}
 
 	private File file;
 	private FileConfiguration fileConf;
-	private IslandManager<?> manager;
+	private PlotManager<?> manager;
 
-	private IslandInvites(IslandManager<?> manager, File f, FileConfiguration fc) throws IOException {
+	private PlotInvites(PlotManager<?> manager, File f, FileConfiguration fc) throws IOException {
 		
 		this.file = f;
 		this.fileConf = fc;
@@ -76,11 +76,11 @@ public class IslandInvites {
 		
 	}
 	
-	private void setPlayerInvites(UUID uuid , List<Island> invites) throws IOException {
+	private void setPlayerInvites(UUID uuid , List<Plot> invites) throws IOException {
 		
 		List<String> islandsID = new ArrayList<String>();
 		
-		for (Island island : invites) {
+		for (Plot island : invites) {
 			
 			islandsID.add(island.getID());
 			
@@ -91,17 +91,17 @@ public class IslandInvites {
 		
 	}
 	
-	public List<Island> getPlayerInvites(UUID uuid){
+	public List<Plot> getPlayerInvites(UUID uuid){
 		
 		if(this.contains(uuid)) {
 			
-			List<Island> islands = new ArrayList<Island>();
+			List<Plot> islands = new ArrayList<Plot>();
 			
 			for (String islandID : this.fileConf.getStringList(INVITES_STRING + uuid.toString())) {
 				
 				try {
-					islands.add(manager.getIsland(IslandLocation.parseFromString(islandID)));
-				} catch (IslandLocationParsingException e) {
+					islands.add(manager.getIsland(PlotLocation.parseFromString(islandID)));
+				} catch (PlotLocationParsingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					continue;
@@ -117,13 +117,13 @@ public class IslandInvites {
 		
 	}
 	
-	public boolean isInvites(UUID uuid, Island island) {
+	public boolean isInvites(UUID uuid, Plot island) {
 		
 		return this.getPlayerInvites(uuid).contains(island);		
 		
 	}
 	
-	public void addInvites(UUID uuid, Island island) throws PlayerAlreadyInvited, IOException {
+	public void addInvites(UUID uuid, Plot island) throws PlayerAlreadyInvited, IOException {
 		
 		if(this.isInvites(uuid, island)) {
 			
@@ -131,7 +131,7 @@ public class IslandInvites {
 			
 		}
 		
-		List<Island> invites = this.getPlayerInvites(uuid);
+		List<Plot> invites = this.getPlayerInvites(uuid);
 		
 		invites.add(island);
 		
@@ -139,7 +139,7 @@ public class IslandInvites {
 		
 	}
 	
-	public void removeInvites(UUID uuid, Island island) throws PlayerDoesNotInvited, IOException {
+	public void removeInvites(UUID uuid, Plot island) throws PlayerDoesNotInvited, IOException {
 		
 		if(!this.isInvites(uuid, island)) {
 			
@@ -147,9 +147,9 @@ public class IslandInvites {
 			
 		}
 		
-		List<Island> invites = this.getPlayerInvites(uuid);
+		List<Plot> invites = this.getPlayerInvites(uuid);
 		
-		for (Iterator<Island> iterators = invites.iterator(); iterators.hasNext();) {
+		for (Iterator<Plot> iterators = invites.iterator(); iterators.hasNext();) {
 			
 			if(iterators.next().equals(island)) {
 				iterators.remove();

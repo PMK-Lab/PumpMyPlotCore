@@ -2,18 +2,18 @@ package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
-import fr.pumpmyskycore.Island;
+import fr.pumpmyskycore.Plot;
 
-public class PlayerAlreadyHaveIslandException extends Exception {
+public class PlayerAlreadyHavePlotException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8295450156496621732L;
 	private UUID playerUUID;
-	private Island island;
+	private Plot island;
 	
-	public PlayerAlreadyHaveIslandException(UUID playerUUID, Island island) {
+	public PlayerAlreadyHavePlotException(UUID playerUUID, Plot island) {
 		
 		super("Player " + playerUUID.toString() + " already have island ! (id : " + island + " )");
 		
@@ -30,7 +30,7 @@ public class PlayerAlreadyHaveIslandException extends Exception {
 		return playerUUID;
 	}
 
-	public Island getIsland() {
+	public Plot getIsland() {
 		return island;
 	}
 	

@@ -2,18 +2,18 @@ package fr.pumpmyskycore.exceptions;
 
 import java.util.UUID;
 
-import fr.pumpmyskycore.Island;
+import fr.pumpmyskycore.Plot;
 
-public class IslandIsNotEmptyException extends Exception {
+public class PlotIsNotEmptyException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7443197913897442548L;
 	private UUID playerUUID;
-	private Island island;
+	private Plot island;
 	
-	public IslandIsNotEmptyException(UUID playerUUID, Island island) {
+	public PlotIsNotEmptyException(UUID playerUUID, Plot island) {
 		super();
 		this.playerUUID = playerUUID;
 		this.island = island;
@@ -27,7 +27,7 @@ public class IslandIsNotEmptyException extends Exception {
 		return playerUUID;
 	}
 
-	public Island getIsland() {
+	public Plot getIsland() {
 		return island;
 	}
 	

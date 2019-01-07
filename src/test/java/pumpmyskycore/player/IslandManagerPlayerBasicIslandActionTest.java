@@ -10,24 +10,24 @@ import java.util.UUID;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.junit.jupiter.api.Test;
 
-import fr.pumpmyskycore.Island;
-import fr.pumpmyskycore.exceptions.IslandIsNotEmptyException;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import fr.pumpmyskycore.Plot;
+import fr.pumpmyskycore.exceptions.PlotIsNotEmptyException;
+import fr.pumpmyskycore.exceptions.PlayerAlreadyHavePlotException;
+import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestIslandManager;
 
 public class IslandManagerPlayerBasicIslandActionTest {
 
 	@Test
-	public void playerIsOwner() throws IOException, InvalidConfigurationException, PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException {
+	public void playerIsOwner() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
 		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
 		
 		FakePlayer player1 = new FakePlayer(UUID.randomUUID());		
 		FakePlayer player2 = new FakePlayer(UUID.randomUUID());
 		
-		Island is1 = manager.playerCreateIsland(player1);
+		Plot is1 = manager.playerCreateIsland(player1);
 
 		assertTrue(manager.playerIsOwner(player1));
 		assertFalse(manager.playerIsOwner(player2));
@@ -39,13 +39,13 @@ public class IslandManagerPlayerBasicIslandActionTest {
 	}
 	
 	@Test
-	public void playerCorrectlyCreatingIsland() throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException, InvalidConfigurationException {
+	public void playerCorrectlyCreatingIsland() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException {
 		
 		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
 		
 		UUID uuid = UUID.randomUUID();
 		
-		Island is = manager.playerCreateIsland(new FakePlayer(uuid));
+		Plot is = manager.playerCreateIsland(new FakePlayer(uuid));
 		
 		assertEquals(is.getOwner(), uuid.toString());
 		
@@ -56,7 +56,7 @@ public class IslandManagerPlayerBasicIslandActionTest {
 	}
 	
 	@Test
-	public void playerCorrectlyLeavingsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IslandIsNotEmptyException {
+	public void playerCorrectlyLeavingsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, PlotIsNotEmptyException {
 		
 		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
 		
@@ -74,7 +74,7 @@ public class IslandManagerPlayerBasicIslandActionTest {
 	}
 	
 	@Test
-	public void playerHasIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException {
+	public void playerHasIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
 		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
 		
@@ -90,16 +90,16 @@ public class IslandManagerPlayerBasicIslandActionTest {
 	}
 	
 	@Test
-	public void playerGetIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerDoesNotHaveIslandException, PlayerAlreadyHaveIslandException {
+	public void playerGetIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerDoesNotHavePlotException, PlayerAlreadyHavePlotException {
 		
 		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
 		
 		UUID uuid = UUID.randomUUID();
 		FakePlayer player = new FakePlayer(uuid);
 		
-		Island is = manager.playerCreateIsland(new FakePlayer(uuid));
+		Plot is = manager.playerCreateIsland(new FakePlayer(uuid));
 		
-		Island gettedIsland = manager.playerGetIsland(player);
+		Plot gettedIsland = manager.playerGetIsland(player);
 		
 		assertEquals(is.getID(), gettedIsland.getID());
 		

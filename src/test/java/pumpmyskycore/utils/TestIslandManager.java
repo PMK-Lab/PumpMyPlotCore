@@ -6,9 +6,10 @@ import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 
-import fr.pumpmyskycore.IslandManager;
+import fr.pumpmyskycore.PlotLocation;
+import fr.pumpmyskycore.PlotManager;
 
-public class TestIslandManager extends IslandManager<FakePlayer> {
+public class TestIslandManager extends PlotManager<FakePlayer> {
 
 	protected File file;
 	
@@ -36,6 +37,12 @@ public class TestIslandManager extends IslandManager<FakePlayer> {
 
 	public File getFile() {
 		return file;
+	}
+
+	@Override
+	public void pastePlotSchematic(PlotLocation islandLocation) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -9,15 +9,15 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
+import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
 
-public class IslandPurger {
+public class PlotPurger {
 
 	public final static String ISLAND_STRING = "islands";
 	
-	public static IslandPurger init(Path indexPath) throws IOException, InvalidConfigurationException {
+	public static PlotPurger init(Path indexPath) throws IOException, InvalidConfigurationException {
 		
-		File file = new File(indexPath + File.separator + IslandManagerConstant.ISLAND_PURGER_FILE_NAME);			
+		File file = new File(indexPath + File.separator + PlotManagerConstant.ISLAND_PURGER_FILE_NAME);			
 		if(!file.exists()) {
 			file.createNewFile();
 		}
@@ -25,13 +25,13 @@ public class IslandPurger {
 		FileConfiguration fileConf = new YamlConfiguration();
 		fileConf.load(file);
 		
-		return new IslandPurger(file,fileConf);
+		return new PlotPurger(file,fileConf);
 	}
 
 	private File file;
 	private FileConfiguration fileConf;
 
-	private IslandPurger(File f, FileConfiguration fc) throws IOException {
+	private PlotPurger(File f, FileConfiguration fc) throws IOException {
 		
 		this.file = f;
 		this.fileConf = fc;
@@ -53,13 +53,13 @@ public class IslandPurger {
 		
 	}
 	
-	public boolean contains(Island island) {
+	public boolean contains(Plot island) {
 		
 		return this.fileConf.getStringList(ISLAND_STRING).contains(island.getID());
 		
 	}
 	
-	public void addIsland(Island island) throws IOException {
+	public void addIsland(Plot island) throws IOException {
 		
 		List<String> list = this.fileConf.getStringList(ISLAND_STRING);
 		

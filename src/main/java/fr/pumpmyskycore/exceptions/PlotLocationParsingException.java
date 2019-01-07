@@ -1,10 +1,10 @@
 package fr.pumpmyskycore.exceptions;
 
-public class IslandLocationParsingException extends Exception {
+public class PlotLocationParsingException extends Exception {
 
 	private String parsingString;
 	
-	public IslandLocationParsingException(String string) {
+	public PlotLocationParsingException(String string) {
 		super("Impossible to parse \"" + string + "\" to Island ID");
 		this.parsingString = string;
 	}

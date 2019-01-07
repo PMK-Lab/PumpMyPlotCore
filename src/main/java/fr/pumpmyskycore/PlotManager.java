@@ -8,17 +8,17 @@ import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 
-import fr.pumpmyskycore.exceptions.IslandIsNotEmptyException;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlotIsNotEmptyException;
+import fr.pumpmyskycore.exceptions.PlayerAlreadyHavePlotException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
-import fr.pumpmyskycore.exceptions.PlayerIsNotMemberIslandException;
-import fr.pumpmyskycore.exceptions.RestrictActionToOwnerIslandException;
+import fr.pumpmyskycore.exceptions.PlayerIsNotMemberPlotException;
+import fr.pumpmyskycore.exceptions.RestrictActionToPlotOwnerException;
 
-public abstract class IslandManager<T> implements IIslandManager<T>{
+public abstract class PlotManager<T> implements IPlotManager<T>{
 
-	public abstract class IslandManagerConstant {
+	public abstract class PlotManagerConstant {
 		
 		public static final int ISLAND_SIZE = 4096; // 16 * 256 chunk per island
 		public static final int ISLAND_SIDE_NUM = 80; 	// 80*80 = 6400 islands
@@ -32,18 +32,18 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	}
 	
 	protected Path islandPath;
-	protected IslandIndex islandIndex;
-	protected IslandPurger islandPurger;
-	protected IslandInvites islandInvites;
+	protected PlotIndex islandIndex;
+	protected PlotPurger islandPurger;
+	protected PlotInvites islandInvites;
 	
-	public IslandManager(Path configPath) throws IOException, InvalidConfigurationException {
+	public PlotManager(Path configPath) throws IOException, InvalidConfigurationException {
 		
-		this.islandPath = new File(configPath + File.separator + IslandManagerConstant.ISLAND_FOLDER_NAME).toPath();		
+		this.islandPath = new File(configPath + File.separator + PlotManagerConstant.ISLAND_FOLDER_NAME).toPath();		
 		
 		this.initIslandFolder();
-		this.islandIndex = IslandIndex.init(this.islandPath);
-		this.islandPurger = IslandPurger.init(this.islandPath);
-		this.islandInvites = IslandInvites.init(this);
+		this.islandIndex = PlotIndex.init(this.islandPath);
+		this.islandPurger = PlotPurger.init(this.islandPath);
+		this.islandInvites = PlotInvites.init(this);
 		
 	}
 
@@ -55,7 +55,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			file.mkdir();
 		}
 		
-		for (int x = 1; x <= IslandManagerConstant.ISLAND_SIDE_NUM ; x++) {
+		for (int x = 1; x <= PlotManagerConstant.ISLAND_SIDE_NUM ; x++) {
 			
 			File f = new File(this.islandPath + File.separator + x);
 			
@@ -69,43 +69,43 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public Island playerCreateIsland(T player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, IOException {
+	public Plot playerCreateIsland(T player) throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException {
 		
 		if(this.playerHasIsland(player)) {
 			
-			throw new PlayerAlreadyHaveIslandException(this.getMinecraftUUID(player), this.playerGetIsland(player));
+			throw new PlayerAlreadyHavePlotException(this.getMinecraftUUID(player), this.playerGetIsland(player));
 			
 		}
 		
-		IslandLocation freeLoc = this.islandIndex.createFirstFreeLocFile(this.islandPath);
+		PlotLocation freeLoc = this.islandIndex.createFirstFreeLocFile(this.islandPath);
 		
 		this.islandIndex.setIslandLocation(this.getMinecraftUUID(player), freeLoc);
 		
-		return Island.create(this.islandPath,freeLoc,this.getMinecraftUUID(player));
+		return Plot.create(this.islandPath,freeLoc,this.getMinecraftUUID(player));
 		
 	}
 	
-	public Island playerGetIsland(T player) throws PlayerDoesNotHaveIslandException {
+	public Plot playerGetIsland(T player) throws PlayerDoesNotHavePlotException {
 		
 		if(!this.playerHasIsland(player)) {
 			
-			throw new PlayerDoesNotHaveIslandException(this.getMinecraftUUID(player));
+			throw new PlayerDoesNotHavePlotException(this.getMinecraftUUID(player));
 			
 		}
 		
-		return Island.get(this.islandPath,this.islandIndex.getIslandLocation(this.getMinecraftUUID(player)));
+		return Plot.get(this.islandPath,this.islandIndex.getIslandLocation(this.getMinecraftUUID(player)));
 		
 	}
 	
-	public boolean playerLeaveIsland(T player) throws PlayerDoesNotHaveIslandException, IslandIsNotEmptyException, IOException {
+	public boolean playerLeaveIsland(T player) throws PlayerDoesNotHavePlotException, PlotIsNotEmptyException, IOException {
 		
 		if(!this.playerHasIsland(player)) {
 			
-			throw new PlayerDoesNotHaveIslandException(this.getMinecraftUUID(player));
+			throw new PlayerDoesNotHavePlotException(this.getMinecraftUUID(player));
 			
 		}
 		
-		Island island = this.playerGetIsland(player);
+		Plot island = this.playerGetIsland(player);
 		
 		if(this.getMinecraftUUID(player).toString().equals(island.getOwner())) {
 			
@@ -121,7 +121,7 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 				
 			}else {
 				
-				throw new IslandIsNotEmptyException(this.getMinecraftUUID(player),island);
+				throw new PlotIsNotEmptyException(this.getMinecraftUUID(player),island);
 				
 			}
 			
@@ -135,9 +135,9 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerInviteIsland(T invitor, T invited) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerAlreadyInvited, IOException {
+	public void playerInviteIsland(T invitor, T invited) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, IOException {
 		
-		Island island = this.playerGetIsland(invitor);
+		Plot island = this.playerGetIsland(invitor);
 		
 		if(this.playerIsOwner(invitor)) {
 			
@@ -145,15 +145,15 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}else {
 			
-			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(invitor));
+			throw new RestrictActionToPlotOwnerException(island,this.getMinecraftUUID(invitor));
 			
 		}
 		
 	}
 	
-	public void playerUninviteIsland(T uninvitor, T uninvited) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerDoesNotInvited, IOException {
+	public void playerUninviteIsland(T uninvitor, T uninvited) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerDoesNotInvited, IOException {
 		
-		Island island = this.playerGetIsland(uninvitor);
+		Plot island = this.playerGetIsland(uninvitor);
 		
 		if(this.playerIsOwner(uninvitor)) {
 			
@@ -161,21 +161,21 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}else {
 			
-			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(uninvitor));
+			throw new RestrictActionToPlotOwnerException(island,this.getMinecraftUUID(uninvitor));
 			
 		}
 		
 	}
 	
-	public void playerAcceptInviteIsland(T joiner, T inviter) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException, PlayerDoesNotInvited, IOException {
+	public void playerAcceptInviteIsland(T joiner, T inviter) throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, PlayerDoesNotInvited, IOException {
 		
 		if(this.playerHasIsland(joiner)) {
 			
-			throw new PlayerAlreadyHaveIslandException(this.getMinecraftUUID(joiner), this.playerGetIsland(joiner));
+			throw new PlayerAlreadyHavePlotException(this.getMinecraftUUID(joiner), this.playerGetIsland(joiner));
 			
 		}else {			
 			
-			Island islandInvitor = this.playerGetIsland(inviter);
+			Plot islandInvitor = this.playerGetIsland(inviter);
 			UUID joinerUUID = this.getMinecraftUUID(joiner);
 			
 			if(this.islandInvites.isInvites(joinerUUID, islandInvitor)) {
@@ -198,9 +198,9 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerRefuseInviteIsland(T refuser, T inviter) throws PlayerDoesNotHaveIslandException, PlayerDoesNotInvited, IOException {
+	public void playerRefuseInviteIsland(T refuser, T inviter) throws PlayerDoesNotHavePlotException, PlayerDoesNotInvited, IOException {
 		
-		Island islandInvitor = this.playerGetIsland(inviter);
+		Plot islandInvitor = this.playerGetIsland(inviter);
 		UUID refuserUUID = this.getMinecraftUUID(refuser);
 		
 		if(this.islandInvites.isInvites(refuserUUID, islandInvitor)) {
@@ -216,9 +216,9 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 	
-	public void playerKickIsland(T owner, T target) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerIsNotMemberIslandException, IOException {
+	public void playerKickIsland(T owner, T target) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerIsNotMemberPlotException, IOException {
 		
-		Island island = this.playerGetIsland(owner);	
+		Plot island = this.playerGetIsland(owner);	
 		
 		if(this.playerIsOwner(owner)) {
 			
@@ -231,21 +231,21 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 				
 			}else {
 				
-				throw new PlayerIsNotMemberIslandException(this.getMinecraftUUID(target),island);
+				throw new PlayerIsNotMemberPlotException(this.getMinecraftUUID(target),island);
 				
 			}
 			
 		}else {
 			
-			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(owner));
+			throw new RestrictActionToPlotOwnerException(island,this.getMinecraftUUID(owner));
 			
 		}
 		
 	}
 	
-	public void playerSetHomeIsland(T setter, IslandHome loc) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, IOException {
+	public void playerSetHomeIsland(T setter, PlotHome loc) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, IOException {
 		
-		Island island = this.playerGetIsland(setter);
+		Plot island = this.playerGetIsland(setter);
 		
 		if(this.playerIsOwner(setter)) {
 			
@@ -254,14 +254,14 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 			
 		}else {
 			
-			throw new RestrictActionToOwnerIslandException(island,this.getMinecraftUUID(setter));
+			throw new RestrictActionToPlotOwnerException(island,this.getMinecraftUUID(setter));
 			
 		}
 		
 	}
 	
 	
-	public boolean playerIsOwner(Island island, T player) {
+	public boolean playerIsOwner(Plot island, T player) {
 		
 		if(island.getOwner().equals(this.getMinecraftUUID(player).toString())) {
 			
@@ -277,11 +277,11 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		try {
 			
-			Island island = this.playerGetIsland(player);
+			Plot island = this.playerGetIsland(player);
 			
 			return this.playerIsOwner(island, player);
 			
-		} catch (PlayerDoesNotHaveIslandException e) {
+		} catch (PlayerDoesNotHavePlotException e) {
 			
 			return false;
 			
@@ -295,9 +295,9 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 	}
 
-	public Island getIsland(IslandLocation parseFromString) {
+	public Plot getIsland(PlotLocation parseFromString) {
 		
-		return Island.get(this.islandPath, parseFromString);
+		return Plot.get(this.islandPath, parseFromString);
 		
 	}
 
@@ -305,15 +305,15 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		return islandPath;
 	}
 
-	public IslandIndex getIslandIndex() {
+	public PlotIndex getIslandIndex() {
 		return islandIndex;
 	}
 
-	public IslandPurger getIslandPurger() {
+	public PlotPurger getIslandPurger() {
 		return islandPurger;
 	}
 
-	public IslandInvites getIslandInvites() {
+	public PlotInvites getIslandInvites() {
 		return islandInvites;
 	}
 	

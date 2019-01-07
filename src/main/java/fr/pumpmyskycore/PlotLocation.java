@@ -3,9 +3,9 @@ package fr.pumpmyskycore;
 import java.io.File;
 import java.nio.file.Path;
 
-import fr.pumpmyskycore.exceptions.IslandLocationParsingException;
+import fr.pumpmyskycore.exceptions.PlotLocationParsingException;
 
-public class IslandLocation {
+public class PlotLocation {
 
 	public static final String X_STRING = ".x";
 	public static final String Z_STRING = ".z";
@@ -13,7 +13,7 @@ public class IslandLocation {
 	private int x;
 	private int z;
 	
-	public IslandLocation(int x, int z) {
+	public PlotLocation(int x, int z) {
 		this.x = x;
 		this.z = z;
 	}
@@ -30,7 +30,7 @@ public class IslandLocation {
 		
 	}
 	
-	public static IslandLocation parseFromString(String string) throws IslandLocationParsingException {
+	public static PlotLocation parseFromString(String string) throws PlotLocationParsingException {
 		
 		if(string.contains("_")) {
 			
@@ -42,18 +42,18 @@ public class IslandLocation {
 				int x = Integer.parseInt(stringX);
 				int z = Integer.parseInt(stringZ);
 				
-				return new IslandLocation(x, z);
+				return new PlotLocation(x, z);
 				
 			} catch (Exception e) {
 				
-				throw new IslandLocationParsingException(string);
+				throw new PlotLocationParsingException(string);
 				
 			}
 			
 			
 			
 		}else {
-			throw new IslandLocationParsingException(string);
+			throw new PlotLocationParsingException(string);
 		}
 		
 	}
