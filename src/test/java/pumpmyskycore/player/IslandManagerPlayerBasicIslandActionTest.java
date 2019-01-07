@@ -51,7 +51,7 @@ public class IslandManagerPlayerBasicIslandActionTest {
 		
 		assertTrue(manager.getIslandIndex().contains(uuid));
 		assertEquals(manager.getIslandIndex().getIslandLocation(uuid).getX(), is.getIdX());		
-		assertEquals(manager.getIslandIndex().getIslandLocation(uuid).getY(), is.getIdY());		
+		assertEquals(manager.getIslandIndex().getIslandLocation(uuid).getZ(), is.getIdZ());		
 		
 	}
 	
