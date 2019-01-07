@@ -218,13 +218,11 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 	
 	public void playerKickIsland(T owner, T target) throws PlayerDoesNotHaveIslandException, RestrictActionToOwnerIslandException, PlayerIsNotMemberIslandException, IOException {
 		
-		Island island = this.playerGetIsland(owner);
+		Island island = this.playerGetIsland(owner);	
 		
 		if(this.playerIsOwner(owner)) {
 			
-			List<String> members = island.getMembersList();
-			
-			if(members.contains(this.getMinecraftUUID(target).toString())) {
+			if(island.containesMember(this.getMinecraftUUID(target))) {
 				
 				island.removeMember(this.getMinecraftUUID(target));
 				island.save();
@@ -236,7 +234,6 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 				throw new PlayerIsNotMemberIslandException(this.getMinecraftUUID(target),island);
 				
 			}
-						
 			
 		}else {
 			
