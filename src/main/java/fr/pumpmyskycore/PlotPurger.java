@@ -13,11 +13,11 @@ import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
 
 public class PlotPurger {
 
-	public final static String ISLAND_STRING = "islands";
+	public final static String ISLAND_STRING = "plots";
 	
 	public static PlotPurger init(Path indexPath) throws IOException, InvalidConfigurationException {
 		
-		File file = new File(indexPath + File.separator + PlotManagerConstant.ISLAND_PURGER_FILE_NAME);			
+		File file = new File(indexPath + File.separator + PlotManagerConstant.PLOT_PURGER_FILE_NAME);			
 		if(!file.exists()) {
 			file.createNewFile();
 		}

@@ -15,19 +15,19 @@ import fr.pumpmyskycore.exceptions.PlotIsNotEmptyException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHavePlotException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
 import pumpmyskycore.utils.FakePlayer;
-import pumpmyskycore.utils.TestIslandManager;
+import pumpmyskycore.utils.TestPlotManager;
 
-public class IslandManagerPlayerBasicIslandActionTest {
+public class PlotManagerPlayerBasicIslandActionTest {
 
 	@Test
 	public void playerIsOwner() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
-		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
 		FakePlayer player1 = new FakePlayer(UUID.randomUUID());		
 		FakePlayer player2 = new FakePlayer(UUID.randomUUID());
 		
-		Plot is1 = manager.playerCreateIsland(player1);
+		Plot is1 = manager.playerCreatePlot(player1);
 
 		assertTrue(manager.playerIsOwner(player1));
 		assertFalse(manager.playerIsOwner(player2));
@@ -41,65 +41,65 @@ public class IslandManagerPlayerBasicIslandActionTest {
 	@Test
 	public void playerCorrectlyCreatingIsland() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException {
 		
-		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
 		UUID uuid = UUID.randomUUID();
 		
-		Plot is = manager.playerCreateIsland(new FakePlayer(uuid));
+		Plot is = manager.playerCreatePlot(new FakePlayer(uuid));
 		
 		assertEquals(is.getOwner(), uuid.toString());
 		
-		assertTrue(manager.getIslandIndex().contains(uuid));
-		assertEquals(manager.getIslandIndex().getIslandLocation(uuid).getX(), is.getIdX());		
-		assertEquals(manager.getIslandIndex().getIslandLocation(uuid).getZ(), is.getIdZ());		
+		assertTrue(manager.getPlotIndex().contains(uuid));
+		assertEquals(manager.getPlotIndex().getPlotLocation(uuid).getX(), is.getIdX());		
+		assertEquals(manager.getPlotIndex().getPlotLocation(uuid).getZ(), is.getIdZ());		
 		
 	}
 	
 	@Test
 	public void playerCorrectlyLeavingsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, PlotIsNotEmptyException {
 		
-		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
 		UUID uuid = UUID.randomUUID();
 		FakePlayer player = new FakePlayer(uuid);
 		
-		manager.playerCreateIsland(player);
+		manager.playerCreatePlot(player);
 		
-		assertTrue(manager.playerHasIsland(player));
+		assertTrue(manager.playerHasPlot(player));
 		
-		manager.playerLeaveIsland(player);
+		manager.playerLeavePlot(player);
 		
-		assertFalse(manager.playerHasIsland(player));
+		assertFalse(manager.playerHasPlot(player));
 		
 	}
 	
 	@Test
 	public void playerHasIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
-		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
 		UUID uuid = UUID.randomUUID();
 		FakePlayer player = new FakePlayer(uuid);
 		
-		assertFalse(manager.playerHasIsland(player));
+		assertFalse(manager.playerHasPlot(player));
 		
-		manager.playerCreateIsland(player);
+		manager.playerCreatePlot(player);
 		
-		assertTrue(manager.playerHasIsland(player));		
+		assertTrue(manager.playerHasPlot(player));		
 		
 	}
 	
 	@Test
 	public void playerGetIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerDoesNotHavePlotException, PlayerAlreadyHavePlotException {
 		
-		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
 		UUID uuid = UUID.randomUUID();
 		FakePlayer player = new FakePlayer(uuid);
 		
-		Plot is = manager.playerCreateIsland(new FakePlayer(uuid));
+		Plot is = manager.playerCreatePlot(new FakePlayer(uuid));
 		
-		Plot gettedIsland = manager.playerGetIsland(player);
+		Plot gettedIsland = manager.playerGetPlot(player);
 		
 		assertEquals(is.getID(), gettedIsland.getID());
 		

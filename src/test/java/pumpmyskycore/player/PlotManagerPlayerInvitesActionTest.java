@@ -16,47 +16,47 @@ import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
 import fr.pumpmyskycore.exceptions.RestrictActionToPlotOwnerException;
 import pumpmyskycore.utils.FakePlayer;
-import pumpmyskycore.utils.TestIslandManager;
+import pumpmyskycore.utils.TestPlotManager;
 
-public class IslandManagerPlayerInvitesActionTest {
+public class PlotManagerPlayerInvitesActionTest {
 
 	@Test
 	public void playerInviteIsland() throws IOException, InvalidConfigurationException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerAlreadyHavePlotException {
 		
-		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
 		FakePlayer invitor = new FakePlayer(UUID.randomUUID());		
 		FakePlayer target = new FakePlayer(UUID.randomUUID());
 		
-		Plot island = manager.playerCreateIsland(invitor);
+		Plot island = manager.playerCreatePlot(invitor);
 		
-		assertFalse(manager.getIslandInvites().isInvites(target.getUuid(), island));
+		assertFalse(manager.getPlotInvites().isInvites(target.getUuid(), island));
 		
-		manager.playerInviteIsland(invitor, target);
+		manager.playerInvitePlot(invitor, target);
 		
-		assertTrue(manager.getIslandInvites().isInvites(target.getUuid(), island));
+		assertTrue(manager.getPlotInvites().isInvites(target.getUuid(), island));
 		
 	}
 	
 	@Test
 	public void playerUninviteIsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerDoesNotInvited {
 		
-		TestIslandManager manager = TestIslandManager.initManager(this.getClass());
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
 		FakePlayer invitor = new FakePlayer(UUID.randomUUID());		
 		FakePlayer target = new FakePlayer(UUID.randomUUID());
 		
-		Plot island = manager.playerCreateIsland(invitor);
+		Plot island = manager.playerCreatePlot(invitor);
 		
-		assertFalse(manager.getIslandInvites().isInvites(target.getUuid(), island));
+		assertFalse(manager.getPlotInvites().isInvites(target.getUuid(), island));
 		
-		manager.playerInviteIsland(invitor, target);
+		manager.playerInvitePlot(invitor, target);
 		
-		assertTrue(manager.getIslandInvites().isInvites(target.getUuid(), island));
+		assertTrue(manager.getPlotInvites().isInvites(target.getUuid(), island));
 		
-		manager.playerUninviteIsland(invitor, target);
+		manager.playerUninvitePlot(invitor, target);
 		
-		assertFalse(manager.getIslandInvites().isInvites(target.getUuid(), island));
+		assertFalse(manager.getPlotInvites().isInvites(target.getUuid(), island));
 		
 	}
 	

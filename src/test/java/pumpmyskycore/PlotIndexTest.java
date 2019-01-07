@@ -16,10 +16,10 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import fr.pumpmyskycore.PlotIndex;
 import fr.pumpmyskycore.PlotLocation;
 import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
-import pumpmyskycore.utils.TestIslandManager;
+import pumpmyskycore.utils.TestPlotManager;
 
 @TestInstance(Lifecycle.PER_CLASS)
-public class IslandIndexTest {
+public class PlotIndexTest {
 	
 	private File file;
 	
@@ -33,21 +33,21 @@ public class IslandIndexTest {
 	@Test
 	public void returnCorrectIslandLocatioonOnCreatingFirstFreeLocFile() throws IOException, InvalidConfigurationException {
 		
-		TestIslandManager manager = new TestIslandManager(this.file);
+		TestPlotManager manager = new TestPlotManager(this.file);
 		
 		PlotLocation loc = null;
 		
 		for (int x = 1; x <= 3 ; x++) {
 			
-			for (int z = 1; z <= PlotManagerConstant.ISLAND_SIDE_NUM ; z++) {
+			for (int z = 1; z <= PlotManagerConstant.PLOT_SIDE_NUM ; z++) {
 				
-				loc = manager.getIslandIndex().createFirstFreeLocFile(manager.getIslandPath());				
+				loc = manager.getPlotIndex().createFirstFreeLocFile(manager.getPlotPath());				
 				System.out.println(x + ":" + z + "\t" + loc);
 				
 				assertEquals(loc.getX(),x);
 				assertEquals(loc.getZ(),z);
 				
-				File f = new File(manager.getIslandPath() + File.separator + x + File.separator + z);
+				File f = new File(manager.getPlotPath() + File.separator + x + File.separator + z);
 				assertTrue(f.exists());
 				
 			}
@@ -56,10 +56,10 @@ public class IslandIndexTest {
 		
 		assertFalse(loc == null);
 		
-		File f = new File(manager.getIslandPath() + File.separator + 2 + File.separator + 50);
+		File f = new File(manager.getPlotPath() + File.separator + 2 + File.separator + 50);
 		assertTrue(f.delete());
 		
-		loc = manager.getIslandIndex().createFirstFreeLocFile(manager.getIslandPath());				
+		loc = manager.getPlotIndex().createFirstFreeLocFile(manager.getPlotPath());				
 		System.out.println(2 + ":" + 50 + "\t" + loc);
 		
 		assertEquals(loc.getX(),2);

@@ -22,7 +22,7 @@ public class PlotInvites {
 	
 	public static PlotInvites init(PlotManager<?> manager) throws IOException, InvalidConfigurationException {
 		
-		File file = new File(manager.islandPath + File.separator + PlotManagerConstant.ISLAND_INVITES_FILE_NAME);			
+		File file = new File(manager.plotPath + File.separator + PlotManagerConstant.PLOT_INVITES_FILE_NAME);			
 		if(!file.exists()) {
 			file.createNewFile();
 		}
@@ -95,21 +95,20 @@ public class PlotInvites {
 		
 		if(this.contains(uuid)) {
 			
-			List<Plot> islands = new ArrayList<Plot>();
+			List<Plot> invites = new ArrayList<Plot>();
 			
-			for (String islandID : this.fileConf.getStringList(INVITES_STRING + uuid.toString())) {
+			for (String plotID : this.fileConf.getStringList(INVITES_STRING + uuid.toString())) {
 				
 				try {
-					islands.add(manager.getIsland(PlotLocation.parseFromString(islandID)));
+					invites.add(manager.getPlot(PlotLocation.parseFromString(plotID)));
 				} catch (PlotLocationParsingException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					continue;
 				}
 				
 			}
 			
-			return islands;
+			return invites;
 			
 		}
 		
@@ -117,33 +116,33 @@ public class PlotInvites {
 		
 	}
 	
-	public boolean isInvites(UUID uuid, Plot island) {
+	public boolean isInvites(UUID uuid, Plot plot) {
 		
-		return this.getPlayerInvites(uuid).contains(island);		
+		return this.getPlayerInvites(uuid).contains(plot);		
 		
 	}
 	
-	public void addInvites(UUID uuid, Plot island) throws PlayerAlreadyInvited, IOException {
+	public void addInvites(UUID uuid, Plot plot) throws PlayerAlreadyInvited, IOException {
 		
-		if(this.isInvites(uuid, island)) {
+		if(this.isInvites(uuid, plot)) {
 			
-			throw new PlayerAlreadyInvited(uuid,island);
+			throw new PlayerAlreadyInvited(uuid,plot);
 			
 		}
 		
 		List<Plot> invites = this.getPlayerInvites(uuid);
 		
-		invites.add(island);
+		invites.add(plot);
 		
 		this.setPlayerInvites(uuid, invites);
 		
 	}
 	
-	public void removeInvites(UUID uuid, Plot island) throws PlayerDoesNotInvited, IOException {
+	public void removeInvites(UUID uuid, Plot plot) throws PlayerDoesNotInvited, IOException {
 		
-		if(!this.isInvites(uuid, island)) {
+		if(!this.isInvites(uuid, plot)) {
 			
-			throw new PlayerDoesNotInvited(uuid,island);
+			throw new PlayerDoesNotInvited(uuid,plot);
 			
 		}
 		
@@ -151,7 +150,7 @@ public class PlotInvites {
 		
 		for (Iterator<Plot> iterators = invites.iterator(); iterators.hasNext();) {
 			
-			if(iterators.next().equals(island)) {
+			if(iterators.next().equals(plot)) {
 				iterators.remove();
 				break;
 			}

@@ -1,6 +1,6 @@
 package pumpmyskycore;
 
-public class IslandTest {
+public class PlotTest {
 
 	
 	

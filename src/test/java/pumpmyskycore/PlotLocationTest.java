@@ -11,7 +11,7 @@ import org.junit.jupiter.api.function.Executable;
 import fr.pumpmyskycore.PlotLocation;
 import fr.pumpmyskycore.exceptions.PlotLocationParsingException;
 
-public class IslandLocationTest {
+public class PlotLocationTest {
 
 	@Test
 	public void constantShouldHaveRightValues() {

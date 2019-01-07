@@ -9,11 +9,11 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import fr.pumpmyskycore.PlotLocation;
 import fr.pumpmyskycore.PlotManager;
 
-public class TestIslandManager extends PlotManager<FakePlayer> {
+public class TestPlotManager extends PlotManager<FakePlayer> {
 
 	protected File file;
 	
-	public TestIslandManager(File file) throws IOException, InvalidConfigurationException {
+	public TestPlotManager(File file) throws IOException, InvalidConfigurationException {
 		super(file.toPath());
 		this.file = file;
 	}
@@ -25,13 +25,13 @@ public class TestIslandManager extends PlotManager<FakePlayer> {
 		
 	}
 	
-	public static TestIslandManager initManager(Class<?> c) throws IOException, InvalidConfigurationException {
+	public static TestPlotManager initManager(Class<?> c) throws IOException, InvalidConfigurationException {
 	
 		File file = new File("TEST" + File.separator + c.getSimpleName() + "_" + System.currentTimeMillis());
 		
 		file.mkdir();
 			
-		return new TestIslandManager(file);	
+		return new TestPlotManager(file);	
 		
 	}
 

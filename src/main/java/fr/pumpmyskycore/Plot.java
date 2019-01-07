@@ -21,18 +21,18 @@ public class Plot {
 		File file = new File(path + File.separator + freeLoc.toPath());
 		FileConfiguration fileConf = YamlConfiguration.loadConfiguration(file);
 		
-		fileConf.set("island.owner",uniqueId.toString());
+		fileConf.set("plot.owner",uniqueId.toString());
 		
-		fileConf.set("island.name","mon ile" + freeLoc.getX() + "|" + freeLoc.getZ());
+		fileConf.set("plot.name","mon ile" + freeLoc.getX() + "|" + freeLoc.getZ());
 		
-		fileConf.set("island.id.x", freeLoc.getX());
-		fileConf.set("island.id.z", freeLoc.getZ());
+		fileConf.set("plot.id.x", freeLoc.getX());
+		fileConf.set("plot.id.z", freeLoc.getZ());
 		
-		fileConf.set("island.home.x", (freeLoc.getX() * PlotManagerConstant.ISLAND_SIZE) - (PlotManagerConstant.ISLAND_SIZE/2) + 0.5);
-		fileConf.set("island.home.y", 60);
-		fileConf.set("island.home.z", (freeLoc.getZ() * PlotManagerConstant.ISLAND_SIZE) - (PlotManagerConstant.ISLAND_SIZE/2) + 0.5);
+		fileConf.set("plot.home.x", (freeLoc.getX() * PlotManagerConstant.PLOT_SIZE) - (PlotManagerConstant.PLOT_SIZE/2) + 0.5);
+		fileConf.set("plot.home.y", 60);
+		fileConf.set("plot.home.z", (freeLoc.getZ() * PlotManagerConstant.PLOT_SIZE) - (PlotManagerConstant.PLOT_SIZE/2) + 0.5);
 		
-		fileConf.set("island.members", new ArrayList<String>());
+		fileConf.set("plot.members", new ArrayList<String>());
 		
 		fileConf.save(file);
 		
@@ -43,14 +43,14 @@ public class Plot {
 		
 	}
 	
-	public static Plot get(Path path,PlotLocation islandLocation) {
+	public static Plot get(Path path,PlotLocation plotLocation) {
 		
-		File file = new File(path + File.separator + islandLocation.toPath());
+		File file = new File(path + File.separator + plotLocation.toPath());
 		
-		Plot island = new Plot(file);
-		island.load();
+		Plot plot = new Plot(file);
+		plot.load();
 		
-		return island;
+		return plot;
 		
 	}
 	
@@ -82,18 +82,18 @@ public class Plot {
 		
 		YamlConfiguration yaml = YamlConfiguration.loadConfiguration(this.file);
 			
-		this.owner = yaml.getString("island.owner");
+		this.owner = yaml.getString("plot.owner");
 		
-		this.name = yaml.getString("island.name");
+		this.name = yaml.getString("plot.name");
 				
-		this.homeX = yaml.getDouble("island.home.x");
-		this.homeY = yaml.getDouble("island.home.y");
-		this.homeZ = yaml.getDouble("island.home.z");
+		this.homeX = yaml.getDouble("plot.home.x");
+		this.homeY = yaml.getDouble("plot.home.y");
+		this.homeZ = yaml.getDouble("plot.home.z");
 		
-		this.idX = yaml.getInt("island.id.x");
-		this.idZ = yaml.getInt("island.id.z");
+		this.idX = yaml.getInt("plot.id.x");
+		this.idZ = yaml.getInt("plot.id.z");
 		
-		this.membersList = yaml.getStringList("island.members");
+		this.membersList = yaml.getStringList("plot.members");
 		
 		this.fileYaml = yaml;
 		
@@ -123,7 +123,7 @@ public class Plot {
 	
 	public void purge() throws IOException {
 		
-		this.fileYaml.set("island.owner", "remover");
+		this.fileYaml.set("plot.owner", "remover");
 		this.fileYaml.save(this.file);
 		
 	}
@@ -214,7 +214,7 @@ public class Plot {
 
 	public void setHome(PlotHome loc) {
 		
-		if((loc.getX() > ((this.idX + 1) * PlotManagerConstant.ISLAND_SIZE) && loc.getX() < (this.idX * PlotManagerConstant.ISLAND_SIZE)) && (loc.getZ() > ((this.idZ + 1) * PlotManagerConstant.ISLAND_SIZE) && loc.getZ() < (this.idZ * PlotManagerConstant.ISLAND_SIZE))){
+		if((loc.getX() > ((this.idX + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getX() < (this.idX * PlotManagerConstant.PLOT_SIZE)) && (loc.getZ() > ((this.idZ + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getZ() < (this.idZ * PlotManagerConstant.PLOT_SIZE))){
 			
 			
 			
