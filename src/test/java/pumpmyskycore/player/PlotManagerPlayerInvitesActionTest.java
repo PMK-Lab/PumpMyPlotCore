@@ -20,7 +20,7 @@ import pumpmyskycore.utils.TestPlotManager;
 
 public class PlotManagerPlayerInvitesActionTest {
 
-	@Test
+	//@Test
 	public void playerInviteIsland() throws IOException, InvalidConfigurationException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerAlreadyHavePlotException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
@@ -38,7 +38,7 @@ public class PlotManagerPlayerInvitesActionTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void playerUninviteIsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerDoesNotInvited {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());

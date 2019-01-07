@@ -14,9 +14,9 @@ import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestPlotManager;
 
-public class PlotManagerPlayerBasicIslandActionTest {
+public class PlotManagerPlayerBasicActionTest {
 
-	@Test
+	//@Test
 	public void playerIsOwner() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
@@ -35,24 +35,7 @@ public class PlotManagerPlayerBasicIslandActionTest {
 		
 	}
 	
-	@Test
-	public void playerCorrectlyCreatingIsland() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException {
-		
-		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
-		
-		UUID uuid = UUID.randomUUID();
-		
-		Plot is = manager.playerCreatePlot(new FakePlayer(uuid));
-		
-		assertEquals(is.getOwner(), uuid.toString());
-		
-		assertTrue(manager.getPlotIndex().contains(uuid));
-		assertEquals(manager.getPlotIndex().getPlotLocation(uuid).getX(), is.getIdX());		
-		assertEquals(manager.getPlotIndex().getPlotLocation(uuid).getZ(), is.getIdZ());		
-		
-	}
-	
-	@Test
+	//@Test
 	public void playerCorrectlyLeavingsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, PlotIsNotEmptyException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
@@ -70,7 +53,7 @@ public class PlotManagerPlayerBasicIslandActionTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void playerHasIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
@@ -83,22 +66,6 @@ public class PlotManagerPlayerBasicIslandActionTest {
 		manager.playerCreatePlot(player);
 		
 		assertTrue(manager.playerHasPlot(player));		
-		
-	}
-	
-	@Test
-	public void playerGetIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerDoesNotHavePlotException, PlayerAlreadyHavePlotException {
-		
-		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
-		
-		UUID uuid = UUID.randomUUID();
-		FakePlayer player = new FakePlayer(uuid);
-		
-		Plot is = manager.playerCreatePlot(new FakePlayer(uuid));
-		
-		Plot gettedIsland = manager.playerGetPlot(player);
-		
-		assertEquals(is.getID(), gettedIsland.getID());
 		
 	}
 	
