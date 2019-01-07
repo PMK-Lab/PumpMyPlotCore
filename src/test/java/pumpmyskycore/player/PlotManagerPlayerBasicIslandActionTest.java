@@ -1,6 +1,5 @@
 package pumpmyskycore.player;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -8,8 +7,6 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
-import org.junit.jupiter.api.Test;
-
 import fr.pumpmyskycore.Plot;
 import fr.pumpmyskycore.exceptions.PlotIsNotEmptyException;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHavePlotException;
