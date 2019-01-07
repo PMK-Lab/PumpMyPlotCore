@@ -249,7 +249,8 @@ public abstract class IslandManager<T> implements IIslandManager<T>{
 		
 		if(this.playerIsOwner(setter)) {
 			
-			
+			island.setHome(loc);
+			island.save();
 			
 		}else {
 			
