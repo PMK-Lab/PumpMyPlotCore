@@ -19,4 +19,40 @@ import pumpmyskycore.utils.TestPlotManager;
 
 public class PlayerCreatePlotTest {
 
+	@Test
+	public void playerCorrectlyCreatingPlot() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		UUID uuid = UUID.randomUUID();
+		FakePlayer player = new FakePlayer(uuid);
+		
+		Plot plot = manager.playerCreatePlot(player);
+		
+		assertEquals(plot.getOwner(), uuid.toString());
+		
+		assertTrue(manager.getPlotIndex().contains(uuid));
+		assertEquals(manager.getPlotIndex().getPlotLocation(uuid).getX(), plot.getIdX());		
+		assertEquals(manager.getPlotIndex().getPlotLocation(uuid).getZ(), plot.getIdZ());		
+		
+	}
+	
+	@Test
+	public void playerCantCreatePlotIfAlreadyHaveOne() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		UUID uuid = UUID.randomUUID();
+		FakePlayer player = new FakePlayer(uuid);		
+		
+		Plot plot = manager.playerCreatePlot(player);
+		
+		Executable exec = () -> manager.playerCreatePlot(player);
+		
+		assertThrows(PlayerAlreadyHavePlotException.class, exec);
+		
+	}
+	
+	
+	
 }
