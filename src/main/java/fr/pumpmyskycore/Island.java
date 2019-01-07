@@ -103,6 +103,12 @@ public class Island {
 		this.membersList.add(uniqueId.toString());		
 	}
 	
+	public boolean containesMember(UUID uniqueID) {
+		
+		return this.getMembersList().contains(uniqueID.toString());
+		
+	}
+	
 	public void removeMember(UUID uniqueId) {
 		
 		for (Iterator<String> string = membersList.iterator(); string.hasNext();) {
