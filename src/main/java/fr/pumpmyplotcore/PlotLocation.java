@@ -30,6 +30,11 @@ public class PlotLocation {
 		
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof PlotLocation && this.x == ((PlotLocation) obj).getX() && this.z == ((PlotLocation) obj).getZ();
+	}
+	
 	public static PlotLocation parseFromString(String string) throws PlotLocationParsingException {
 		
 		if(string.contains("_")) {
