@@ -36,10 +36,10 @@ public class Plot {
 		
 		fileConf.save(file);
 		
-		Plot island = new Plot(file);
-		island.load();
+		Plot plot = new Plot(file);
+		plot.load();
 		
-		return island;
+		return plot;
 		
 	}
 	
