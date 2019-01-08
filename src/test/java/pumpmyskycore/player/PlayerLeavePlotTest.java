@@ -56,7 +56,7 @@ public class PlayerLeavePlotTest {
 	}	
 	
 	@Test
-	public void playerCantLeavePlotIfMemberNotEmpty() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerDoesNotInvited {
+	public void playerCantLeavePlotIfMemberNotEmpty() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvitedPlotException, PlayerDoesNotInvitedPlotException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
