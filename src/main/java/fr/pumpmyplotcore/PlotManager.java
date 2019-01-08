@@ -3,15 +3,14 @@ package fr.pumpmyplotcore;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
-import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvited;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvitedPlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
-import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvited;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvitedPlotException;
 import fr.pumpmyplotcore.exceptions.PlayerIsNotMemberPlotException;
 import fr.pumpmyplotcore.exceptions.PlotIsNotEmptyException;
 import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
