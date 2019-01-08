@@ -12,8 +12,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
-import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvited;
-import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvited;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvitedPlotException;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvitedPlotException;
 import fr.pumpmyplotcore.exceptions.PlotLocationParsingException;
 
 public class PlotInvites {
