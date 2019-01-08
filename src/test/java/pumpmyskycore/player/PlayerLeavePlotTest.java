@@ -35,9 +35,10 @@ public class PlayerLeavePlotTest {
 		
 		assertTrue(manager.playerHasPlot(player));
 		
-		manager.playerLeavePlot(player);
+		boolean b = manager.playerLeavePlot(player);
 		
 		assertFalse(manager.playerHasPlot(player));
+		assertTrue(b);
 		
 	}
 	
