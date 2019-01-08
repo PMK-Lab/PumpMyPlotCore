@@ -37,7 +37,7 @@ public class PlayerUtilsPlotTest {
 	}
 	
 	@Test
-	public void playerHasIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
+	public void playerHasPlotReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
