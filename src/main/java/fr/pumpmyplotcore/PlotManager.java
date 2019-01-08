@@ -166,7 +166,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 	}
 	
-	public void playerAcceptInvitePlot(T joiner, T inviter) throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, PlayerDoesNotInvited, IOException {
+	public void playerAcceptInvitePlot(T joiner, T inviter) throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, PlayerDoesNotInvitedPlotException, IOException {
 		
 		if(this.playerHasPlot(joiner)) {
 			
@@ -189,7 +189,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 				
 			}else {
 			
-				throw new PlayerDoesNotInvited(joinerUUID, plotInvitor);
+				throw new PlayerDoesNotInvitedPlotException(joinerUUID, plotInvitor);
 				
 			}		
 			
@@ -197,7 +197,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 	}
 	
-	public void playerRefuseInvitePlot(T refuser, T inviter) throws PlayerDoesNotHavePlotException, PlayerDoesNotInvited, IOException {
+	public void playerRefuseInvitePlot(T refuser, T inviter) throws PlayerDoesNotHavePlotException, PlayerDoesNotInvitedPlotException, IOException {
 		
 		Plot plotInvitor = this.playerGetPlot(inviter);
 		UUID refuserUUID = this.getMinecraftUUID(refuser);
@@ -209,7 +209,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 			
 		}else {
 		
-			throw new PlayerDoesNotInvited(refuserUUID, plotInvitor);
+			throw new PlayerDoesNotInvitedPlotException(refuserUUID, plotInvitor);
 			
 		}		
 		
