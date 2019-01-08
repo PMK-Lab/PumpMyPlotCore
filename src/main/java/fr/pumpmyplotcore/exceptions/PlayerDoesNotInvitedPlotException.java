@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import fr.pumpmyplotcore.Plot;
 
-public class PlayerDoesNotInvited extends Exception {
+public class PlayerDoesNotInvitedPlotException extends Exception {
 
 	/**
 	 * 
@@ -14,7 +14,7 @@ public class PlayerDoesNotInvited extends Exception {
 	private UUID uuid;
 	private Plot island;
 	
-	public PlayerDoesNotInvited(UUID uuid, Plot island) {
+	public PlayerDoesNotInvitedPlotException(UUID uuid, Plot island) {
 		super();
 		this.uuid = uuid;
 		this.island = island;
