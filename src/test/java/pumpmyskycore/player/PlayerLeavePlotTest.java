@@ -56,4 +56,26 @@ public class PlayerLeavePlotTest {
 		
 	}	
 	
+	@Test
+	public void playerCantLeavePlotIfMemberNotEmpty() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerDoesNotInvited {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		UUID uuid = UUID.randomUUID();
+		FakePlayer player = new FakePlayer(uuid);
+		
+		UUID uuid1 = UUID.randomUUID();
+		FakePlayer player1 = new FakePlayer(uuid1);
+		
+		Plot plot = manager.playerCreatePlot(player);
+		
+		manager.playerInvitePlot(player, player1);
+		manager.playerAcceptInvitePlot(player1, player);
+		
+		Executable exec = () -> manager.playerLeavePlot(player);
+		
+		assertThrows(PlotIsNotEmptyException.class, exec);
+		
+	}
+	
 }
