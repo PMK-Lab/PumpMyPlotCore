@@ -111,10 +111,10 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 			if(plot.getMembersList().isEmpty()) {
 				
 				this.plotIndex.unsetPlotLocation(this.getMinecraftUUID(player));
+				this.plotInvites.purgeInvites(plot);
+				this.plotPurger.addPlot(plot);				
 				
-				plot.purge();
-				
-				this.plotPurger.addIsland(plot);
+				plot.purge();			
 				
 				return true;
 				
