@@ -13,7 +13,7 @@ import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 
 public class PlotPurger {
 
-	public final static String ISLAND_STRING = "plots";
+	public final static String PLOT_STRING = "plots";
 	
 	public static PlotPurger init(Path indexPath) throws IOException, InvalidConfigurationException {
 		
@@ -53,19 +53,19 @@ public class PlotPurger {
 		
 	}
 	
-	public boolean contains(Plot island) {
+	public boolean contains(Plot plot) {
 		
-		return this.fileConf.getStringList(ISLAND_STRING).contains(island.getID());
+		return this.fileConf.getStringList(PLOT_STRING).contains(plot.getID());
 		
 	}
 	
-	public void addIsland(Plot island) throws IOException {
+	public void addPlot(Plot plot) throws IOException {
 		
-		List<String> list = this.fileConf.getStringList(ISLAND_STRING);
+		List<String> list = this.fileConf.getStringList(PLOT_STRING);
 		
-		list.add(island.getID());
+		list.add(plot.getID());
 		
-		this.fileConf.set(ISLAND_STRING, list);
+		this.fileConf.set(PLOT_STRING, list);
 		
 		this.save();		
 		
