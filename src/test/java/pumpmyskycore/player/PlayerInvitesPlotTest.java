@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
-import org.junit.jupiter.api.Test;
-
 import fr.pumpmyplotcore.Plot;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvited;
@@ -18,7 +16,7 @@ import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestPlotManager;
 
-public class PlotManagerPlayerInvitesActionTest {
+public class PlayerInvitesPlotTest {
 
 	//@Test
 	public void playerInviteIsland() throws IOException, InvalidConfigurationException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerAlreadyHavePlotException {
