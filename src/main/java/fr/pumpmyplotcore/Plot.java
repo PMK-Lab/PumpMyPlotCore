@@ -130,13 +130,13 @@ public class Plot {
 
 	public void save() throws IOException {
 		
-		this.fileYaml.set("island.name", this.name);
+		this.fileYaml.set("plot.name", this.name);
 		
-		this.fileYaml.set("island.home.x", this.homeX);
-		this.fileYaml.set("island.home.y", this.homeY);
-		this.fileYaml.set("island.home.z", this.homeZ);
+		this.fileYaml.set("plot.home.x", this.homeX);
+		this.fileYaml.set("plot.home.y", this.homeY);
+		this.fileYaml.set("plot.home.z", this.homeZ);
 		
-		this.fileYaml.set("island.members", this.membersList);
+		this.fileYaml.set("plot.members", this.membersList);
 		
 		this.fileYaml.save(this.file);
 		
