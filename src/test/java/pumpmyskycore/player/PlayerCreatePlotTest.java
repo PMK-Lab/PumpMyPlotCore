@@ -45,7 +45,7 @@ public class PlayerCreatePlotTest {
 		UUID uuid = UUID.randomUUID();
 		FakePlayer player = new FakePlayer(uuid);		
 		
-		Plot plot = manager.playerCreatePlot(player);
+		manager.playerCreatePlot(player);
 		
 		Executable exec = () -> manager.playerCreatePlot(player);
 		
