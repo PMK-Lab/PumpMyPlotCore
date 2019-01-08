@@ -30,7 +30,7 @@ public class PlayerLeavePlotTest {
 		UUID uuid = UUID.randomUUID();
 		FakePlayer player = new FakePlayer(uuid);
 		
-		Plot plot = manager.playerCreatePlot(player);
+		manager.playerCreatePlot(player);
 		
 		assertTrue(manager.playerHasPlot(player));
 		
@@ -66,7 +66,7 @@ public class PlayerLeavePlotTest {
 		UUID uuid1 = UUID.randomUUID();
 		FakePlayer player1 = new FakePlayer(uuid1);
 		
-		Plot plot = manager.playerCreatePlot(player);
+		manager.playerCreatePlot(player);
 		
 		manager.playerInvitePlot(player, player1);
 		manager.playerAcceptInvitePlot(player1, player);
