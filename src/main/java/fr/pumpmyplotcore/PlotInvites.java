@@ -160,5 +160,12 @@ public class PlotInvites {
 		this.setPlayerInvites(uuid, invites);
 		
 	}
+
+	public void purgeInvites(Plot plot) throws IOException {
+		
+		this.fileConf.set(INVITES_STRING + plot.getOwner(), null);
+		this.save();
+		
+	}
 	
 }
