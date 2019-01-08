@@ -107,7 +107,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 		Plot plot = this.playerGetPlot(player);
 		
-		if(this.getMinecraftUUID(player).toString().equals(plot.getOwner())) {
+		if(this.playerIsOwner(plot, player)) {
 			
 			if(plot.getMembersList().isEmpty()) {
 				
