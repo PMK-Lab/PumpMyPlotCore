@@ -138,11 +138,11 @@ public class PlotInvites {
 		
 	}
 	
-	public void removeInvites(UUID uuid, Plot plot) throws PlayerDoesNotInvited, IOException {
+	public void removeInvites(UUID uuid, Plot plot) throws PlayerDoesNotInvitedPlotException, IOException {
 		
 		if(!this.isInvites(uuid, plot)) {
 			
-			throw new PlayerDoesNotInvited(uuid,plot);
+			throw new PlayerDoesNotInvitedPlotException(uuid,plot);
 			
 		}
 		
