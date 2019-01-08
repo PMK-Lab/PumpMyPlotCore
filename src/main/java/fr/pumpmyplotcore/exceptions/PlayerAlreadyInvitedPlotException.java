@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import fr.pumpmyplotcore.Plot;
 
-public class PlayerAlreadyInvited extends Exception {
+public class PlayerAlreadyInvitedPlotException extends Exception {
 
 	private UUID uuid;
 	private Plot island;
@@ -25,7 +25,7 @@ public class PlayerAlreadyInvited extends Exception {
 		return serialVersionUID;
 	}
 	
-	public PlayerAlreadyInvited(UUID uuid, Plot island) {
+	public PlayerAlreadyInvitedPlotException(UUID uuid, Plot island) {
 		super();
 		this.uuid = uuid;
 		this.island = island;
