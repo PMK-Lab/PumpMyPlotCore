@@ -21,8 +21,8 @@ import pumpmyskycore.utils.TestPlotManager;
 
 public class PlayerInvitesPlotTest {
 
-	//@Test
-	public void playerInviteIsland() throws IOException, InvalidConfigurationException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerAlreadyHavePlotException {
+	@Test
+	public void playerOwnerCanInviteIsland() throws IOException, InvalidConfigurationException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerAlreadyHavePlotException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
@@ -39,8 +39,8 @@ public class PlayerInvitesPlotTest {
 		
 	}
 	
-	//@Test
-	public void playerUninviteIsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerDoesNotInvited {
+	@Test
+	public void playerOwnerCanUninviteIsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerDoesNotInvited {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
@@ -61,9 +61,23 @@ public class PlayerInvitesPlotTest {
 		
 	}
 	
-	public void playerAcceptInviteIsland() {
+	@Test
+	public void playerAcceptInviteIsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, PlayerDoesNotInvited {
 		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
+		FakePlayer invitor = new FakePlayer(UUID.randomUUID());		
+		FakePlayer target = new FakePlayer(UUID.randomUUID());
+		
+		Plot plot = manager.playerCreatePlot(invitor);		
+		manager.playerInvitePlot(invitor, target);
+		
+		manager.playerAcceptInvitePlot(target, invitor);
+		
+		Plot targetPlot = manager.playerGetPlot(target);
+		
+		assertEquals(plot, targetPlot);
+		assertTrue(targetPlot.containesMember(manager.getMinecraftUUID(target)));
 		
 	}
 	
