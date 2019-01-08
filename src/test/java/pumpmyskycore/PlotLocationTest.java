@@ -8,8 +8,8 @@ import java.io.File;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import fr.pumpmyskycore.PlotLocation;
-import fr.pumpmyskycore.exceptions.PlotLocationParsingException;
+import fr.pumpmyplotcore.PlotLocation;
+import fr.pumpmyplotcore.exceptions.PlotLocationParsingException;
 
 public class PlotLocationTest {
 

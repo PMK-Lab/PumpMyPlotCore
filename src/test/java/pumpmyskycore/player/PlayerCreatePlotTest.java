@@ -11,9 +11,9 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import fr.pumpmyskycore.Plot;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyHavePlotException;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
+import fr.pumpmyplotcore.Plot;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestPlotManager;
 

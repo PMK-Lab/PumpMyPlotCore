@@ -1,4 +1,4 @@
-package fr.pumpmyskycore;
+package fr.pumpmyplotcore;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,8 +11,8 @@ import java.util.UUID;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
-import fr.pumpmyskycore.exceptions.PlotLocationParsingException;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.exceptions.PlotLocationParsingException;
 
 public class Plot {
 	

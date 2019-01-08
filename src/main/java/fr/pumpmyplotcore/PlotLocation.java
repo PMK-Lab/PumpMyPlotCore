@@ -1,9 +1,9 @@
-package fr.pumpmyskycore;
+package fr.pumpmyplotcore;
 
 import java.io.File;
 import java.nio.file.Path;
 
-import fr.pumpmyskycore.exceptions.PlotLocationParsingException;
+import fr.pumpmyplotcore.exceptions.PlotLocationParsingException;
 
 public class PlotLocation {
 

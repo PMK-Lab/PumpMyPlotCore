@@ -1,4 +1,4 @@
-package fr.pumpmyskycore;
+package fr.pumpmyplotcore;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,13 +8,13 @@ import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 
-import fr.pumpmyskycore.exceptions.PlotIsNotEmptyException;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyHavePlotException;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
-import fr.pumpmyskycore.exceptions.PlayerIsNotMemberPlotException;
-import fr.pumpmyskycore.exceptions.RestrictActionToPlotOwnerException;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvited;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvited;
+import fr.pumpmyplotcore.exceptions.PlayerIsNotMemberPlotException;
+import fr.pumpmyplotcore.exceptions.PlotIsNotEmptyException;
+import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 
 public abstract class PlotManager<T> implements IPlotManager<T>{
 

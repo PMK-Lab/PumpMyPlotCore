@@ -1,8 +1,8 @@
-package fr.pumpmyskycore.exceptions;
+package fr.pumpmyplotcore.exceptions;
 
 import java.util.UUID;
 
-import fr.pumpmyskycore.Plot;
+import fr.pumpmyplotcore.Plot;
 
 public class PlayerAlreadyInvited extends Exception {
 

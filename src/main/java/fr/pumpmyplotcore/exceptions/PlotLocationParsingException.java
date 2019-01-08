@@ -1,4 +1,4 @@
-package fr.pumpmyskycore.exceptions;
+package fr.pumpmyplotcore.exceptions;
 
 public class PlotLocationParsingException extends Exception {
 

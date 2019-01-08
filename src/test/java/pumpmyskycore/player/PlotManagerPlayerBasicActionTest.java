@@ -7,10 +7,11 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
-import fr.pumpmyskycore.Plot;
-import fr.pumpmyskycore.exceptions.PlotIsNotEmptyException;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyHavePlotException;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
+
+import fr.pumpmyplotcore.Plot;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlotIsNotEmptyException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestPlotManager;
 

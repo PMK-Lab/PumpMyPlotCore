@@ -9,12 +9,12 @@ import java.util.UUID;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.junit.jupiter.api.Test;
 
-import fr.pumpmyskycore.Plot;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyHavePlotException;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHavePlotException;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
-import fr.pumpmyskycore.exceptions.RestrictActionToPlotOwnerException;
+import fr.pumpmyplotcore.Plot;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvited;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvited;
+import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestPlotManager;
 

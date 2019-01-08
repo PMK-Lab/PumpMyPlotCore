@@ -1,4 +1,4 @@
-package fr.pumpmyskycore;
+package fr.pumpmyplotcore;
 
 public class PlotHome {
 

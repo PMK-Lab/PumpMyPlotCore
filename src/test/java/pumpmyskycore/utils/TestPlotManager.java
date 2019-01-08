@@ -6,8 +6,8 @@ import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 
-import fr.pumpmyskycore.PlotLocation;
-import fr.pumpmyskycore.PlotManager;
+import fr.pumpmyplotcore.PlotLocation;
+import fr.pumpmyplotcore.PlotManager;
 
 public class TestPlotManager extends PlotManager<FakePlayer> {
 

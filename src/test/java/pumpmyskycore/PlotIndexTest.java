@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
-import fr.pumpmyskycore.PlotIndex;
-import fr.pumpmyskycore.PlotLocation;
-import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.PlotIndex;
+import fr.pumpmyplotcore.PlotLocation;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 import pumpmyskycore.utils.TestPlotManager;
 
 @TestInstance(Lifecycle.PER_CLASS)

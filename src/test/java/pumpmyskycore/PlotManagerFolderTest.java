@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
-import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 import pumpmyskycore.utils.TestPlotManager;
 
 @TestInstance(Lifecycle.PER_CLASS)

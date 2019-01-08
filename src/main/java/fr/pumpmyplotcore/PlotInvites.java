@@ -1,4 +1,4 @@
-package fr.pumpmyskycore;
+package fr.pumpmyplotcore;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,10 +11,10 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import fr.pumpmyskycore.PlotManager.PlotManagerConstant;
-import fr.pumpmyskycore.exceptions.PlotLocationParsingException;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvited;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvited;
+import fr.pumpmyplotcore.exceptions.PlotLocationParsingException;
 
 public class PlotInvites {
 	
