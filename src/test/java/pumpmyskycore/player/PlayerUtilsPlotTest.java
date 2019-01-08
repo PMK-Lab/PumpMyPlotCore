@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import fr.pumpmyplotcore.Plot;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
-import fr.pumpmyplotcore.exceptions.PlotIsNotEmptyException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestPlotManager;
 
