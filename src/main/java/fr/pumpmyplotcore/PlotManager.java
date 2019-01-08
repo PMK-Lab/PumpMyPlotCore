@@ -134,11 +134,11 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 	}
 	
-	public void playerInvitePlot(T invitor, T invited) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvited, IOException {
+	public void playerInvitePlot(T invitor, T invited) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvitedPlotException, IOException {
 		
 		Plot plot = this.playerGetPlot(invitor);
 		
-		if(this.playerIsOwner(invitor)) {
+		if(this.playerIsOwner(plot,invitor)) {
 			
 			this.plotInvites.addInvites(this.getMinecraftUUID(invited), plot);			
 			
@@ -150,11 +150,11 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 	}
 	
-	public void playerUninvitePlot(T uninvitor, T uninvited) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerDoesNotInvited, IOException {
+	public void playerUninvitePlot(T uninvitor, T uninvited) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerDoesNotInvitedPlotException, IOException {
 		
 		Plot plot = this.playerGetPlot(uninvitor);
 		
-		if(this.playerIsOwner(uninvitor)) {
+		if(this.playerIsOwner(plot,uninvitor)) {
 			
 			this.plotInvites.removeInvites(this.getMinecraftUUID(uninvited), plot);			
 			
