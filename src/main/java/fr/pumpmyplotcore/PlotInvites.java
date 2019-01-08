@@ -122,11 +122,11 @@ public class PlotInvites {
 		
 	}
 	
-	public void addInvites(UUID uuid, Plot plot) throws PlayerAlreadyInvited, IOException {
+	public void addInvites(UUID uuid, Plot plot) throws PlayerAlreadyInvitedPlotException, IOException {
 		
 		if(this.isInvites(uuid, plot)) {
 			
-			throw new PlayerAlreadyInvited(uuid,plot);
+			throw new PlayerAlreadyInvitedPlotException(uuid,plot);
 			
 		}
 		
