@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.junit.jupiter.api.Test;
 
 import fr.pumpmyplotcore.Plot;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
@@ -15,9 +16,9 @@ import fr.pumpmyplotcore.exceptions.PlotIsNotEmptyException;
 import pumpmyskycore.utils.FakePlayer;
 import pumpmyskycore.utils.TestPlotManager;
 
-public class PlotManagerPlayerBasicActionTest {
+public class PlayerUtilsPlotTest {
 
-	//@Test
+	@Test
 	public void playerIsOwner() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
@@ -36,25 +37,7 @@ public class PlotManagerPlayerBasicActionTest {
 		
 	}
 	
-	//@Test
-	public void playerCorrectlyLeavingsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, PlotIsNotEmptyException {
-		
-		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
-		
-		UUID uuid = UUID.randomUUID();
-		FakePlayer player = new FakePlayer(uuid);
-		
-		manager.playerCreatePlot(player);
-		
-		assertTrue(manager.playerHasPlot(player));
-		
-		manager.playerLeavePlot(player);
-		
-		assertFalse(manager.playerHasPlot(player));
-		
-	}
-	
-	//@Test
+	@Test
 	public void playerHasIslandReturnCorrectValue() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
