@@ -247,7 +247,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 		Plot plot = this.playerGetPlot(setter);
 		
-		if(this.playerIsOwner(setter)) {
+		if(this.playerIsOwner(plot,setter)) {
 			
 			plot.setHome(loc);
 			plot.save();
