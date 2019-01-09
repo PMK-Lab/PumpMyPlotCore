@@ -243,19 +243,27 @@ public class Plot {
 	
 	public void setHome(PlotHome loc) throws InvalidePlotHomeLocationException {
 		
-		if((loc.getX() < ((this.idX + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getX() > (this.idX * PlotManagerConstant.PLOT_SIZE)) && (loc.getZ() < ((this.idZ + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getZ() > (this.idZ * PlotManagerConstant.PLOT_SIZE))){
-			
-			
-			this.homeX = loc.getX();
-			this.homeY = loc.getY();
-			this.homeZ = loc.getZ();
-			
-			
-		}else {
+		if(loc.getX() > ((this.idX + 1) * PlotManagerConstant.PLOT_SIZE) || loc.getX() < (this.idX * PlotManagerConstant.PLOT_SIZE)) {
 			
 			throw new InvalidePlotHomeLocationException(this,loc);
 			
 		}
+		
+		if(loc.getZ() > ((this.idZ + 1) * PlotManagerConstant.PLOT_SIZE) || loc.getZ() < (this.idZ * PlotManagerConstant.PLOT_SIZE)) {
+			
+			throw new InvalidePlotHomeLocationException(this,loc);
+			
+		}
+		
+		if(loc.getY() > 256 || loc.getY() < 0) {
+			
+			throw new InvalidePlotHomeLocationException(this,loc);
+			
+		}			
+			
+		this.homeX = loc.getX();
+		this.homeY = loc.getY();
+		this.homeZ = loc.getZ();
 		
 	}
 
