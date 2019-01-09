@@ -12,7 +12,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
-import fr.pumpmyplotcore.exceptions.InvalideHomeLocationException;
+import fr.pumpmyplotcore.exceptions.InvalidePlotHomeLocationException;
 import fr.pumpmyplotcore.exceptions.PlotLocationParsingException;
 
 public class Plot {
@@ -233,7 +233,7 @@ public class Plot {
 		
 	}
 	
-	public void setHome(PlotHome loc) throws InvalideHomeLocationException {
+	public void setHome(PlotHome loc) throws InvalidePlotHomeLocationException {
 		
 		if((loc.getX() < ((this.idX + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getX() > (this.idX * PlotManagerConstant.PLOT_SIZE)) && (loc.getZ() < ((this.idZ + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getZ() > (this.idZ * PlotManagerConstant.PLOT_SIZE))){
 			
@@ -245,7 +245,7 @@ public class Plot {
 			
 		}else {
 			
-			throw new InvalideHomeLocationException(this,loc);
+			throw new InvalidePlotHomeLocationException(this,loc);
 			
 		}
 		

@@ -3,7 +3,7 @@ package fr.pumpmyplotcore.exceptions;
 import fr.pumpmyplotcore.Plot;
 import fr.pumpmyplotcore.PlotHome;
 
-public class InvalideHomeLocationException extends Exception {
+public class InvalidePlotHomeLocationException extends Exception {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class InvalideHomeLocationException extends Exception {
 	private Plot plot;
 	private PlotHome loc;
 	
-	public InvalideHomeLocationException(Plot plot, PlotHome loc) {
+	public InvalidePlotHomeLocationException(Plot plot, PlotHome loc) {
 		
 		this.plot = plot;
 		this.loc = loc;
