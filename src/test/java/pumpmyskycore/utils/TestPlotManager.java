@@ -39,10 +39,4 @@ public class TestPlotManager extends PlotManager<FakePlayer> {
 		return file;
 	}
 
-	@Override
-	public void pastePlotSchematic(PlotLocation islandLocation) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
