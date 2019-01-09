@@ -22,9 +22,53 @@ import pumpmyskycore.utils.TestPlotManager;
 
 public class PlayerRefuseInvitesPlotTest {
 
-	public void playerRefuseInviteIsland() {
+	@Test
+	public void playerRefuseInviteIsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvitedPlotException, PlayerDoesNotInvitedPlotException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		FakePlayer invitor = new FakePlayer(UUID.randomUUID());		
+		FakePlayer target = new FakePlayer(UUID.randomUUID());
+		
+		Plot plot = manager.playerCreatePlot(invitor);		
+		manager.playerInvitePlot(invitor, target);
+		
+		assertTrue(manager.getPlotInvites().isInvites(target.getUuid(), plot));
+		
+		manager.playerRefuseInvitePlot(target, invitor);
+		
+		assertFalse(manager.getPlotInvites().isInvites(target.getUuid(), plot));
 		
 	}
 	
+	@Test
+	public void playerCantRefuseIfNotInviteIsland() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvitedPlotException, PlayerDoesNotInvitedPlotException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		FakePlayer invitor = new FakePlayer(UUID.randomUUID());		
+		FakePlayer target = new FakePlayer(UUID.randomUUID());
+		
+		Plot plot = manager.playerCreatePlot(invitor);		
+		
+		Executable exec = () -> manager.playerRefuseInvitePlot(target, invitor);
+		
+		assertThrows(PlayerDoesNotInvitedPlotException.class, exec);
+		
+	}
+	
+	@Test
+	public void playerCantRefuseInviteFromInvalideInviterPlot() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvitedPlotException, PlayerDoesNotInvitedPlotException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		FakePlayer invitor = new FakePlayer(UUID.randomUUID());		
+		FakePlayer target = new FakePlayer(UUID.randomUUID());
+		
+		Executable exec = () -> manager.playerRefuseInvitePlot(target, invitor);
+		
+		assertThrows(PlayerDoesNotHavePlotException.class, exec);
+		
+	}
 	
 }
