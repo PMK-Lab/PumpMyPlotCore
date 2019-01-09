@@ -23,7 +23,7 @@ import pumpmyskycore.utils.TestPlotManager;
 public class PlayerLeavePlotTest {
 
 	@Test
-	public void playerCorrectlyLeavingPlot() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException, PlotIsNotEmptyException {
+	public void playerOwnerCorrectlyLeavingPlot() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException, PlotIsNotEmptyException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
@@ -38,6 +38,30 @@ public class PlayerLeavePlotTest {
 		
 		assertFalse(manager.playerHasPlot(player));
 		assertTrue(b);
+		
+	}
+	
+	@Test
+	public void playerCorrectlyLeavingPlot() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException, PlotIsNotEmptyException, PlayerDoesNotInvitedPlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvitedPlotException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		FakePlayer player = new FakePlayer(UUID.randomUUID());
+		FakePlayer player1 = new FakePlayer(UUID.randomUUID());
+		
+		manager.playerCreatePlot(player);
+		
+		assertTrue(manager.playerHasPlot(player));
+		
+		manager.playerInvitePlot(player, player1);
+		manager.playerAcceptInvitePlot(player1, player);
+		
+		assertTrue(manager.playerHasPlot(player1));
+		
+		boolean b = manager.playerLeavePlot(player1);
+		
+		assertFalse(manager.playerHasPlot(player1));
+		assertFalse(b);
 		
 	}
 	
