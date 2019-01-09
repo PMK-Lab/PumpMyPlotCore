@@ -24,4 +24,72 @@ import pumpmyskycore.utils.TestPlotManager;
 
 public class PlayerSetHomePlotTest {
 
+	@Test
+	public void playerOwnerCorrectlySetHomePlot() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, InvalidePlotHomeLocationException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		FakePlayer player = new FakePlayer(UUID.randomUUID());
+		
+		manager.playerCreatePlot(player);		
+		manager.playerSetHomePlot(player, new PlotHome(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
+		
+		Plot plot = manager.playerGetPlot(player);
+				
+		assertEquals(plot.getHomeX(), 10 + PlotManagerConstant.PLOT_SIZE);
+		assertEquals(plot.getHomeY(), 10);
+		assertEquals(plot.getHomeZ(), 10 + PlotManagerConstant.PLOT_SIZE);
+		
+	}
+	
+	@Test
+	public void playerCantSetHomeIfNoPlot() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, InvalidePlotHomeLocationException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		FakePlayer player = new FakePlayer(UUID.randomUUID());
+	
+		Executable exec = () -> manager.playerSetHomePlot(player, new PlotHome(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
+		
+		assertThrows(PlayerDoesNotHavePlotException.class, exec);
+		
+	}
+	
+	@Test
+	public void playerNoOwnerCantSetHomePlot() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, InvalidePlotHomeLocationException, PlayerAlreadyInvitedPlotException, PlayerDoesNotInvitedPlotException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		FakePlayer player = new FakePlayer(UUID.randomUUID());
+		FakePlayer player1 = new FakePlayer(UUID.randomUUID());
+		
+		manager.playerCreatePlot(player);
+		manager.playerInvitePlot(player, player1);
+		manager.playerAcceptInvitePlot(player1, player);
+		
+		Executable exec = () -> manager.playerSetHomePlot(player1, new PlotHome(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
+		
+		assertThrows(RestrictActionToPlotOwnerException.class, exec);
+		
+	}
+	
+	@Test
+	public void playerOwnerCantSetHomeOutPlot() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, InvalidePlotHomeLocationException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		FakePlayer player = new FakePlayer(UUID.randomUUID());
+		
+		manager.playerCreatePlot(player);			
+		
+		Executable exec = () -> manager.playerSetHomePlot(player, new PlotHome(10, 10, 11));
+		
+		assertThrows(InvalidePlotHomeLocationException.class, exec);
+		
+		exec = () -> manager.playerSetHomePlot(player, new PlotHome(110 + PlotManagerConstant.PLOT_SIZE, 700, 110 + PlotManagerConstant.PLOT_SIZE));
+		
+		assertThrows(InvalidePlotHomeLocationException.class, exec);
+		
+	}
+	
 }
