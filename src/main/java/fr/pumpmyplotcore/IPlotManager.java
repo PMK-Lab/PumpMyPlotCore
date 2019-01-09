@@ -6,6 +6,4 @@ public interface IPlotManager<T> {
 	
 	public UUID getMinecraftUUID(T player);
 	
-	public void pastePlotSchematic(PlotLocation islandLocation);
-	
 }
