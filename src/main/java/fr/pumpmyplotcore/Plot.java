@@ -12,6 +12,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.exceptions.InvalideHomeLocationException;
 import fr.pumpmyplotcore.exceptions.PlotLocationParsingException;
 
 public class Plot {
