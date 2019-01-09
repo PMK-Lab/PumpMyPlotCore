@@ -212,6 +212,18 @@ public class Plot {
 	public String getName() {
 		return this.name;
 	}
+	
+	public void setName(String name) {
+		
+		this.name = name;
+		
+	}
+	
+	public void resetName() {
+		
+		this.name = "mon ile" + this.idX + "|" + this.idZ;
+		
+	}
 
 	public void resetHome() {
 		
