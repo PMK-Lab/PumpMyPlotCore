@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 
+import fr.pumpmyplotcore.exceptions.InvalideHomeLocationException;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvitedPlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
@@ -242,7 +243,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 	}
 	
-	public void playerSetHomePlot(T setter, PlotHome loc) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, IOException {
+	public void playerSetHomePlot(T setter, PlotHome loc) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, IOException, InvalideHomeLocationException {
 		
 		Plot plot = this.playerGetPlot(setter);
 		
