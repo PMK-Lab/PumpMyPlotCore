@@ -257,8 +257,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 			
 		}
 		
-	}
-	
+	}	
 	
 	public boolean playerIsOwner(Plot plot, T player) {
 		
