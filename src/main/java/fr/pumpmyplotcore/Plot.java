@@ -131,6 +131,8 @@ public class Plot {
 
 	public void save() throws IOException {
 		
+		this.fileYaml.set("plot.owner", this.owner);
+		
 		this.fileYaml.set("plot.name", this.name);
 		
 		this.fileYaml.set("plot.home.x", this.homeX);
@@ -216,6 +218,12 @@ public class Plot {
 	public void setName(String name) {
 		
 		this.name = name;
+		
+	}
+	
+	public void setOwner(UUID uuid) {
+		
+		this.owner = uuid.toString();
 		
 	}
 	
