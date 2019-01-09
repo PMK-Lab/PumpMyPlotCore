@@ -218,6 +218,10 @@ public class Plot {
 		if((loc.getX() < ((this.idX + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getX() > (this.idX * PlotManagerConstant.PLOT_SIZE)) && (loc.getZ() < ((this.idZ + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getZ() > (this.idZ * PlotManagerConstant.PLOT_SIZE))){
 			
 			
+			this.homeX = loc.getX();
+			this.homeY = loc.getY();
+			this.homeZ = loc.getZ();
+			
 			
 		}else {
 			
