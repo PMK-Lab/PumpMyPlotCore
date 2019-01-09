@@ -213,11 +213,15 @@ public class Plot {
 		return this.name;
 	}
 
-	public void setHome(PlotHome loc) {
+	public void setHome(PlotHome loc) throws InvalideHomeLocationException {
 		
-		if((loc.getX() > ((this.idX + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getX() < (this.idX * PlotManagerConstant.PLOT_SIZE)) && (loc.getZ() > ((this.idZ + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getZ() < (this.idZ * PlotManagerConstant.PLOT_SIZE))){
+		if((loc.getX() < ((this.idX + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getX() > (this.idX * PlotManagerConstant.PLOT_SIZE)) && (loc.getZ() < ((this.idZ + 1) * PlotManagerConstant.PLOT_SIZE) && loc.getZ() > (this.idZ * PlotManagerConstant.PLOT_SIZE))){
 			
 			
+			
+		}else {
+			
+			throw new InvalideHomeLocationException(this,loc);
 			
 		}
 		
