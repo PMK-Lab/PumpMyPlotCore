@@ -32,13 +32,13 @@ public class PlayerSetHomePlotTest {
 		FakePlayer player = new FakePlayer(UUID.randomUUID());
 		
 		manager.playerCreatePlot(player);		
-		manager.playerSetHomePlot(player, new PlotHomeLocation(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
+		manager.playerSetHomePlot(player, new PlotHomeLocation(10 , 10, 10));
 		
 		Plot plot = manager.playerGetPlot(player);
 				
-		assertEquals(plot.getHomeX(), 10 + PlotManagerConstant.PLOT_SIZE);
+		assertEquals(plot.getHomeX(), 10);
 		assertEquals(plot.getHomeY(), 10);
-		assertEquals(plot.getHomeZ(), 10 + PlotManagerConstant.PLOT_SIZE);
+		assertEquals(plot.getHomeZ(), 10);
 		
 	}
 	
@@ -67,7 +67,7 @@ public class PlayerSetHomePlotTest {
 		manager.playerInvitePlot(player, player1);
 		manager.playerAcceptInvitePlot(player1, player);
 		
-		Executable exec = () -> manager.playerSetHomePlot(player1, new PlotHomeLocation(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
+		Executable exec = () -> manager.playerSetHomePlot(player1, new PlotHomeLocation(10, 10, 10));
 		
 		assertThrows(RestrictActionToPlotOwnerException.class, exec);
 		
@@ -82,11 +82,11 @@ public class PlayerSetHomePlotTest {
 		
 		manager.playerCreatePlot(player);			
 		
-		Executable exec = () -> manager.playerSetHomePlot(player, new PlotHomeLocation(10, 10, 11));
+		Executable exec = () -> manager.playerSetHomePlot(player, new PlotHomeLocation(10 + PlotManagerConstant.PLOT_SIZE, 10, 11));
 		
 		assertThrows(InvalidePlotHomeLocationException.class, exec);
 		
-		exec = () -> manager.playerSetHomePlot(player, new PlotHomeLocation(110 + PlotManagerConstant.PLOT_SIZE, 700, 110 + PlotManagerConstant.PLOT_SIZE));
+		exec = () -> manager.playerSetHomePlot(player, new PlotHomeLocation(110, 700, 11));
 		
 		assertThrows(InvalidePlotHomeLocationException.class, exec);
 		
