@@ -22,4 +22,10 @@ public class PlotHome {
 		this.y = y;
 		this.z = z;
 	}	
+	
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof PlotHome && this.x == ((PlotHome) obj).getX() && this.y == ((PlotHome) obj).getY() && this.z == ((PlotHome) obj).getZ();
+	}
+	
 }
