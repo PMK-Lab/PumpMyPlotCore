@@ -267,4 +267,10 @@ public class Plot {
 		
 	}
 
+	public PlotHome getHome() {
+		
+		return new PlotHome(this.homeX, this.homeY, this.homeZ);
+		
+	}
+
 }
