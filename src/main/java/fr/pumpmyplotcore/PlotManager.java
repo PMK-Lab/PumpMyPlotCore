@@ -97,7 +97,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 	}
 	
-	public PlotHome playerGetHomePlot(T player) throws PlayerDoesNotHavePlotException {
+	public PlotHomeLocation playerGetHomePlot(T player) throws PlayerDoesNotHavePlotException {
 		
 		return this.playerGetPlot(player).getHome();
 		
@@ -249,7 +249,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 	}
 	
-	public void playerSetHomePlot(T setter, PlotHome loc) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, IOException, InvalidePlotHomeLocationException {
+	public void playerSetHomePlot(T setter, PlotHomeLocation loc) throws PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, IOException, InvalidePlotHomeLocationException {
 		
 		Plot plot = this.playerGetPlot(setter);
 		

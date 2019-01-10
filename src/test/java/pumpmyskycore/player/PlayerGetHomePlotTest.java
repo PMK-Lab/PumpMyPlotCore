@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import fr.pumpmyplotcore.Plot;
-import fr.pumpmyplotcore.PlotHome;
+import fr.pumpmyplotcore.PlotHomeLocation;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import pumpmyskycore.utils.FakePlayer;
@@ -29,7 +29,7 @@ public class PlayerGetHomePlotTest {
 		
 		Plot plot = manager.playerCreatePlot(player);
 		
-		assertEquals(manager.playerGetHomePlot(player), new PlotHome(plot.getHomeX(), plot.getHomeY(), plot.getHomeZ()));		
+		assertEquals(manager.playerGetHomePlot(player), new PlotHomeLocation(plot.getHomeX(), plot.getHomeY(), plot.getHomeZ()));		
 		
 	}
 	

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import fr.pumpmyplotcore.Plot;
-import fr.pumpmyplotcore.PlotHome;
+import fr.pumpmyplotcore.PlotHomeLocation;
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 import fr.pumpmyplotcore.exceptions.InvalidePlotHomeLocationException;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
@@ -32,7 +32,7 @@ public class PlayerSetHomePlotTest {
 		FakePlayer player = new FakePlayer(UUID.randomUUID());
 		
 		manager.playerCreatePlot(player);		
-		manager.playerSetHomePlot(player, new PlotHome(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
+		manager.playerSetHomePlot(player, new PlotHomeLocation(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
 		
 		Plot plot = manager.playerGetPlot(player);
 				
@@ -49,7 +49,7 @@ public class PlayerSetHomePlotTest {
 		
 		FakePlayer player = new FakePlayer(UUID.randomUUID());
 	
-		Executable exec = () -> manager.playerSetHomePlot(player, new PlotHome(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
+		Executable exec = () -> manager.playerSetHomePlot(player, new PlotHomeLocation(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
 		
 		assertThrows(PlayerDoesNotHavePlotException.class, exec);
 		
@@ -67,7 +67,7 @@ public class PlayerSetHomePlotTest {
 		manager.playerInvitePlot(player, player1);
 		manager.playerAcceptInvitePlot(player1, player);
 		
-		Executable exec = () -> manager.playerSetHomePlot(player1, new PlotHome(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
+		Executable exec = () -> manager.playerSetHomePlot(player1, new PlotHomeLocation(10 + PlotManagerConstant.PLOT_SIZE, 10, 10 + PlotManagerConstant.PLOT_SIZE));
 		
 		assertThrows(RestrictActionToPlotOwnerException.class, exec);
 		
@@ -82,11 +82,11 @@ public class PlayerSetHomePlotTest {
 		
 		manager.playerCreatePlot(player);			
 		
-		Executable exec = () -> manager.playerSetHomePlot(player, new PlotHome(10, 10, 11));
+		Executable exec = () -> manager.playerSetHomePlot(player, new PlotHomeLocation(10, 10, 11));
 		
 		assertThrows(InvalidePlotHomeLocationException.class, exec);
 		
-		exec = () -> manager.playerSetHomePlot(player, new PlotHome(110 + PlotManagerConstant.PLOT_SIZE, 700, 110 + PlotManagerConstant.PLOT_SIZE));
+		exec = () -> manager.playerSetHomePlot(player, new PlotHomeLocation(110 + PlotManagerConstant.PLOT_SIZE, 700, 110 + PlotManagerConstant.PLOT_SIZE));
 		
 		assertThrows(InvalidePlotHomeLocationException.class, exec);
 		

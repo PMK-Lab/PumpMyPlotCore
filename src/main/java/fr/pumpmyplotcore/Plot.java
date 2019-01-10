@@ -241,7 +241,7 @@ public class Plot {
 		
 	}
 	
-	public void setHome(PlotHome loc) throws InvalidePlotHomeLocationException {
+	public void setHome(PlotHomeLocation loc) throws InvalidePlotHomeLocationException {
 		
 		if(loc.getX() > ((this.idX + 1) * PlotManagerConstant.PLOT_SIZE) || loc.getX() < (this.idX * PlotManagerConstant.PLOT_SIZE)) {
 			
@@ -267,9 +267,9 @@ public class Plot {
 		
 	}
 
-	public PlotHome getHome() {
+	public PlotHomeLocation getHome() {
 		
-		return new PlotHome(this.homeX, this.homeY, this.homeZ);
+		return new PlotHomeLocation(this.homeX, this.homeY, this.homeZ);
 		
 	}
 

@@ -1,7 +1,7 @@
 package fr.pumpmyplotcore.exceptions;
 
 import fr.pumpmyplotcore.Plot;
-import fr.pumpmyplotcore.PlotHome;
+import fr.pumpmyplotcore.PlotHomeLocation;
 
 public class InvalidePlotHomeLocationException extends Exception {
 
@@ -11,9 +11,9 @@ public class InvalidePlotHomeLocationException extends Exception {
 	private static final long serialVersionUID = -8545358645206896623L;
 
 	private Plot plot;
-	private PlotHome loc;
+	private PlotHomeLocation loc;
 	
-	public InvalidePlotHomeLocationException(Plot plot, PlotHome loc) {
+	public InvalidePlotHomeLocationException(Plot plot, PlotHomeLocation loc) {
 		
 		this.plot = plot;
 		this.loc = loc;
@@ -28,7 +28,7 @@ public class InvalidePlotHomeLocationException extends Exception {
 		return plot;
 	}
 
-	public PlotHome getLoc() {
+	public PlotHomeLocation getLoc() {
 		return loc;
 	}
 

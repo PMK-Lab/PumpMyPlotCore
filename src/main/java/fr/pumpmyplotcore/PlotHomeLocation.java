@@ -1,6 +1,6 @@
 package fr.pumpmyplotcore;
 
-public class PlotHome {
+public class PlotHomeLocation {
 
 	private double x;
 	private double y;
@@ -16,7 +16,7 @@ public class PlotHome {
 		return z;
 	}
 	
-	public PlotHome(double x, double y, double z) {
+	public PlotHomeLocation(double x, double y, double z) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -25,7 +25,7 @@ public class PlotHome {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof PlotHome && this.x == ((PlotHome) obj).getX() && this.y == ((PlotHome) obj).getY() && this.z == ((PlotHome) obj).getZ();
+		return obj instanceof PlotHomeLocation && this.x == ((PlotHomeLocation) obj).getX() && this.y == ((PlotHomeLocation) obj).getY() && this.z == ((PlotHomeLocation) obj).getZ();
 	}
 	
 }
