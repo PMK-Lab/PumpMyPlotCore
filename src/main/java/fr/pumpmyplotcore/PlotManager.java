@@ -97,6 +97,12 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 	}
 	
+	public PlotHome playerGetHomePlot(T player) throws PlayerDoesNotHavePlotException {
+		
+		return this.playerGetPlot(player).getHome();
+		
+	}
+	
 	public boolean playerLeavePlot(T player) throws PlayerDoesNotHavePlotException, PlotIsNotEmptyException, IOException {
 		
 		if(!this.playerHasPlot(player)) {
