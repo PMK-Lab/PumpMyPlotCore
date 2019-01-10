@@ -93,6 +93,25 @@ public class PlayerAcceptInvitesPlotTest {
 		
 	}
 	
+	public void acceptInvitesTest() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, RestrictActionToPlotOwnerException, PlayerAlreadyInvitedPlotException, PlayerDoesNotInvitedPlotException {
+		
+		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
+		
+		FakePlayer player1 = new FakePlayer(UUID.randomUUID());		
+		FakePlayer player2 = new FakePlayer(UUID.randomUUID());
+		FakePlayer player3 = new FakePlayer(UUID.randomUUID());
+		FakePlayer player4 = new FakePlayer(UUID.randomUUID());
+		FakePlayer player5 = new FakePlayer(UUID.randomUUID());
+		
+		manager.playerCreatePlot(player1);
+		manager.playerInvitePlot(player1, player2);
+		manager.playerAcceptInvitePlot(player2, player1);
+		
+		
+		
+		
+	}
+	
 	
 	
 }
