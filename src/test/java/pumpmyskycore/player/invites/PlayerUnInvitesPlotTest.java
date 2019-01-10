@@ -46,15 +46,15 @@ public class PlayerUnInvitesPlotTest {
 		
 		Plot plot = manager.playerCreatePlot(invitor);
 		
-		assertFalse(manager.getPlotInvites().isInvites(target.getUuid(), plot));
+		assertFalse(manager.getPlotInvites().isInvites(plot,target.getUuid()));
 		
 		manager.playerInvitePlot(invitor, target);
 		
-		assertTrue(manager.getPlotInvites().isInvites(target.getUuid(), plot));
+		assertTrue(manager.getPlotInvites().isInvites(plot,target.getUuid()));
 		
 		manager.playerUninvitePlot(invitor, target);
 		
-		assertFalse(manager.getPlotInvites().isInvites(target.getUuid(), plot));
+		assertFalse(manager.getPlotInvites().isInvites(plot,target.getUuid()));
 		
 	}
 	
@@ -84,16 +84,16 @@ public class PlayerUnInvitesPlotTest {
 		
 		Plot plot = manager.playerCreatePlot(invitor);
 		
-		assertFalse(manager.getPlotInvites().isInvites(target.getUuid(), plot));
+		assertFalse(manager.getPlotInvites().isInvites(plot,target.getUuid()));
 		
 		manager.playerInvitePlot(invitor, target);
 		
-		assertTrue(manager.getPlotInvites().isInvites(target.getUuid(), plot));
+		assertTrue(manager.getPlotInvites().isInvites(plot,target.getUuid()));
 		
 		manager.playerUninvitePlot(invitor, target);
 		
-		assertFalse(manager.getPlotInvites().isInvites(target.getUuid(), plot));
+		assertFalse(manager.getPlotInvites().isInvites(plot,target.getUuid()));
 		
 	}
-	
+
 }

@@ -33,11 +33,11 @@ public class PlayerRefuseInvitesPlotTest {
 		Plot plot = manager.playerCreatePlot(invitor);		
 		manager.playerInvitePlot(invitor, target);
 		
-		assertTrue(manager.getPlotInvites().isInvites(target.getUuid(), plot));
+		assertTrue(manager.getPlotInvites().isInvites(plot,target.getUuid()));
 		
 		manager.playerRefuseInvitePlot(target, invitor);
 		
-		assertFalse(manager.getPlotInvites().isInvites(target.getUuid(), plot));
+		assertFalse(manager.getPlotInvites().isInvites(plot,target.getUuid()));
 		
 	}
 	
@@ -70,5 +70,5 @@ public class PlayerRefuseInvitesPlotTest {
 		assertThrows(PlayerDoesNotHavePlotException.class, exec);
 		
 	}
-	
+
 }
