@@ -135,6 +135,9 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 			
 			this.plotIndex.unsetPlotLocation(this.getMinecraftUUID(player));
 			
+			plot.removeMember(this.getMinecraftUUID(player));
+			plot.save();
+			
 			return false;
 			
 		}	
@@ -147,7 +150,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 		if(this.playerIsOwner(plot,invitor)) {
 			
-			this.plotInvites.addInvites(this.getMinecraftUUID(invited), plot);			
+			this.plotInvites.addInvites(plot,this.getMinecraftUUID(invited));			
 			
 		}else {
 			
@@ -163,7 +166,7 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		
 		if(this.playerIsOwner(plot,uninvitor)) {
 			
-			this.plotInvites.removeInvites(this.getMinecraftUUID(uninvited), plot);			
+			this.plotInvites.removeInvites(plot,this.getMinecraftUUID(uninvited));			
 			
 		}else {
 			
@@ -184,10 +187,10 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 			Plot plotInvitor = this.playerGetPlot(inviter);
 			UUID joinerUUID = this.getMinecraftUUID(joiner);
 			
-			if(this.plotInvites.isInvites(joinerUUID, plotInvitor)) {
+			if(this.plotInvites.isInvites(plotInvitor,joinerUUID)) {
 				
 				// accept & remove invites		
-				this.plotInvites.removeInvites(joinerUUID, plotInvitor);
+				this.plotInvites.removeInvites(plotInvitor,joinerUUID);
 				
 				// join plot
 				this.plotIndex.setPlotLocation(this.getMinecraftUUID(joiner), plotInvitor.toLocation());	
@@ -209,10 +212,10 @@ public abstract class PlotManager<T> implements IPlotManager<T>{
 		Plot plotInvitor = this.playerGetPlot(inviter);
 		UUID refuserUUID = this.getMinecraftUUID(refuser);
 		
-		if(this.plotInvites.isInvites(refuserUUID, plotInvitor)) {
+		if(this.plotInvites.isInvites(plotInvitor,refuserUUID)) {
 			
 			// delete			
-			this.plotInvites.removeInvites(refuserUUID, plotInvitor);
+			this.plotInvites.removeInvites(plotInvitor, refuserUUID);
 			
 		}else {
 		
