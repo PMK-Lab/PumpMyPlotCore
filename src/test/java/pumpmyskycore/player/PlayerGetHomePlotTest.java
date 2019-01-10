@@ -20,7 +20,7 @@ import pumpmyskycore.utils.TestPlotManager;
 public class PlayerGetHomePlotTest {
 
 	@Test
-	public void playerCorrectlyCreatingPlot() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException {
+	public void playerCorrectlyGettingHomePlot() throws IOException, InvalidConfigurationException, PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
@@ -29,27 +29,21 @@ public class PlayerGetHomePlotTest {
 		
 		Plot plot = manager.playerCreatePlot(player);
 		
-		assertEquals(plot.getOwner(), uuid.toString());
-		
-		assertTrue(manager.getPlotIndex().contains(uuid));
-		assertEquals(manager.getPlotIndex().getPlotLocation(uuid).getX(), plot.getIdX());		
-		assertEquals(manager.getPlotIndex().getPlotLocation(uuid).getZ(), plot.getIdZ());		
+		assertEquals(manager.playerGetHomePlot(player), new PlotHome(plot.getHomeX(), plot.getHomeY(), plot.getHomeZ()));		
 		
 	}
 	
 	@Test
-	public void playerCantCreatePlotIfAlreadyHaveOne() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException {
+	public void playerCantGettingHomeIfNotHavePlot() throws PlayerAlreadyHavePlotException, PlayerDoesNotHavePlotException, IOException, InvalidConfigurationException {
 		
 		TestPlotManager manager = TestPlotManager.initManager(this.getClass());
 		
 		UUID uuid = UUID.randomUUID();
 		FakePlayer player = new FakePlayer(uuid);		
 		
-		manager.playerCreatePlot(player);
+		Executable exec = () -> manager.playerGetHomePlot(player);
 		
-		Executable exec = () -> manager.playerCreatePlot(player);
-		
-		assertThrows(PlayerAlreadyHavePlotException.class, exec);
+		assertThrows(PlayerDoesNotHavePlotException.class, exec);
 		
 	}
 	
