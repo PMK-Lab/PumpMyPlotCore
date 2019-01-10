@@ -59,6 +59,65 @@ public class PlotInvites {
 		this.fileConf.save(this.file);
 		
 	}
+	
+	public boolean isInvites(Plot plot,UUID uuid) {
+		
+		return this.getPlotInvites(plot).contains(uuid.toString());		
+		
+	}
+	
+	public List<String> getPlotInvites(Plot plot){
+		
+		return this.fileConf.getStringList(INVITES_STRING + plot.getID());
+		
+	}
+	
+	private void setPlotInvites(Plot plot,List<String> list) throws IOException {
+		
+		this.fileConf.set(INVITES_STRING + plot.getID(), list);
+		this.fileConf.save(this.file);
+		
+	}
+	
+	public void addInvites(Plot plot, UUID uuid) throws PlayerAlreadyInvitedPlotException, IOException {
+		
+		if(this.isInvites(plot, uuid)) {
+			
+			throw new PlayerAlreadyInvitedPlotException(uuid,plot);
+			
+		}
+		
+		List<String> invites = this.getPlotInvites(plot);
+		
+		invites.add(uuid.toString());
+		
+		this.setPlotInvites(plot, invites);
+		
+	}
+	
+	public void removeInvites(Plot plot,UUID uuid) throws PlayerDoesNotInvitedPlotException, IOException {
+		
+		if(!this.isInvites(plot, uuid)) {
+			
+			throw new PlayerDoesNotInvitedPlotException(uuid,plot);
+			
+		}
+		
+		List<String> invites = this.getPlotInvites(plot);
+		
+		for (Iterator<String> iterators = invites.iterator(); iterators.hasNext();) {
+			
+			if(iterators.next().equals(uuid.toString())) {
+				iterators.remove();
+				break;
+			}
+			
+		}
+		
+		this.setPlotInvites(plot, invites);
+		
+	}
+	
 
 	public File getFile() {
 		return file;
@@ -68,100 +127,27 @@ public class PlotInvites {
 		return this.fileConf;
 	}
 
-	public boolean contains(UUID minecraftUUID) {
+	public boolean contains(Plot plot) {
 		
-		return this.fileConf.contains(INVITES_STRING + minecraftUUID.toString());
-		
-	}
-	
-	private void setPlayerInvites(UUID uuid , List<Plot> invites) throws IOException {
-		
-		List<String> islandsID = new ArrayList<String>();
-		
-		for (Plot island : invites) {
-			
-			islandsID.add(island.getID());
-			
-		}
-		
-		this.fileConf.set(INVITES_STRING + uuid.toString(), islandsID);
-		this.save();
+		return this.fileConf.contains(INVITES_STRING + plot.getID());
 		
 	}
 	
-	public List<Plot> getPlayerInvites(UUID uuid){
+/*	public List<Plot> getPlayerInvites(UUID uuid){
 		
-		if(this.contains(uuid)) {
+		for (String key : this.fileConf.getKeys(true)) {
 			
-			List<Plot> invites = new ArrayList<Plot>();
+			System.out.println(key);
 			
-			for (String plotID : this.fileConf.getStringList(INVITES_STRING + uuid.toString())) {
-				
-				try {
-					invites.add(manager.getPlot(PlotLocation.parseFromString(plotID)));
-				} catch (PlotLocationParsingException e) {
-					e.printStackTrace();
-					continue;
-				}
-				
-			}
-			
-			return invites;
-			
-		}
+		}	
 		
-		return new ArrayList<>();		
+		return new ArrayList<Plot>();
 		
-	}
-	
-	public boolean isInvites(UUID uuid, Plot plot) {
-		
-		return this.getPlayerInvites(uuid).contains(plot);		
-		
-	}
-	
-	public void addInvites(UUID uuid, Plot plot) throws PlayerAlreadyInvitedPlotException, IOException {
-		
-		if(this.isInvites(uuid, plot)) {
-			
-			throw new PlayerAlreadyInvitedPlotException(uuid,plot);
-			
-		}
-		
-		List<Plot> invites = this.getPlayerInvites(uuid);
-		
-		invites.add(plot);
-		
-		this.setPlayerInvites(uuid, invites);
-		
-	}
-	
-	public void removeInvites(UUID uuid, Plot plot) throws PlayerDoesNotInvitedPlotException, IOException {
-		
-		if(!this.isInvites(uuid, plot)) {
-			
-			throw new PlayerDoesNotInvitedPlotException(uuid,plot);
-			
-		}
-		
-		List<Plot> invites = this.getPlayerInvites(uuid);
-		
-		for (Iterator<Plot> iterators = invites.iterator(); iterators.hasNext();) {
-			
-			if(iterators.next().equals(plot)) {
-				iterators.remove();
-				break;
-			}
-			
-		}
-		
-		this.setPlayerInvites(uuid, invites);
-		
-	}
+	}*/
 
 	public void purgeInvites(Plot plot) throws IOException {
 		
-		this.fileConf.set(INVITES_STRING + plot.getOwner(), null);
+		this.fileConf.set(INVITES_STRING + plot.getID(), null);
 		this.save();
 		
 	}
