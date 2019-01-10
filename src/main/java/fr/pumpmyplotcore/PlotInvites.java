@@ -2,7 +2,6 @@ package fr.pumpmyplotcore;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +13,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvitedPlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvitedPlotException;
-import fr.pumpmyplotcore.exceptions.PlotLocationParsingException;
 
 public class PlotInvites {
 	
