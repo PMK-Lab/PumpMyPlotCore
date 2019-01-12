@@ -43,8 +43,6 @@ public class PlotInvites {
 		
 		this.manager = manager;
 		
-		this.init();
-		
 	}
 	
 	private void init() throws IOException {

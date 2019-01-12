@@ -36,8 +36,6 @@ public class PlotPurger {
 		this.file = f;
 		this.fileConf = fc;
 		
-		this.init();
-		
 	}
 	
 	private void init() throws IOException {
