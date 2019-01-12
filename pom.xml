@@ -2,11 +2,11 @@
   	<modelVersion>4.0.0</modelVersion>
   	<parent>
     	<groupId>fr.pmk_lab</groupId>
-    	<artifactId>pumpmyskyparent</artifactId>
+    	<artifactId>pumpmystoneblock-parent</artifactId>
     	<version>1.0.0</version>
   	</parent>
   
-  	<artifactId>pumpmyskycore</artifactId>
+  	<artifactId>pumpmyplotcore</artifactId>
   	
   	<dependencies>
   		
