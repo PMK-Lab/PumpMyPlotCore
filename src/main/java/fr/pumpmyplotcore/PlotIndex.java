@@ -18,6 +18,7 @@ public class PlotIndex {
 	public static PlotIndex init(Path indexPath) throws IOException, InvalidConfigurationException {
 		
 		File file = new File(indexPath + File.separator + PlotManagerConstant.PLOT_INDEX_FILE_NAME);			
+		
 		if(!file.exists()) {
 			file.createNewFile();
 		}
@@ -35,8 +36,6 @@ public class PlotIndex {
 		
 		this.file = f;
 		this.fileConf = fc;
-		
-		this.init();
 		
 	}
 	
@@ -63,13 +62,6 @@ public class PlotIndex {
 		
 		System.out.println("NOT ENOUGH PLOT !!!!!!!!!!");
 		return null;
-		
-	}
-	
-	private void init() throws IOException {
-		
-		this.fileConf.createSection("plots");
-		this.save();
 		
 	}
 	
